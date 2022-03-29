@@ -2,24 +2,11 @@
 <!DOCTYPE CDXML SYSTEM "http://www.cambridgesoft.com/xml/cdxml.dtd" >
 <CDXML
  CreationProgram="ChemDraw 17.0.0.206"
- Name="3 Competing Pathway.cdxml"
- BoundingBox="106.45 99.70 472.30 314.69"
+ Name="temp.cdxml"
+ BoundingBox="226.92 96.70 607.08 337.20"
  WindowPosition="0 0"
  WindowSize="-2147483648 -2147483648"
  WindowIsZoomed="yes"
- FractionalWidths="yes"
- InterpretChemically="yes"
- ShowAtomQuery="yes"
- ShowAtomStereo="no"
- ShowAtomEnhancedStereo="yes"
- ShowAtomNumber="no"
- ShowResidueID="no"
- ShowBondQuery="yes"
- ShowBondRxn="yes"
- ShowBondStereo="no"
- ShowTerminalCarbonLabels="no"
- ShowNonTerminalCarbonLabels="no"
- HideImplicitHydrogens="no"
  LabelFont="3"
  LabelSize="10"
  LabelFace="96"
@@ -31,1230 +18,1156 @@
  BoldWidth="2.01"
  BondLength="14.40"
  BondSpacing="18"
- ChainAngle="120"
- LabelJustification="Auto"
- CaptionJustification="Left"
- AminoAcidTermini="HOH"
- ShowSequenceTermini="yes"
- ShowSequenceBonds="yes"
- ShowSequenceUnlinkedBranches="no"
- ResidueWrapCount="40"
- ResidueBlockCount="10"
- ResidueZigZag="yes"
- NumberResidueBlocks="no"
  PrintMargins="99.21 70.87 99.21 70.87"
- MacPrintInfo="0003000004B004B00000000026BD36CF0000FFFE26C036CF0365057B03E00002000004B004B00000000026BD36CF000100000064000000010001010100020001270F000100010000000000000000000000000002001901900000000000600000000000000000000100000000000000000000000000000000"
- ChemPropName=""
- ChemPropFormula="Chemical Formula: "
- ChemPropExactMass="Exact Mass: "
- ChemPropMolWt="Molecular Weight: "
- ChemPropMOverZ="m/z: "
- ChemPropAnalysis="Elemental Analysis: "
- ChemPropBoilingPt="Boiling Point: "
- ChemPropMeltingPt="Melting Point: "
- ChemPropCritTemp="Critical Temp: "
- ChemPropCritPres="Critical Pres: "
- ChemPropCritVol="Critical Vol: "
- ChemPropGibbs="Gibbs Energy: "
- ChemPropLogP="Log P: "
- ChemPropMR="MR: "
- ChemPropHenry="Henry&apos;s Law: "
- ChemPropEForm="Heat of Form: "
- ChemProptPSA="tPSA: "
- ChemPropCLogP="CLogP: "
- ChemPropCMR="CMR: "
- ChemPropLogS="LogS: "
- ChemPropPKa="pKa: "
- ChemPropID=""
  color="0"
  bgcolor="1"
- RxnAutonumberStart="1"
- RxnAutonumberConditions="no"
- RxnAutonumberStyle="Roman"
- RxnAutonumberFormat="(#)"
-><colortable>
+>
+
+<colortable>
+
 <color r="1" g="1" b="1"/>
+
 <color r="0" g="0" b="0"/>
+
 <color r="1" g="0" b="0"/>
+
 <color r="1" g="1" b="0"/>
+
 <color r="0" g="1" b="0"/>
+
 <color r="0" g="1" b="1"/>
+
 <color r="0" g="0" b="1"/>
+
 <color r="1" g="0" b="1"/>
-</colortable><fonttable>
+
+</colortable>
+
+<fonttable>
 <font id="3" charset="iso-8859-1" name="Arial"/>
 <font id="4" charset="iso-8859-1" name="Times New Roman"/>
-</fonttable><page
- id="-2147483647"
- BoundingBox="0 0 1930.68 1360.38"
+
+</fonttable>
+
+<page
+ id="1970058"
+ BoundingBox="0 0 1930.48 1360.76"
  HeaderPosition="36"
  FooterPosition="36"
  PrintTrimMarks="yes"
  HeightPages="3"
  WidthPages="3"
-><group
+>
+
+<group
  id="453612182"
- BoundingBox="183.68 233.97 216.32 235.98"
- Z="1"
+ BoundingBox="156.80 154.98 531.20 261.66"
+ Z="51"
  Integral="yes"
-><graphic
- id="562427"
- SupersededBy="-2147483646"
- BoundingBox="216.32 234.98 183.68 234.98"
- Z="106"
+>
+
+<graphic
+ id="7732032"
+ SupersededBy="6119089"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="50"
  LineType="Bold"
  GraphicType="Line"
- HeadSize="2000"
-/><arrow
- id="-2147483646"
- BoundingBox="183.68 233.97 216.32 235.98"
- Z="106"
- LineType="Bold"
+/>
+
+<arrow
+ id="6119089"
+ BoundingBox="226 296.43 423 297.56"
+ Z="50"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="216.32 234.98 0"
- Tail3D="183.68 234.98 0"
+ color="3"
+ Head3D="216.1212310097456 243.868125507123 0"
+ LineWidth="0.6"
+ Tail3D="183.8787689902544 243.868125507123 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/></group><group
- id="453612183"
- BoundingBox="216.03 158.33 433.92 279"
- Z="4"
+ LineType="Bold"
+/>
+
+</group>
+
+<group
+ id="453612182"
+ BoundingBox="156.80 154.98 531.20 261.66"
+ Z="59"
  Integral="yes"
-><graphic
- id="301286"
- SupersededBy="-2147483645"
- BoundingBox="270.72 159.33 238.08 159.33"
- Z="107"
- color="8"
+>
+
+<graphic
+ id="7192643"
+ SupersededBy="6860206"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="51"
  LineType="Bold"
  GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="296919"
- SupersededBy="-2147483644"
- BoundingBox="238.08 159.33 216.32 234.98"
- Z="108"
- color="8"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="553218"
- SupersededBy="-2147483643"
- BoundingBox="325.12 264.01 292.48 264.01"
- Z="109"
- color="8"
- LineType="Bold"
- GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="390487"
- SupersededBy="-2147483642"
- BoundingBox="292.48 264.01 270.72 159.33"
- Z="110"
- color="8"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="646160"
- SupersededBy="-2147483641"
- BoundingBox="379.52 220.70 346.88 220.70"
- Z="111"
- color="8"
- LineType="Bold"
- GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="411780"
- SupersededBy="-2147483640"
- BoundingBox="346.88 220.70 325.12 264.01"
- Z="112"
- color="8"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="967928"
- SupersededBy="-2147483639"
- BoundingBox="433.92 278 401.28 278"
- Z="113"
- color="8"
- LineType="Bold"
- GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="651445"
- SupersededBy="-2147483638"
- BoundingBox="401.28 278 379.52 220.70"
- Z="114"
- color="8"
- GraphicType="Line"
- HeadSize="1000"
-/><arrow
- id="-2147483645"
- BoundingBox="238.08 158.33 270.72 160.34"
- Z="107"
- color="8"
- LineType="Bold"
+/>
+
+<arrow
+ id="6860206"
+ BoundingBox="226 296.43 423 297.56"
+ Z="51"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="270.72 159.33 0"
- Tail3D="238.08 159.33 0"
+ color="8"
+ Head3D="269.8586677088976 137.21649812745343 0"
+ LineWidth="0.6"
+ Tail3D="237.6162056894064 137.21649812745343 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483644"
- BoundingBox="216.03 159.25 238.37 235.06"
- Z="108"
- color="8"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="238.08 159.33 0"
- Tail3D="216.32 234.98 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483643"
- BoundingBox="292.48 263 325.12 265.01"
- Z="109"
- color="8"
  LineType="Bold"
+/>
+
+<graphic
+ id="7018409"
+ SupersededBy="6516737"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="52"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6516737"
+ BoundingBox="226 296.43 423 297.56"
+ Z="52"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="325.12 264.01 0"
- Tail3D="292.48 264.01 0"
+ color="8"
+ Head3D="237.6162056894064 137.21649812745343 0"
+ LineWidth="0.6"
+ Tail3D="216.1212310097456 243.868125507123 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483642"
- BoundingBox="270.43 159.27 292.77 264.07"
- Z="110"
- color="8"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="292.48 264.01 0"
- Tail3D="270.72 159.33 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483641"
- BoundingBox="346.88 219.69 379.52 221.70"
- Z="111"
- color="8"
+/>
+
+<graphic
+ id="7806187"
+ SupersededBy="6350257"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="53"
  LineType="Bold"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6350257"
+ BoundingBox="226 296.43 423 297.56"
+ Z="53"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="379.52 220.70 0"
- Tail3D="346.88 220.70 0"
+ color="8"
+ Head3D="323.59610440804954 284.7956875140712 0"
+ LineWidth="0.6"
+ Tail3D="291.3536423885584 284.7956875140712 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483640"
- BoundingBox="324.85 220.56 347.15 264.14"
- Z="112"
- color="8"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="346.88 220.70 0"
- Tail3D="325.12 264.01 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483639"
- BoundingBox="401.28 276.99 433.92 279"
- Z="113"
- color="8"
  LineType="Bold"
+/>
+
+<graphic
+ id="7426135"
+ SupersededBy="6002347"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="54"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6002347"
+ BoundingBox="226 296.43 423 297.56"
+ Z="54"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="433.92 278 0"
- Tail3D="401.28 278 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483638"
- BoundingBox="379.24 220.59 401.56 278.11"
- Z="114"
  color="8"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="401.28 278 0"
- Tail3D="379.52 220.70 0"
+ Head3D="291.3536423885584 284.7956875140712 0"
+ LineWidth="0.6"
+ Tail3D="269.8586677088976 137.21649812745343 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/></group><group
- id="453612185"
- BoundingBox="126.60 99.70 472.30 314.69"
- Z="38"
+/>
+
+<graphic
+ id="7586800"
+ SupersededBy="6749350"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="55"
+ LineType="Bold"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6749350"
+ BoundingBox="226 296.43 423 297.56"
+ Z="55"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="8"
+ Head3D="377.33354110720154 223.7376308392104 0"
+ LineWidth="0.6"
+ Tail3D="345.0910790877104 223.7376308392104 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+ LineType="Bold"
+/>
+
+<graphic
+ id="7730423"
+ SupersededBy="6026642"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="56"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6026642"
+ BoundingBox="226 296.43 423 297.56"
+ Z="56"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="8"
+ Head3D="345.0910790877104 223.7376308392104 0"
+ LineWidth="0.6"
+ Tail3D="323.59610440804954 284.7956875140712 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7923459"
+ SupersededBy="6337614"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="57"
+ LineType="Bold"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6337614"
+ BoundingBox="226 296.43 423 297.56"
+ Z="57"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="8"
+ Head3D="431.07097780635354 304.5262385793101 0"
+ LineWidth="0.6"
+ Tail3D="398.82851578686234 304.5262385793101 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+ LineType="Bold"
+/>
+
+<graphic
+ id="7247208"
+ SupersededBy="6921800"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="58"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6921800"
+ BoundingBox="226 296.43 423 297.56"
+ Z="58"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="8"
+ Head3D="398.82851578686234 304.5262385793101 0"
+ LineWidth="0.6"
+ Tail3D="377.33354110720154 223.7376308392104 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+</group>
+
+<group
+ id="453612182"
+ BoundingBox="156.80 154.98 531.20 261.66"
+ Z="67"
  Integral="yes"
-><t
- id="66666"
- p="141.60 276.80"
- BoundingBox="128.25 267.80 141.60 279.45"
- Z="39"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Right"
- Justification="Right"
- LineHeight="auto"
-><s font="4" size="10">-40</s></t><t
- id="453612186"
- p="138.60 238.98"
- BoundingBox="133.60 229.98 138.60 241.63"
- Z="40"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Right"
- Justification="Right"
- LineHeight="auto"
-><s font="4" size="10">0</s></t><t
- id="453612187"
- p="141.60 201.16"
- BoundingBox="131.60 192.16 141.60 203.81"
- Z="41"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Right"
- Justification="Right"
- LineHeight="auto"
-><s font="4" size="10">40</s></t><t
- id="453612188"
- p="141.60 163.33"
- BoundingBox="131.60 154.33 141.60 165.98"
- Z="42"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Right"
- Justification="Right"
- LineHeight="auto"
-><s font="4" size="10">80</s></t><t
- id="453612189"
- p="141.60 125.51"
- BoundingBox="126.60 116.51 141.60 128.16"
- Z="43"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Right"
- Justification="Right"
- LineHeight="auto"
-><s font="4" size="10">120</s></t><graphic
- id="126604"
- SupersededBy="-2147483637"
- BoundingBox="472 313.60 145.60 313.60"
+>
+
+<graphic
+ id="7524447"
+ SupersededBy="6886203"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="59"
+ LineType="Bold"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6886203"
+ BoundingBox="226 296.43 423 297.56"
+ Z="59"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="269.8586677088976 176.5442857237066 0"
+ LineWidth="0.6"
+ Tail3D="237.6162056894064 176.5442857237066 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+ LineType="Bold"
+/>
+
+<graphic
+ id="7032878"
+ SupersededBy="6371694"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="60"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6371694"
+ BoundingBox="226 296.43 423 297.56"
+ Z="60"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="237.6162056894064 176.5442857237066 0"
+ LineWidth="0.6"
+ Tail3D="216.1212310097456 243.868125507123 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7381281"
+ SupersededBy="6831538"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="61"
+ LineType="Bold"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6831538"
+ BoundingBox="226 296.43 423 297.56"
+ Z="61"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="323.59610440804954 257.19957892958166 0"
+ LineWidth="0.6"
+ Tail3D="291.3536423885584 257.19957892958166 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+ LineType="Bold"
+/>
+
+<graphic
+ id="7500601"
+ SupersededBy="6195767"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="62"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6195767"
+ BoundingBox="226 296.43 423 297.56"
+ Z="62"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="291.3536423885584 257.19957892958166 0"
+ LineWidth="0.6"
+ Tail3D="269.8586677088976 176.5442857237066 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7330461"
+ SupersededBy="6793284"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="63"
+ LineType="Bold"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6793284"
+ BoundingBox="226 296.43 423 297.56"
+ Z="63"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="377.33354110720154 223.204372702312 0"
+ LineWidth="0.6"
+ Tail3D="345.0910790877104 223.204372702312 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+ LineType="Bold"
+/>
+
+<graphic
+ id="7076641"
+ SupersededBy="6911278"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="64"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6911278"
+ BoundingBox="226 296.43 423 297.56"
+ Z="64"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="345.0910790877104 223.204372702312 0"
+ LineWidth="0.6"
+ Tail3D="323.59610440804954 257.19957892958166 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7763824"
+ SupersededBy="6977153"
+ BoundingBox="481.66 244.50 306 244.50"
  Z="65"
+ LineType="Bold"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="161166"
- SupersededBy="-2147483636"
- BoundingBox="472 100 145.60 100"
+/>
+
+<arrow
+ id="6977153"
+ BoundingBox="226 296.43 423 297.56"
+ Z="65"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="431.07097780635354 273.4639521049813 0"
+ LineWidth="0.6"
+ Tail3D="398.82851578686234 273.4639521049813 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+ LineType="Bold"
+/>
+
+<graphic
+ id="7341620"
+ SupersededBy="6893148"
+ BoundingBox="481.66 244.50 306 244.50"
  Z="66"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="444560"
- SupersededBy="-2147483635"
- BoundingBox="145.60 100 145.60 313.60"
- Z="67"
+/>
+
+<arrow
+ id="6893148"
+ BoundingBox="226 296.43 423 297.56"
+ Z="66"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="4"
+ Head3D="398.82851578686234 273.4639521049813 0"
+ LineWidth="0.6"
+ Tail3D="377.33354110720154 223.204372702312 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+</group>
+
+<t
+ id="5765972"
+ p="197.0 253.868125507123"
+ BoundingBox="0 0 110 110"
+ Z="10067"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="3" face="1">S</s></t>
+
+<t
+ id="5223905"
+ p="200.0 240.868125507123"
+ BoundingBox="0 0 110 110"
+ Z="10067"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="3" face="0">0.0</s></t>
+
+<t
+ id="5215248"
+ p="253.737436699152 147.21649812745343"
+ BoundingBox="0 0 110 110"
+ Z="10069"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="1">TS1a</s></t>
+
+<t
+ id="5590956"
+ p="253.737436699152 134.21649812745343"
+ BoundingBox="0 0 110 110"
+ Z="10069"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="0">80.0</s></t>
+
+<t
+ id="5006216"
+ p="253.737436699152 186.5442857237066"
+ BoundingBox="0 0 110 110"
+ Z="10071"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="1">TS1b</s></t>
+
+<t
+ id="5958302"
+ p="253.737436699152 173.5442857237066"
+ BoundingBox="0 0 110 110"
+ Z="10071"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="0">50.5</s></t>
+
+<t
+ id="5735200"
+ p="253.737436699152 198.5442857237066"
+ BoundingBox="0 0 110 110"
+ Z="10073"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="3" face="1">RDS</s></t>
+
+<t
+ id="5696980"
+ p="307.474873398304 267.19957892958166"
+ BoundingBox="0 0 110 110"
+ Z="10074"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="1">IM2</s></t>
+
+<t
+ id="5256447"
+ p="307.474873398304 254.19957892958166"
+ BoundingBox="0 0 110 110"
+ Z="10074"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="0">-10.0</s></t>
+
+<t
+ id="5575629"
+ p="307.474873398304 294.7956875140712"
+ BoundingBox="0 0 110 110"
+ Z="10076"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="1">IM1</s></t>
+
+<t
+ id="5590841"
+ p="307.474873398304 281.7956875140712"
+ BoundingBox="0 0 110 110"
+ Z="10076"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="0">-30.7</s></t>
+
+<t
+ id="5005390"
+ p="361.212310097456 233.7376308392104"
+ BoundingBox="0 0 110 110"
+ Z="10078"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="1">TS2a</s></t>
+
+<t
+ id="5060243"
+ p="361.212310097456 220.7376308392104"
+ BoundingBox="0 0 110 110"
+ Z="10078"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="0">15.1</s></t>
+
+<t
+ id="5151289"
+ p="361.212310097456 243.7376308392104"
+ BoundingBox="0 0 110 110"
+ Z="10080"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="1">TS2b</s></t>
+
+<t
+ id="5742354"
+ p="361.212310097456 210.7376308392104"
+ BoundingBox="0 0 110 110"
+ Z="10080"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="0">15.5</s></t>
+
+<t
+ id="5804320"
+ p="414.949746796608 314.5262385793101"
+ BoundingBox="0 0 110 110"
+ Z="10082"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="1">Prod1</s></t>
+
+<t
+ id="5132343"
+ p="414.949746796608 301.5262385793101"
+ BoundingBox="0 0 110 110"
+ Z="10082"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="8" face="0">-45.5</s></t>
+
+<t
+ id="5233306"
+ p="414.949746796608 283.4639521049813"
+ BoundingBox="0 0 110 110"
+ Z="10084"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="1">Prod2</s></t>
+
+<t
+ id="5336420"
+ p="414.949746796608 270.4639521049813"
+ BoundingBox="0 0 110 110"
+ Z="10084"
+ CaptionJustification="Center"
+ Justification="Center"
+  LineHeight="auto"
+><s font="4" size="10" color="4" face="0">-22.2</s></t>
+
+<group
+ id="453612182"
+ BoundingBox="156.80 154.98 531.20 261.66"
+ Z="86"
+ Integral="yes"
+>
+
+<graphic
+ id="7632610"
+ SupersededBy="6204513"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="250034"
- SupersededBy="-2147483634"
- BoundingBox="472 100 472 313.60"
- Z="68"
+/>
+
+<arrow
+ id="6204513"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="443.8732966516018 346.6 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 346.6 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7978794"
+ SupersededBy="6397767"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="718984"
- SupersededBy="-2147483633"
- BoundingBox="200 311.40 200 313.60"
- Z="69"
+/>
+
+<arrow
+ id="6397767"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="443.8732966516018 100.0 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 100.0 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7012517"
+ SupersededBy="6852826"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="214461"
- SupersededBy="-2147483632"
- BoundingBox="254.40 311.40 254.40 313.60"
- Z="70"
+/>
+
+<arrow
+ id="6852826"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="175.6732966516018 100.0 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 346.6 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7596291"
+ SupersededBy="6327834"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="136281"
- SupersededBy="-2147483631"
- BoundingBox="308.80 311.40 308.80 313.60"
- Z="71"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="971458"
- SupersededBy="-2147483630"
- BoundingBox="363.20 311.40 363.20 313.60"
- Z="72"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="172393"
- SupersededBy="-2147483629"
- BoundingBox="417.60 311.40 417.60 313.60"
- Z="73"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="180486"
- SupersededBy="-2147483628"
- BoundingBox="472 311.40 472 313.60"
- Z="74"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="885552"
- SupersededBy="-2147483627"
- BoundingBox="147.80 291.71 145.60 291.71"
- Z="75"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="479929"
- SupersededBy="-2147483626"
- BoundingBox="147.80 272.80 145.60 272.80"
- Z="76"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="456733"
- SupersededBy="-2147483625"
- BoundingBox="147.80 253.89 145.60 253.89"
- Z="77"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="280310"
- SupersededBy="-2147483624"
- BoundingBox="147.80 234.98 145.60 234.98"
- Z="78"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="599867"
- SupersededBy="-2147483623"
- BoundingBox="147.80 216.07 145.60 216.07"
- Z="79"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="924403"
- SupersededBy="-2147483622"
- BoundingBox="147.80 197.16 145.60 197.16"
- Z="80"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="709271"
- SupersededBy="-2147483621"
- BoundingBox="147.80 178.24 145.60 178.24"
- Z="81"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="125067"
- SupersededBy="-2147483620"
- BoundingBox="147.80 159.33 145.60 159.33"
- Z="82"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="547183"
- SupersededBy="-2147483619"
- BoundingBox="147.80 140.42 145.60 140.42"
- Z="83"
- GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="2147483647"
- BoundingBox="146.80 312.40 145.60 313.60"
- Z="105"
+/>
+
+<arrow
+ id="6327834"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="443.8732966516018 100.0 0"
+ LineWidth="0.6"
+ Tail3D="443.8732966516018 346.6 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="453611"
+ BoundingBox="176.87329665160178 345.40000000000003 175.6732966516018 346.6"
+ Z="0"
  GraphicType="Orbital"
  OrbitalType="lobeFilled"
-/><graphic
- id="906866"
- SupersededBy="-2147483618"
- BoundingBox="147.80 121.51 145.60 121.51"
- Z="124"
+/>
+
+<graphic
+ id="7354705"
+ SupersededBy="6655718"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><arrow
- id="-2147483637"
- BoundingBox="145.60 313.30 472 313.90"
- Z="65"
+/>
+
+<arrow
+ id="6655718"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="472 313.60 0"
- Tail3D="145.60 313.60 0"
+ color="3"
+ Head3D="200.0 344.40000000000003 0"
+ LineWidth="0.6"
+ Tail3D="200.0 346.6 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483636"
- BoundingBox="145.60 99.70 472 100.30"
- Z="66"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="472 100 0"
- Tail3D="145.60 100 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483635"
- BoundingBox="145.30 100 145.90 313.60"
- Z="67"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="145.60 100 0"
- Tail3D="145.60 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483634"
- BoundingBox="471.70 100 472.30 313.60"
- Z="68"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="472 100 0"
- Tail3D="472 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483633"
- BoundingBox="199.70 311.40 200.30 313.60"
- Z="69"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="200 311.40 0"
- Tail3D="200 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483632"
- BoundingBox="254.10 311.40 254.70 313.60"
- Z="70"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="254.40 311.40 0"
- Tail3D="254.40 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483631"
- BoundingBox="308.50 311.40 309.10 313.60"
- Z="71"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="308.80 311.40 0"
- Tail3D="308.80 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483630"
- BoundingBox="362.90 311.40 363.50 313.60"
- Z="72"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="363.20 311.40 0"
- Tail3D="363.20 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483629"
- BoundingBox="417.30 311.40 417.90 313.60"
- Z="73"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="417.60 311.40 0"
- Tail3D="417.60 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483628"
- BoundingBox="471.70 311.40 472.30 313.60"
- Z="74"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="472 311.40 0"
- Tail3D="472 313.60 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483627"
- BoundingBox="145.60 291.41 147.80 292.01"
- Z="75"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 291.71 0"
- Tail3D="145.60 291.71 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483626"
- BoundingBox="145.60 272.50 147.80 273.10"
- Z="76"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 272.80 0"
- Tail3D="145.60 272.80 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483625"
- BoundingBox="145.60 253.59 147.80 254.19"
- Z="77"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 253.89 0"
- Tail3D="145.60 253.89 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483624"
- BoundingBox="145.60 234.68 147.80 235.28"
- Z="78"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 234.98 0"
- Tail3D="145.60 234.98 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483623"
- BoundingBox="145.60 215.77 147.80 216.37"
- Z="79"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 216.07 0"
- Tail3D="145.60 216.07 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483622"
- BoundingBox="145.60 196.86 147.80 197.46"
- Z="80"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 197.16 0"
- Tail3D="145.60 197.16 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483621"
- BoundingBox="145.60 177.94 147.80 178.54"
- Z="81"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 178.24 0"
- Tail3D="145.60 178.24 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483620"
- BoundingBox="145.60 159.03 147.80 159.63"
- Z="82"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 159.33 0"
- Tail3D="145.60 159.33 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483619"
- BoundingBox="145.60 140.12 147.80 140.72"
- Z="83"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 140.42 0"
- Tail3D="145.60 140.42 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483618"
- BoundingBox="145.60 121.21 147.80 121.81"
- Z="124"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="147.80 121.51 0"
- Tail3D="145.60 121.51 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/></group><group
- id="453612184"
- BoundingBox="216.05 186.22 433.92 256.97"
- Z="123"
- Integral="yes"
-><graphic
- id="843110"
- SupersededBy="-2147483617"
- BoundingBox="270.72 187.23 238.08 187.23"
- Z="115"
- color="4"
- LineType="Bold"
+/>
+
+<graphic
+ id="7812320"
+ SupersededBy="6404166"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="794702"
- SupersededBy="-2147483616"
- BoundingBox="238.08 187.23 216.32 234.98"
- Z="116"
- color="4"
+/>
+
+<arrow
+ id="6404166"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="253.737436699152 344.40000000000003 0"
+ LineWidth="0.6"
+ Tail3D="253.737436699152 346.6 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7094130"
+ SupersededBy="6528349"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="306964"
- SupersededBy="-2147483615"
- BoundingBox="325.12 244.43 292.48 244.43"
- Z="117"
- color="4"
- LineType="Bold"
+/>
+
+<arrow
+ id="6528349"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="307.474873398304 344.40000000000003 0"
+ LineWidth="0.6"
+ Tail3D="307.474873398304 346.6 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7521462"
+ SupersededBy="6751376"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="928765"
- SupersededBy="-2147483614"
- BoundingBox="292.48 244.43 270.72 187.23"
- Z="118"
- color="4"
+/>
+
+<arrow
+ id="6751376"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="361.212310097456 344.40000000000003 0"
+ LineWidth="0.6"
+ Tail3D="361.212310097456 346.6 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7972380"
+ SupersededBy="6620243"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="342207"
- SupersededBy="-2147483613"
- BoundingBox="379.52 220.32 346.88 220.32"
- Z="119"
- color="4"
- LineType="Bold"
+/>
+
+<arrow
+ id="6620243"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="414.949746796608 344.40000000000003 0"
+ LineWidth="0.6"
+ Tail3D="414.949746796608 346.6 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7733618"
+ SupersededBy="6605390"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="100419"
- SupersededBy="-2147483612"
- BoundingBox="346.88 220.32 325.12 244.43"
- Z="120"
- color="4"
+/>
+
+<arrow
+ id="6605390"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="177.87329665160178 323.8568460418752 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 323.8568460418752 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7485637"
+ SupersededBy="6586665"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><graphic
- id="502948"
- SupersededBy="-2147483611"
- BoundingBox="433.92 255.97 401.28 255.97"
- Z="121"
- color="4"
- LineType="Bold"
+/>
+
+<arrow
+ id="6586665"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="177.87329665160178 297.1939391969578 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 297.1939391969578 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7644382"
+ SupersededBy="6460266"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="2000"
-/><graphic
- id="461212"
- SupersededBy="-2147483610"
- BoundingBox="401.28 255.97 379.52 220.32"
- Z="122"
- color="4"
+/>
+
+<arrow
+ id="6460266"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
+ FillType="None"
+ ArrowheadType="Solid"
+ color="3"
+ Head3D="177.87329665160178 270.53103235204037 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 270.53103235204037 0"
+ Center3D="538.50 445.75 0"
+ MajorAxisEnd3D="735.50 445.75 0"
+ MinorAxisEnd3D="538.50 642.75 0"
+/>
+
+<graphic
+ id="7879061"
+ SupersededBy="6910570"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
  GraphicType="Line"
- HeadSize="1000"
-/><arrow
- id="-2147483617"
- BoundingBox="238.08 186.22 270.72 188.23"
- Z="115"
- color="4"
- LineType="Bold"
+/>
+
+<arrow
+ id="6910570"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="270.72 187.23 0"
- Tail3D="238.08 187.23 0"
+ color="3"
+ Head3D="177.87329665160178 243.868125507123 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 243.868125507123 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483616"
- BoundingBox="216.05 187.10 238.35 235.10"
- Z="116"
- color="4"
+/>
+
+<graphic
+ id="7407094"
+ SupersededBy="6623548"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6623548"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="238.08 187.23 0"
- Tail3D="216.32 234.98 0"
+ color="3"
+ Head3D="177.87329665160178 217.2052186622056 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 217.2052186622056 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483615"
- BoundingBox="292.48 243.43 325.12 245.44"
- Z="117"
- color="4"
- LineType="Bold"
+/>
+
+<graphic
+ id="7345188"
+ SupersededBy="6807386"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6807386"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="325.12 244.43 0"
- Tail3D="292.48 244.43 0"
+ color="3"
+ Head3D="177.87329665160178 190.54231181728824 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 190.54231181728824 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483614"
- BoundingBox="270.44 187.12 292.76 244.54"
- Z="118"
- color="4"
+/>
+
+<graphic
+ id="7117751"
+ SupersededBy="6349744"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6349744"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="292.48 244.43 0"
- Tail3D="270.72 187.23 0"
+ color="3"
+ Head3D="177.87329665160178 163.87940497237082 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 163.87940497237082 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483613"
- BoundingBox="346.88 219.32 379.52 221.33"
- Z="119"
- color="4"
- LineType="Bold"
+/>
+
+<graphic
+ id="7096217"
+ SupersededBy="6277495"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6277495"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="379.52 220.32 0"
- Tail3D="346.88 220.32 0"
+ color="3"
+ Head3D="177.87329665160178 137.21649812745343 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 137.21649812745343 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483612"
- BoundingBox="324.90 220.12 347.10 244.63"
- Z="120"
- color="4"
+/>
+
+<graphic
+ id="7594732"
+ SupersededBy="6725400"
+ BoundingBox="481.66 244.50 306 244.50"
+ Z="86"
+ GraphicType="Line"
+/>
+
+<arrow
+ id="6725400"
+ BoundingBox="226 296.43 423 297.56"
+ Z="86"
  FillType="None"
  ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="346.88 220.32 0"
- Tail3D="325.12 244.43 0"
+ color="3"
+ Head3D="177.87329665160178 110.55359128253605 0"
+ LineWidth="0.6"
+ Tail3D="175.6732966516018 110.55359128253605 0"
  Center3D="538.50 445.75 0"
  MajorAxisEnd3D="735.50 445.75 0"
  MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483611"
- BoundingBox="401.28 254.96 433.92 256.97"
- Z="121"
- color="4"
- LineType="Bold"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="2000"
- ArrowheadCenterSize="1750"
- ArrowheadWidth="500"
- Head3D="433.92 255.97 0"
- Tail3D="401.28 255.97 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/><arrow
- id="-2147483610"
- BoundingBox="379.26 220.17 401.54 256.12"
- Z="122"
- color="4"
- FillType="None"
- ArrowheadType="Solid"
- HeadSize="1000"
- ArrowheadCenterSize="875"
- ArrowheadWidth="250"
- Head3D="401.28 255.97 0"
- Tail3D="379.52 220.32 0"
- Center3D="538.50 445.75 0"
- MajorAxisEnd3D="735.50 445.75 0"
- MinorAxisEnd3D="538.50 642.75 0"
-/></group><fragment
- id="-2147483648"
- BoundingBox="299.62 264.86 317.97 276.56"
- Z="137"
-><n
- id="-2147483648"
- p="308.80 270.08"
- Z="136"
- NodeType="Fragment"
- NeedsClean="yes"
- AS="N"
- LabelDisplay="Center"
-><fragment
- id="-2147483609"
-><n
- id="-2147483608"
- p="316.22 274.01"
- Element="53"
- NumHydrogens="0"
-/><n
- id="-2147483607"
- p="301.87 274.01"
- NodeType="GenericNickname"
- GenericNickname="M1"
-/><b
- id="-2147483606"
- B="-2147483608"
- E="-2147483607"
-/></fragment><t
- id="-2147483648"
- p="308.80 274.01"
- BoundingBox="299.62 264.86 317.97 276.56"
- Z="94"
- color="8"
- LabelJustification="Center"
- LabelLineHeight="auto"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8" face="1">IM1</s></t></n></fragment><fragment
- id="-2147483648"
- BoundingBox="299.62 245.28 317.97 256.98"
- Z="139"
-><n
- id="-2147483648"
- p="308.80 250.51"
- Z="138"
- Warning="Formula cannot be computed for queries."
- NodeType="Fragment"
- NeedsClean="yes"
- AS="N"
- LabelDisplay="Center"
-><fragment
- id="-2147483604"
-><n
- id="-2147483603"
- p="316.22 254.43"
- Element="53"
- NumHydrogens="0"
-/><n
- id="-2147483602"
- p="301.87 254.43"
- NodeType="GenericNickname"
- GenericNickname="M2"
-/><b
- id="-2147483601"
- B="-2147483603"
- E="-2147483602"
-/></fragment><t
- id="-2147483648"
- p="308.80 254.43"
- BoundingBox="299.62 245.28 317.97 256.98"
- Z="92"
- color="4"
- LabelJustification="Center"
- LabelLineHeight="auto"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4" face="1">IM2</s></t></n></fragment><fragment
- id="-2147483648"
- BoundingBox="197 235.83 202.56 247.53"
- Z="141"
-><n
- id="-2147483648"
- p="199.77 241.05"
- Z="140"
- Warning="An atom in this label has an invalid valence."
- Element="16"
- NumHydrogens="0"
- NeedsClean="yes"
- AS="N"
- LabelDisplay="Center"
-><t
- id="-2147483648"
- p="197 244.98"
- BoundingBox="197 235.83 202.56 247.53"
- Z="85"
- LabelJustification="Left"
- LabelLineHeight="auto"
- LineHeight="auto"
-><s font="4" size="10" face="1">S</s></t></n></fragment><t
- id="-2147483648"
- p="254.40 169.33"
- BoundingBox="243.28 160.18 265.52 171.88"
- Z="87"
- color="8"
- Warning="Chemical Interpretation is not possible for this label"
+/>
+
+<t
+ id="5186435"
+ p="171.6732966516018 301.1939391969578"
+ BoundingBox="0 0 110 110"
+ Z="10086"
+ CaptionJustification="Right"
+ Justification="Right"
+  LineHeight="auto"
+><s font="4" size="10" color="3" face="0">-40</s></t>
+
+<t
+ id="5882174"
+ p="168.6732966516018 247.868125507123"
+ BoundingBox="0 0 110 110"
+ Z="10086"
+ CaptionJustification="Right"
+ Justification="Right"
+  LineHeight="auto"
+><s font="4" size="10" color="3" face="0">0</s></t>
+
+<t
+ id="5255805"
+ p="171.6732966516018 194.54231181728824"
+ BoundingBox="0 0 110 110"
+ Z="10086"
+ CaptionJustification="Right"
+ Justification="Right"
+  LineHeight="auto"
+><s font="4" size="10" color="3" face="0">40</s></t>
+
+<t
+ id="5976349"
+ p="171.6732966516018 141.21649812745343"
+ BoundingBox="0 0 110 110"
+ Z="10086"
+ CaptionJustification="Right"
+ Justification="Right"
+  LineHeight="auto"
+><s font="4" size="10" color="3" face="0">80</s></t>
+
+</group>
+
+<t
+ id="5129112"
+ p="145.6732966516018 223.3"
+ BoundingBox="0 0 110 110"
+ Z="10086"
  CaptionJustification="Center"
  Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8" face="1">TS1a</s></t><t
- id="-2147483648"
- p="254.40 197.23"
- BoundingBox="243 188.08 265.80 199.78"
- Z="89"
- color="4"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4" face="1">TS1b</s></t><t
- id="-2147483648"
- p="363.20 232.20"
- BoundingBox="352.08 223.05 374.32 234.75"
- Z="96"
- color="8"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8" face="1">TS2a</s></t><t
- id="-2147483648"
- p="363.20 216.70"
- BoundingBox="351.80 207.55 374.60 219.25"
- Z="98"
- color="4"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4" face="1">TS2b</s></t><t
- id="-2147483648"
- p="417.60 288"
- BoundingBox="404.54 278.85 430.66 290.55"
- Z="100"
- color="8"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8" face="1">Prod1</s></t><t
- id="-2147483648"
- p="417.60 253.97"
- BoundingBox="404.54 244.82 430.66 256.52"
- Z="102"
- color="4"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4" face="1">Prod2</s></t><t
- id="-2147483648"
- p="200 231.98"
- BoundingBox="193.75 222.98 206.25 234.63"
- Z="125"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10">0.0</s></t><t
- id="-2147483648"
- p="254.40 156.33"
- BoundingBox="245.65 147.33 263.15 158.98"
- Z="126"
- color="8"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8">80.0</s></t><t
- id="-2147483648"
- p="254.40 184.23"
- BoundingBox="245.65 175.23 263.15 186.88"
- Z="127"
- color="4"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4">50.5</s></t><t
- id="-2147483648"
- p="254.40 209.23"
- BoundingBox="244.40 200.08 264.40 211.78"
- Z="128"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" face="1">RDS</s></t><t
- id="-2147483648"
- p="308.80 241.43"
- BoundingBox="298.37 232.43 319.22 244.08"
- Z="129"
- color="4"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4">-10.0</s></t><t
- id="-2147483648"
- p="308.80 284.01"
- BoundingBox="298.37 275.01 319.22 286.66"
- Z="130"
- color="8"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8">-30.7</s></t><t
- id="-2147483648"
- p="363.20 242.45"
- BoundingBox="354.45 233.45 371.95 245.10"
- Z="131"
- color="8"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8">15.1</s></t><t
- id="-2147483648"
- p="363.20 205.45"
- BoundingBox="354.45 196.45 371.95 208.10"
- Z="132"
- color="4"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4">15.5</s></t><t
- id="-2147483648"
- p="417.60 275"
- BoundingBox="407.17 266 428.02 277.65"
- Z="133"
- color="8"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="8">-45.5</s></t><t
- id="-2147483648"
- p="417.60 243.97"
- BoundingBox="407.17 234.97 428.02 246.62"
- Z="134"
- color="4"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
- Justification="Center"
- LineHeight="auto"
-><s font="4" size="10" color="4">-22.2</s></t><t
- id="-2147483648"
- p="115.60 206.80"
- BoundingBox="106.45 141.27 118.15 272.33"
- Z="135"
- Warning="Chemical Interpretation is not possible for this label"
- CaptionJustification="Center"
  RotationAngle="17694720"
- Justification="Center"
  LineHeight="auto"
-><s font="4" size="10" face="1">Solvated Free Energy (kJ/mol)</s></t></page></CDXML>
+><s font="4" size="10" color="3" face="1">Solvated Free Energy (kJ/mol)</s></t>
+
+</page>
+
+</CDXML>
+
