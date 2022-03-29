@@ -4,9 +4,9 @@ A tool to create pixel-accurate energy diagrams as ChemDraw object.
 There is also a [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article.
 
 ## Background
-In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the order of energy could be accidentally inverted. Which could be very misleading. The left figure below is the line graph drawn by ChemDraw in the literature, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
+In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Sometime even the qualitative order breaks down, which could be very misleading. The left figure below is the line graph drawn by ChemDraw in the literature, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621653-d8dd5409-9351-4fda-81aa-b602a1f8afd2.png" width="70%" height="70%" align="center"></img></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621653-d8dd5409-9351-4fda-81aa-b602a1f8afd2.png" width="100%" height="100%" align="center"></img></p>
 
 There are lots tools to generate energy diagrams. For example DataGraph or [mechaSVG](https://github.com/ricalmang/mechaSVG). They are OK for basic graphs, but they usually genreates an un-editable figure with very limited customization options. Also one cannot drag the numbers and tags, trubblesome for complex energy diagrams.
 
