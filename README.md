@@ -7,7 +7,7 @@ A [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article
 
 If you don't have Python environment, there is an executable version (packed by cx_freeze on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Run `Draw_Energy_Diagram_XML.exe` in the folder.
 
-Alternatively, if you have a Python environment with PyQt, openpyxl and MatPlotLib, call the main script by first `cd` to the project folder and call:
+Alternatively, if you have a Python environment with PyQt, openpyxl and MatPlotLib, call the main script by first `cd` / `dir` to the project folder and call:
 `python Draw_Energy_Diagram_XML.py`. (On windows, you can also just double click `Draw_Energy_Diagram_xml.bat`)
 
 ## Background
