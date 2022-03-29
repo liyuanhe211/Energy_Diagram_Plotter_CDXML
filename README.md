@@ -14,7 +14,7 @@ The program here can automatically generate ChemDraw files with line charts base
 
 ![image](https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png)
 
-The input file format used by the program is explained in the following image. Should be easy to understand comparing left to right. I also give several more complicated examples:
+The input file format used by the program is explained in the following image. Should be easy to understand comparing left to right. I also give [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples):
 
 ![image](https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png)
 
@@ -51,20 +51,13 @@ The preview interface is not completely correct. If there is unexpected behavior
 
 The program's "Avoid text overlap" function is currently greedy, and may produce unreasonable results in particularly crowded situations. Just fine-tune it yourself (tip, hold down Shift and drag the text in ChemDraw to ensure it is horizontal or vertical). move).
 
+![image](https://user-images.githubusercontent.com/18537705/160621958-1d139beb-878b-43b8-b882-4dbf56439ff0.png)
+
 ## For bug report
 
-If you encounter some unexpected behavior, please try to use the  see the Example in the program directory first.
-After that, you can give feedback directly in this post, and upload your own Excel input file, the last display in the CMD window, and a screenshot of the operation interface. If the output file is generated but there is a problem with the output file, please upload the output file as well. Otherwise, it is not easy to repeat the question based on the description alone, and no reply will be given.
-If there is a "flashback", please run the program through the "Draw_Energy_Diagram_XML_Debug.bat" file in the directory, so as to keep the error message before the program exits. (The old version does not have this file, you can download the following .bat and put it in the directory where the program is located to run)
+If you encounter some unexpected behavior, please try to run the [examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) first and see whether it's problem of your input or my program.
 
+After that, you can give feedback by upload your Excel input file, a screenshot of the operation interface before crashing and the last display in the CMD window (if you what it is). If the output file is generated but there is a problem with the output file, please upload the output file as well. 
 
+If there is a crash, please run the program through the "Draw_Energy_Diagram_XML_Debug.bat" file in the directory, so as to keep the error message before the program exits. 
 
-
-
-
-
-
-
-
-
-![image](https://user-images.githubusercontent.com/18537705/160621958-1d139beb-878b-43b8-b882-4dbf56439ff0.png)
