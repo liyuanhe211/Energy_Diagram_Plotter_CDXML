@@ -6,18 +6,18 @@ If you don't have Python environment, there is an executable version (packed by 
 There is also a [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article.
 
 ## Background
-In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Sometime even the qualitative order breaks down, which could be very misleading. The left figure below is the line graph drawn by ChemDraw in the literature, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
+In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Sometime, even the qualitative order breaks down, which could be very misleading. The left figure below is the line graph drawn by ChemDraw in the literature, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
 
-There are lots tools to generate energy diagrams. For example DataGraph or [mechaSVG](https://github.com/ricalmang/mechaSVG). They are OK for basic graphs, but they usually genreates an un-editable figure with very limited customization options. Also one cannot drag the numbers and tags, trubblesome for complex energy diagrams.
+There are lots of tools to generate energy diagrams. For example, DataGraph or [mechaSVG](https://github.com/ricalmang/mechaSVG). They are OK for basic graphs, but they usually generate an un-editable figure with very limited customization options. Also, one cannot drag the numbers and tags, troublesome for complex energy diagrams.
 
 ## This program
-The program here can automatically generate ChemDraw files with line charts based on simple Excel input. After that, you can freely modify the ChemDraw elements. And it's very convient to add chemical structure to it.
+The program here can automatically generate ChemDraw files with line charts based on simple Excel input. After that, you can freely modify the ChemDraw elements. And it's very convent to add chemical structure to it.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png" width="70%" height="70%" align="center"></img></p>
 
-The input file format used by the program is explained in the following image. Should be easy to understand comparing left to right. I also give [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples):
+The input file format used by the program is explained in the following image. Should be easy to understand, comparing left to right. I also give [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples):
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png" width="100%" height="100%" align="center"></img></p>
 
@@ -31,7 +31,7 @@ The interface and the meaning of each option are described in the following figu
 
 The font of the figure is fixed to Arial (you can change it later in ChemDraw), and the canvas size and aspect ratio of the figure are determined by the window size.
 
-Here are some visuals for each options. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view.
+Here are some visuals for each option. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view.
 
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631167-2ffa2ade-e520-4bd6-86f2-c637a86716f4.png" width="70%" height="70%" align="center"></img></kbd></p>
 
@@ -61,9 +61,8 @@ The "Avoid text overlap" function is currently a greedy algorithm, and may produ
 
 ## For bug report
 
-If you encounter some unexpected behavior, please try to run the [examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) first and see whether it's problem of your input or my program.
+If you encounter some unexpected behavior, please try to run the [examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) first and see whether it's a problem of your input or my program.
 
-After that, you can give feedback by upload your Excel input file, a screenshot of the operation interface before crashing and the last display in the CMD window (if you what it is). If the output file is generated but there is a problem with the output file, please upload the output file as well. 
+After that, you can give feedback by upload your Excel input file, a screenshot of the operation interface before crashing and the last display in the CMD window. If the output file is generated, but there is a problem with the output file, please upload the output file as well. 
 
-If there is a crash, please run the program through the "Draw_Energy_Diagram_XML_Debug.bat" file in the directory, so as to keep the error message before the program exits. 
-
+If there is a crash, please run the program through the "Draw_Energy_Diagram_XML_Debug.bat" file in the directory, to keep the error message before the program exits. 
