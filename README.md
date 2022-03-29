@@ -1,6 +1,8 @@
 # Energy Diagram Plotter CDXML
 A tool to create pixel-accurate energy diagrams as ChemDraw object.
 
+If you don't have Python environment, there is an executable version (packed by cx_freeze on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4).
+
 There is also a [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article.
 
 ## Background
