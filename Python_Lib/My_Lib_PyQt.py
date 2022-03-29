@@ -17,7 +17,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as MpFigureCanv
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as MpNavToolBar
 import matplotlib.pyplot as MpPyplot
 import matplotlib.patches as patches
-from adjustText import *
+from .adjustText import *
 
 import sys
 import os
@@ -28,7 +28,7 @@ import re
 import time
 import random
 
-from My_Lib_Stock import *
+from .My_Lib_Stock import *
 
 
 def get_open_directories():
