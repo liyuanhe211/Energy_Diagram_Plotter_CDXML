@@ -31,7 +31,7 @@ The overall GUI structure and the meaning of each option are described in the fo
 
 (The font of the figure is fixed to Arial (you can change it later in ChemDraw), and the canvas size and aspect ratio of the figure are determined by the window size.)
 
-Here are some visuals for each option. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view.
+Here are some visuals for each option. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view:
 
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631167-2ffa2ade-e520-4bd6-86f2-c637a86716f4.png" width="70%" height="70%" align="center"></img></kbd></p>
 
