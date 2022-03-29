@@ -19,7 +19,7 @@ The input file format used by the program is explained in the following image. S
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png" width="100%" height="100%" align="center"></img></p>
 
-The following colors can be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom). Any other color could be used with its RGB value `#XXXXXX`:
+You can use any color for each state with its RGB value `#XXXXXX`. The following colors can also be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom).:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632357-237d8d49-e239-48d0-abb9-7ce0ccdcff30.png" width="40%" height="40%" align="center"></img></p>
 
