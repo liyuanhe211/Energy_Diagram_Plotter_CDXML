@@ -17,19 +17,19 @@ The program here can automatically generate ChemDraw files with line charts base
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png" width="70%" height="70%" align="center"></img></p>
 
-The input file format used by the program is explained in the following image. Should be easy to understand, comparing left to right. I also give [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples):
+Below is the input file format. By comparing left to right, it should be easy to understand. I also give [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) in this repo:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png" width="100%" height="100%" align="center"></img></p>
 
-You can use any color for each state with its RGB value `#XXXXXX`. The following colors can also be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom).:
+For color definition, you can use any color for each state with its RGB value `#XXXXXX`. The colors below it can also be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom).:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160639914-d11c34dc-5c1d-486e-b6b4-f8216883adba.png" width="70%" height="70%" align="center"></img></p>
 
-The interface and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
+The overall GUI structure and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160637389-257753fc-e0bc-4822-9d44-c86e0c8207a0.png" width="100%" height="100%" align="center"></img></p>
 
-The font of the figure is fixed to Arial (you can change it later in ChemDraw), and the canvas size and aspect ratio of the figure are determined by the window size.
+(The font of the figure is fixed to Arial (you can change it later in ChemDraw), and the canvas size and aspect ratio of the figure are determined by the window size.)
 
 Here are some visuals for each option. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view.
 
