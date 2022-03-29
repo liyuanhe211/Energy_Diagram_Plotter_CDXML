@@ -30,15 +30,15 @@ The font of the figure is fixed to Arial (you can change it later in ChemDraw), 
 
 Here are some visuals for each options. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view.
 
-<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621816-316c6304-1598-4a9c-83dc-666a071d2cb8.png" width="60%" height="60%" align="center"></img></kbd></p>
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631167-2ffa2ade-e520-4bd6-86f2-c637a86716f4.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621848-128372f6-c51b-4674-bb1e-4a50adf370cb.png" width="60%" height="60%" align="center"></img></kbd></p>
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631129-c5988851-7960-4817-abbc-8190882fb4b4.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621896-bbc03f1c-df92-43d2-8d60-0869156daec3.png" width="60%" height="60%" align="center"></img></kbd></p>
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631058-3d0f9959-e18f-48c2-b42d-a3cd2005f035.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621889-39ee11a1-b997-48bd-b7ae-99887a75da99.png" width="60%" height="60%" align="center"></img></kbd></p>
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160630699-5f7ff0a1-a0d6-4e36-b200-fd9bbcc42601.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621922-7f7f0526-fcb3-4df6-bbd2-3db4f1c1736c.png" width="60%" height="60%" align="center"></img></kbd></p>
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160630414-0c20936a-b9e7-41be-ad61-c7a1b3036394.png" width="60%" height="60%" align="center"></img></kbd></p>
 
 
 The last "Use temp file" option is to decide whether the program creates a file in its own Temp folder (the user needs to save it after viewing it), or directly generates a cdx file in the directory where Excel is located.
@@ -51,9 +51,10 @@ The temporary files of the program are stored in the program directory, so the p
 
 The preview interface is not completely correct. If there is unexpected behavior, export the ChemDraw file first to see if it is normal.
 
-The program's "Avoid text overlap" function is currently greedy, and may produce unreasonable results in particularly crowded situations. Just fine-tune it yourself (tip, hold down Shift and drag the text in ChemDraw to ensure it is horizontal or vertical). move).
+The "Avoid text overlap" function is currently a greedy algorithm, and may produce unreasonable results in particularly crowded situations. Just fine-tune it yourself (tip, hold down Shift and drag the text in ChemDraw to ensure it moves horizontal or vertical).
 
-<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621958-1d139beb-878b-43b8-b882-4dbf56439ff0.png" width="60%" height="60%" style="border-radius:50%" align="center"></img></kbd></p>
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160629770-3f10e450-e240-4ac5-96f0-0e80434bd413.png" width="60%" height="60%" align="center"></img></kbd></p>
+
 
 ## For bug report
 
