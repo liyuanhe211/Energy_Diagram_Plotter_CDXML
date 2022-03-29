@@ -21,7 +21,7 @@ The input file format used by the program is explained in the following image. S
 
 You can use any color for each state with its RGB value `#XXXXXX`. The following colors can also be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom).:
 
-<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632357-237d8d49-e239-48d0-abb9-7ce0ccdcff30.png" width="40%" height="40%" align="center"></img></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160639914-d11c34dc-5c1d-486e-b6b4-f8216883adba.png" width="40%" height="40%" align="center"></img></p>
 
 The interface and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
 
