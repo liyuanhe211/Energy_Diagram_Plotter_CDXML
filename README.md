@@ -4,40 +4,42 @@ A tool to create pixel-accurate energy diagrams as ChemDraw object.
 ## Background
 In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the order of energy could be accidentally inverted. Which could be very misleading. The left figure below is the line graph drawn by ChemDraw in the literature, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
 
-![image](https://user-images.githubusercontent.com/18537705/160621653-d8dd5409-9351-4fda-81aa-b602a1f8afd2.png)
+
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621653-d8dd5409-9351-4fda-81aa-b602a1f8afd2.png" width="70%" height="70%" align="center"></img></p>
+
 
 There are lots tools to generate energy diagrams. For example DataGraph or [mechaSVG](https://github.com/ricalmang/mechaSVG). They are OK for basic graphs, but they usually genreates an un-editable figure with very limited customization options. Also one cannot drag the numbers and tags, trubblesome for complex energy diagrams.
 
-#
 ## This program
 The program here can automatically generate ChemDraw files with line charts based on simple Excel input. After that, you can freely modify the ChemDraw elements. And it's very convient to add chemical structure to it.
 
-![image](https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png" width="70%" height="70%" align="center"></img></p>
 
 The input file format used by the program is explained in the following image. Should be easy to understand comparing left to right. I also give [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples):
 
-![image](https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png" width="100%" height="100%" align="center"></img></p>
 
 The supported colors are expressed as follows (It's the [colors supported by Matplotlib](http://matplotlib.org/api/colors_api.html))
 
-![image](https://user-images.githubusercontent.com/18537705/160621753-f0bad86a-5238-4f72-b7b0-c4554e0c0e0d.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621753-f0bad86a-5238-4f72-b7b0-c4554e0c0e0d.png" width="70%" height="70%" align="center"></img></p>
 
 The interface and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
 The font of the figure is fixed to Arial (you can change it later in ChemDraw), and the canvas size and aspect ratio of the figure are determined by the window size
 
-![image](https://user-images.githubusercontent.com/18537705/160618917-1544b242-6f63-45de-96e9-3892b549d445.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160618917-1544b242-6f63-45de-96e9-3892b549d445.png" width="100%" height="100%" align="center"></img></p>
 
 Here are some visuals for each options. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view.
 
-![image](https://user-images.githubusercontent.com/18537705/160621816-316c6304-1598-4a9c-83dc-666a071d2cb8.png)
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621816-316c6304-1598-4a9c-83dc-666a071d2cb8.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-![image](https://user-images.githubusercontent.com/18537705/160621848-128372f6-c51b-4674-bb1e-4a50adf370cb.png)
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621848-128372f6-c51b-4674-bb1e-4a50adf370cb.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-![image](https://user-images.githubusercontent.com/18537705/160621896-bbc03f1c-df92-43d2-8d60-0869156daec3.png)
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621896-bbc03f1c-df92-43d2-8d60-0869156daec3.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-![image](https://user-images.githubusercontent.com/18537705/160621889-39ee11a1-b997-48bd-b7ae-99887a75da99.png)
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621889-39ee11a1-b997-48bd-b7ae-99887a75da99.png" width="60%" height="60%" align="center"></img></kbd></p>
 
-![image](https://user-images.githubusercontent.com/18537705/160621922-7f7f0526-fcb3-4df6-bbd2-3db4f1c1736c.png)
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621922-7f7f0526-fcb3-4df6-bbd2-3db4f1c1736c.png" width="60%" height="60%" align="center"></img></kbd></p>
+
 
 The last "Use temp file" option is to decide whether the program creates a file in its own Temp folder (the user needs to save it after viewing it), or directly generates a cdx file in the directory where Excel is located.
 
@@ -51,7 +53,7 @@ The preview interface is not completely correct. If there is unexpected behavior
 
 The program's "Avoid text overlap" function is currently greedy, and may produce unreasonable results in particularly crowded situations. Just fine-tune it yourself (tip, hold down Shift and drag the text in ChemDraw to ensure it is horizontal or vertical). move).
 
-![image](https://user-images.githubusercontent.com/18537705/160621958-1d139beb-878b-43b8-b882-4dbf56439ff0.png)
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160621958-1d139beb-878b-43b8-b882-4dbf56439ff0.png" width="60%" height="60%" style="border-radius:50%" align="center"></img></kbd></p>
 
 ## For bug report
 
