@@ -25,7 +25,7 @@ You can use any color for each state with its RGB value `#XXXXXX`. The following
 
 The interface and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
 
-<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632130-d1aed3e4-2454-45d2-9224-6cc259d9a156.png" width="100%" height="100%" align="center"></img></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160637389-257753fc-e0bc-4822-9d44-c86e0c8207a0.png" width="100%" height="100%" align="center"></img></p>
 
 The font of the figure is fixed to Arial (you can change it later in ChemDraw), and the canvas size and aspect ratio of the figure are determined by the window size.
 
