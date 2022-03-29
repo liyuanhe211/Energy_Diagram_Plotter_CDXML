@@ -26,7 +26,7 @@ The supported colors are expressed as follows (It's the [colors supported by Mat
 The interface and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
 The font of the figure is fixed to Arial (you can change it later in ChemDraw), and the canvas size and aspect ratio of the figure are determined by the window size
 
-<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160618917-1544b242-6f63-45de-96e9-3892b549d445.png" width="100%" height="100%" align="center"></img></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632130-d1aed3e4-2454-45d2-9224-6cc259d9a156.png" width="100%" height="100%" align="center"></img></p>
 
 Here are some visuals for each options. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view.
 
