@@ -43,8 +43,9 @@ if __name__ == '__main__':
     pyqt_ui_compile('Draw_Energy_Diagram_UI_XML.py')
     from UI.Draw_Energy_Diagram_UI_XML import Ui_Draw_Energy_Diagram_Form
 
-    APPID = 'LYH.DrawEnergyDiagram.3.4'
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APPID)
+    if os.name == 'nt':
+        APPID = 'LYH.DrawEnergyDiagram.3.4'
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APPID)
 
     Application = Qt.QApplication(sys.argv)
     Application.setWindowIcon(Qt.QIcon('UI/Draw_Energy_Diagram_Icon.png'))
