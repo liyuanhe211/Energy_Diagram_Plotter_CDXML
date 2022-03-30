@@ -1,9 +1,14 @@
 # Energy Diagram Plotter CDXML
 A tool to create pixel-accurate energy diagrams as ChemDraw object.
 
-If you don't have Python environment, there is an executable version (packed by cx_freeze on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4).
+A [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article is available.
 
-There is also a [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article.
+## Execution
+
+If you don't have Python environment, there is an executable version (packed by cx_freeze on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Run `Draw_Energy_Diagram_XML.exe` in the folder.
+
+Alternatively, if you have a Python environment with `PyQt`, `openpyxl` and `matplotlib`, call the main script by first `cd` / `dir` to the project folder and call:
+`python Draw_Energy_Diagram_XML.py`. (On windows, you can also just double click `Draw_Energy_Diagram_xml.bat`)
 
 ## Background
 In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Sometimes even the qualitative order breaks down, which could be very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
