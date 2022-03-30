@@ -1,0 +1,31 @@
+# Created by .ignore support plugin (hsz.mobi)
+/Energy Diagram Plotter CDXML 3.4 (Packed Executable with Python Environment)/
+/作图.pptx
+/OldVersions/
+/Packed 3.3/
+/Patch_For_Win10/
+/5 Example From Article.cdxml
+/Draw_Energy_Diagram_XML_SupportMECP.py
+/Energy Diagram Plotter CDXML 3.4 (Packed Executable with Python Environment).7z
+.idea/
+__pycache__/
+/Python_Lib/indigo-cano.exe
+!/Python_Lib/My_Lib_Stock.py
+/Python_Lib/__init__.py
+/Python_Lib/My_Lib.py
+/Python_Lib/My_Lib.pyc
+!/Python_Lib/My_Lib_PyQt.py
+/Python_Lib/Wait_Message_UI.txt
+!/Python_Lib/adjustText.py
+/Python_Lib/Journal_Abbr.py
+/Python_Lib/mogli.py
+/Python_Lib/Wait_Message_UI.py
+/Python_Lib/glfw3.dll
+/Python_Lib/glfw3.lib
+/Python_Lib/(Broken) show_molecule.py
+/Python_Lib/glfw3dll.lib
+/Python_Lib/Wait_Message_UI.ui
+/Python_Lib/chronyk.py
+/Python_Lib/Wait_MessageBox.py
+/TEMP/
+/UI/Draw_Energy_Diagram_Icon.psd
