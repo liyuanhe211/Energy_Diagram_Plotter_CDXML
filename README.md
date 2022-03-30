@@ -1,5 +1,5 @@
 # Energy Diagram Plotter CDXML
-A tool to create pixel-accurate energy diagrams as ChemDraw object.
+A tool to create pixel-accurate energy diagrams as ChemDraw object. [![DOI](https://zenodo.org/badge/475440667.svg)](https://zenodo.org/badge/latestdoi/475440667)
 
 A [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article is available.
 
