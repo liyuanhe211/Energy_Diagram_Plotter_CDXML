@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you choose to, you can cite this software with the info below. But it's optional whether you cite it or not."
+authors:
+- family-names: "Li"
+  given-names: "Yuanhe"
+  orcid: "https://orcid.org/0000-0003-2128-5634"
+title: "Energy Diagram Plotter (CDXML)"
+version: 3.4.2
+doi: 10.5281/zenodo.6399320
+date-released: 2022-03-31
+url: "https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML"
