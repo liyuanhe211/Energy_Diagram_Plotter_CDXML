@@ -17,10 +17,10 @@ In the literatures, I see lots of people use the ChemDraw+mouse+eye method to dr
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
 
-There are lots of tools to generate energy diagrams. For example, DataGraph or [mechaSVG](https://github.com/ricalmang/mechaSVG). They are OK for basic graphs, but they usually generate an un-editable figure with very limited customization options. Also, one cannot drag the numbers and tags, which is troublesome for complex energy diagrams.
+Lots of tools can generate energy diagrams, like DataGraph, [mechaSVG](https://github.com/ricalmang/mechaSVG) or [origin](http://sobereva.com/320). They are OK for basic graphs, but they usually generate an un-editable figure with very limited customization options. Also, one cannot drag the numbers and tags, which is troublesome for complex energy diagrams.
 
 ## This program
-The program here can automatically generate ChemDraw files with line charts based on simple Excel input. After that, you can freely modify it in ChemDraw. And it's very convenient to add chemical structure:
+Based on simple Excel input, the program here can automatically generate ChemDraw files with line charts. You can add chemical structure, adjust the tags, or however you like in ChemDraw:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png" width="70%" height="70%" align="center"></img></p>
 
