@@ -112,6 +112,26 @@ def addToClipBoard(text):
 #     return replace.join(original_string.rsplit(search, 1))
 
 
+def walk_all_files(parent=".",filter="*.*",return_pathlib_obj = False):
+    import pathlib
+    parent_folder = pathlib.Path(parent)
+    if return_pathlib_obj:
+        files = [x.resolve() for x in parent_folder.rglob(filter)]
+    else:
+        files = [str(x.resolve()) for x in parent_folder.rglob(filter)]
+    return files
+
+
+def list_current_folder(parent=".",filter="*.*",return_pathlib_obj = False):
+    import pathlib
+    parent_folder = pathlib.Path(parent)
+    if return_pathlib_obj:
+        files = [x.resolve() for x in parent_folder.glob(filter)]
+    else:
+        files = [str(x.resolve()) for x in parent_folder.glob(filter)]
+    return files
+
+
 class filename_class:
     def __init__(self, fullpath):
         fullpath = fullpath.replace('\\', '/')
