@@ -37,16 +37,6 @@ amu__kg = 1.660539040E-27
 month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 
-def listdir(filename: str):
-    # listdir of a file or a folder, return a list, contain the absolute path of the
-    if os.path.isfile(filename):
-        path = filename_class(filename[0]).path
-        return [os.path.join(path, x) for x in os.listdir(path)]
-    elif os.path.isdir(filename):
-        path = filename
-        return [os.path.join(path, x) for x in os.listdir(path)]
-
-
 def nCr(n, r):
     f = math.factorial
     return f(n) / f(r) / f(n - r)
@@ -113,6 +103,11 @@ def addToClipBoard(text):
 
 
 def walk_all_files(parent=".",filter="*.*",return_pathlib_obj = False):
+    """
+    os.walk() wrap, return list of str for the full path
+    :param return_pathlib_obj: Whether to return a Path object, if False, return str
+    """
+
     import pathlib
     parent_folder = pathlib.Path(parent)
     if return_pathlib_obj:
@@ -122,14 +117,36 @@ def walk_all_files(parent=".",filter="*.*",return_pathlib_obj = False):
     return files
 
 
-def list_current_folder(parent=".",filter="*.*",return_pathlib_obj = False):
+def list_current_folder(parent=".",filter="*",return_pathlib_obj = False):
+    """
+    os.listdir() wrap, return list of str for the full path
+    :param return_pathlib_obj: Whether to return a Path object, if False, return str
+    """
     import pathlib
     parent_folder = pathlib.Path(parent)
     if return_pathlib_obj:
         files = [x.resolve() for x in parent_folder.glob(filter)]
     else:
         files = [str(x.resolve()) for x in parent_folder.glob(filter)]
+    print(files)
     return files
+
+def file_is_busy(filepath):
+    '''
+    Check whether a file is being used
+    If it's not being used, or it doesn't exist, return False
+    Else return True
+    If any other exceptions occor, raise exception
+    '''
+    import os
+    if os.path.isfile(filepath):
+        try:
+            os.rename(filepath, filepath)
+            return False
+        except OSError as e:
+            return True
+    else:
+        return False
 
 
 class filename_class:
@@ -366,6 +383,7 @@ def get_input_with_while_cycle(break_condition=lambda x: not x.strip(), input_pr
         else:
             ret.append(input_line)
     return ret
+
 
 
 def PolygonArea(corners):
