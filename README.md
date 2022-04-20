@@ -13,7 +13,7 @@ Alternatively, if you have a Python environment with `PyQt`, `openpyxl` and `mat
 `python Draw_Energy_Diagram_XML.py`. (On windows, you can also just double click `Draw_Energy_Diagram_XML.bat`)
 
 ## Background
-In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Sometimes even the qualitative order breaks down, which could be very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
+In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the qualitative order could break down, which could be very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
 
