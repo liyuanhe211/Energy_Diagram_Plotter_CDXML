@@ -55,13 +55,15 @@ The last "Use temp file" option is to decide whether the program creates a file 
 
 Other options not mentioned should be self-explanatory.
 
-## Other issues
+## Known issues
 
-The temporary files of the program are stored in the program directory, so the program must have read and write permissions to this directory. It is not recommended to put the program in a path with permission restrictions such as Program Files, otherwise please give it administrator permissions.
+ * The temporary files of the program are stored in the program directory, so the program must have read and write permissions to this directory. It is not recommended to put the program in a path with permission restrictions such as Program Files, otherwise please give it administrator permissions.
 
-The preview interface is not completely correct. If there is unexpected behavior, export the ChemDraw file first to see if it is normal.
+* The preview interface is not completely correct. If there is unexpected behavior, export the ChemDraw file first to see if it is normal.
 
-The "Avoid text overlap" function is currently a greedy algorithm, and may produce unreasonable results in particularly crowded situations. Just fine-tune it yourself (tip, hold down Shift and drag the text in ChemDraw to ensure it moves horizontal or vertical).
+* Aside from plot region adjustment, none of the format changes (title, label, ticks, etc.) through the MatPlotLib toolbar will be carried to the exported cdxml file.
+
+* The "Avoid text overlap" function is currently a greedy algorithm, and may produce unreasonable results in particularly crowded situations. Just fine-tune it yourself (tip, hold down Shift and drag the text in ChemDraw to ensure it moves horizontal or vertical).
 
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160629770-3f10e450-e240-4ac5-96f0-0e80434bd413.png" width="70%" height="70%" align="center"></img></kbd></p>
 
