@@ -32,7 +32,7 @@ For color definition, you can use any color for each state with its RGB value `#
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160639914-d11c34dc-5c1d-486e-b6b4-f8216883adba.png" width="70%" height="70%" align="center"></img></p>
 
-In the next version, I'll support `B`,`O`,`G`,`R`,`P`,`BR`,`P`,`GR`,`OL`,`C` (all uppercase) for the tab colors:
+In the next version, I'll support `B`,`O`,`G`,`R`,`P`,`BR`,`PI`,`GR`,`OL`,`C` (all uppercase) for the tab colors:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/175197188-bee314cd-73fb-4918-81ac-9fa89b47cc9f.png" width="30%" height="30%" align="center"></img></p>
 
