@@ -32,6 +32,10 @@ For color definition, you can use any color for each state with its RGB value `#
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160639914-d11c34dc-5c1d-486e-b6b4-f8216883adba.png" width="70%" height="70%" align="center"></img></p>
 
+In the next version, I'll support `B`,`O`,`G`,`R`,`P`,`BR`,`P`,`GR`,`OL`,`C` for the tab colors:
+
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/175197188-bee314cd-73fb-4918-81ac-9fa89b47cc9f.png" width="30%" height="30%" align="center"></img></p>
+
 The overall GUI structure and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160637389-257753fc-e0bc-4822-9d44-c86e0c8207a0.png" width="100%" height="100%" align="center"></img></p>
