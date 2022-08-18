@@ -615,6 +615,9 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         self.canvas.draw()
 
     def initiate(self):
+        
+        import numpy as np
+        
         self.diagram_subplot.clear()
 
         self.paths = []
