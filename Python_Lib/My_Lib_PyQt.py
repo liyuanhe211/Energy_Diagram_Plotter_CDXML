@@ -341,7 +341,7 @@ def pyqt_ui_compile(filename):
         ui_File_Compile = open(py_file, 'w')
         uic.compileUi(ui_filename, ui_File_Compile)
         ui_File_Compile.close()
-        with open(py_file, encoding='ANSI') as ui_File_Compile_object:
+        with open(py_file, encoding='gbk') as ui_File_Compile_object:
             ui_File_Compile_content = ui_File_Compile_object.read()
         with open(py_file, 'w', encoding='utf-8') as ui_File_Compile_object:
             ui_File_Compile_object.write(ui_File_Compile_content)
