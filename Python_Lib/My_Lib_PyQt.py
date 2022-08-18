@@ -17,7 +17,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as MpFigureCanv
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as MpNavToolBar
 import matplotlib.pyplot as MpPyplot
 import matplotlib.patches as patches
-from .adjustText import *
 
 import sys
 import os
