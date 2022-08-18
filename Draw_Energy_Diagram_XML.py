@@ -20,14 +20,14 @@ from openpyxl import load_workbook
 import random
 from datetime import datetime
 import ctypes
-
+import numpy as np
 
 number_font_size = 17
 tag_font_size = 17
 
 matplotlib.rcParams.update({'font.family': 'Times New Roman'})
 
-temp_folder = os.path.join(filename_class(sys.argv[0]).path,'TEMP')
+temp_folder = os.path.join(filename_class(sys.argv[0]).path, 'TEMP')
 if not os.path.isdir(temp_folder):
     os.mkdir(temp_folder)
 
@@ -49,7 +49,6 @@ if __name__ == '__main__':
 
     Application = Qt.QApplication(sys.argv)
     Application.setWindowIcon(Qt.QIcon('UI/Draw_Energy_Diagram_Icon.png'))
-
 
 # doc header
 default_document = '''<?xml version="1.0" encoding="UTF-8" ?>
@@ -94,12 +93,52 @@ colors_list = '''<colortable>
 <color r="0" g="1" b="0"/>
 <color r="0" g="1" b="1"/>
 <color r="0" g="0" b="1"/>
-<color r="1" g="0" b="1"/>'''.splitlines()
+<color r="1" g="0" b="1"/>
+<color r="0.12109375" g="0.46484375" b="0.703125"/>
+<color r="0.99609375" g="0.49609375" b="0.0546875"/>
+<color r="0.171875" g="0.625" b="0.171875"/>
+<color r="0.8359375" g="0.15234375" b="0.15625"/>
+<color r="0.578125" g="0.40234375" b="0.73828125"/>
+<color r="0.546875" g="0.3359375" b="0.29296875"/>
+<color r="0.88671875" g="0.46484375" b="0.7578125"/>
+<color r="0.49609375" g="0.49609375" b="0.49609375"/>
+<color r="0.734375" g="0.73828125" b="0.1328125"/>
+<color r="0.08984375" g="0.7421875" b="0.80859375"/>
+<color r="0" g="0" b="0"/>'''.splitlines()
 default_colors_end = '''</colortable>'''
 
-# 似乎它的index是从colortable从2开始数的
-colors_translate = {'b': 8, 'g': 6, 'r': 4, 'c': 7, 'm': 9, 'y': 5, 'k': 3, 'w': 2}
+color_matplotlib_translate={
+'B':'tab:blue',
+'O':'tab:orange',
+'G':'tab:green',
+'R':'tab:red',
+'P':'tab:purple',
+'BR':'tab:brown',
+'PI':'tab:pink',
+'GR':'tab:gray',
+'OL':'tab:olive',
+'C':'tab:cyan'}
 
+# 似乎它的index是从colortable从2开始数的
+colors_translate = {'b': 8,
+                    'g': 6,
+                    'r': 4,
+                    'c': 7,
+                    'm': 9,
+                    'y': 5,
+                    'k': 3,
+                    'w': 2,
+                    'B':10,
+                    'O':11,
+                    'G':12,
+                    'R':13,
+                    'P':14,
+                    'BR':15,
+                    'PI':16,
+                    'GR':17,
+                    'OL':18,
+                    'C':19,
+                    "K":20}
 
 # add a color, return the proper color index. If the color doesn't exist in the color table, add it, then return the index
 def add_color(r, g=None, b=None):
@@ -115,23 +154,23 @@ def add_color(r, g=None, b=None):
     global colors_translate
     global colors_list
 
-    if r.replace('TAG',"") in colors_translate:
-        if g!=None and b!=None:
-            alert_UI("Add_color function error. Report bug.",'Add_color function error')
+    if r.replace('TAG', "") in colors_translate:
+        if g is not None and b is not None:
+            alert_UI("Add_color function error. Report bug.", 'Add_color function error')
         return colors_translate[r]
     if r.startswith('#'):
         # in the format of #DDEEFF
-        if g != None and b != None:
+        if g is not None and b is not None:
             alert_UI("Add_color function error. Report bug.", 'Add_color function error')
-        r=r.replace('#','0x')
+        r = r.replace('#', '0x')
 
-        #XXXXXX --> (0.XX, 0.XX, 0.XX)
-        b=(eval(r)%0x100)/0x100
-        g=(int(eval(r)/0x100)%0x100)/0x100
-        r=(int(eval(r)/0x10000))/0x100
+        # XXXXXX --> (0.XX, 0.XX, 0.XX)
+        b = (eval(r) % 0x100) / 0x100
+        g = (int(eval(r) / 0x100) % 0x100) / 0x100
+        r = (int(eval(r) / 0x10000)) / 0x100
 
-    if (r,g,b) in colors_translate:
-        return colors_translate[(r,g,b)]
+    if (r, g, b) in colors_translate:
+        return colors_translate[(r, g, b)]
 
     color_template = '''<color r="[R_Value]" g="[G_Value]" b="[B_Value]"/>'''  # in 0~1 float
 
@@ -154,14 +193,15 @@ page_template = '''<page
  WidthPages="[Page_Width_Page_Count]"
 >'''
 
-def add_page(page_height_count,page_width_count):
-    height = 1930.48/3*page_height_count
-    width = 1360.76/3*page_width_count
-    return page_template.replace("[Page_Height_Pixel]",str(height))\
-.replace("[Page_Width_Pixel]",str(width))\
-.replace("[Page_Height_Page_Count]",str(page_height_count))\
-.replace('[ID]', str(random.randint(1000000, 2000000))) \
-.replace("[Page_Width_Page_Count]",str(page_width_count))
+
+def add_page(page_height_count, page_width_count):
+    height = 1930.48 / 3 * page_height_count
+    width = 1360.76 / 3 * page_width_count
+    return page_template.replace("[Page_Height_Pixel]", str(height)) \
+        .replace("[Page_Width_Pixel]", str(width)) \
+        .replace("[Page_Height_Page_Count]", str(page_height_count)) \
+        .replace('[ID]', str(random.randint(1000000, 2000000))) \
+        .replace("[Page_Width_Page_Count]", str(page_width_count))
 
 
 page_template_end = '''</page>'''
@@ -181,17 +221,15 @@ group_template = '''<group
  Integral="yes"
 >'''
 
+
 # the Z determines which element will cover which one, and which bond is broken if overlapped
 def add_group(Z):
-    group_template = '''<group
- id="453612182"
- BoundingBox="156.80 154.98 531.20 261.66"
- Z="[Z]"
- Integral="yes"
->'''
-    return group_template.replace('[Z]',str(Z))
+    global group_template
+    return group_template.replace('[Z]', str(Z))
+
 
 group_template_end = "</group>"
+
 
 # add an atom, then a bond can be made between atoms
 def add_node(id, X, Y, Z):
@@ -202,6 +240,7 @@ def add_node(id, X, Y, Z):
  AS="N"
 />'''
     return node_template.replace('[ID]', str(id)).replace('[X]', str(X)).replace('[Y]', str(Y)).replace('[Z]', str(Z))
+
 
 # add a bold, horizonal bond between two atoms,
 def add_state_Bond(color_index, begin_index, Z, end_index=None):
@@ -215,7 +254,7 @@ def add_state_Bond(color_index, begin_index, Z, end_index=None):
  BS="N"
 />'''
 
-    bond_id = str(random.randint(2000000,3000000))
+    bond_id = str(random.randint(2000000, 3000000))
 
     if end_index == None:
         end_index = begin_index + 1
@@ -248,6 +287,7 @@ def add_dash_link_Bond(color_index, begin_index, Z, end_index=None):
         .replace('[End_index]', str(end_index)) \
         .replace('[Z]', str(Z))
 
+
 # add a solid bond between two bonded states
 def add_solid_link_Bond(color_index, begin_index, Z, end_index=None):
     link_line_single_template = '''<b
@@ -268,8 +308,7 @@ def add_solid_link_Bond(color_index, begin_index, Z, end_index=None):
         .replace('[Z]', str(Z))
 
 
-
-def add_text(text, X, Y, Z, font_index, size, color_index, face_index,vertical=False,right_align=False):
+def add_text(text, X, Y, Z, font_index, size, color_index, face_index, vertical=False, right_align=False):
     '''
     add text, at x, y, Z
     :param text:
@@ -288,12 +327,12 @@ def add_text(text, X, Y, Z, font_index, size, color_index, face_index,vertical=F
     if text == None:
         return ""
     text = str(text)
-    if text.strip()=="":
+    if text.strip() == "":
         return ""
 
-    #似乎当text只有一个字母的时候总是向右偏一点
-    if len(text)==1:
-        X-=3
+    # 似乎当text只有一个字母的时候总是向右偏一点
+    if len(text) == 1:
+        X -= 3
 
     faces = {'Bold': 1, "Normal": 0}
 
@@ -312,11 +351,11 @@ def add_text(text, X, Y, Z, font_index, size, color_index, face_index,vertical=F
 ><s font="[Font_index]" size="[Size]" color="[Color_index]" face="[Face_index]">[Text]</s></t>'''
 
     if vertical:
-        text_template = text_template.replace('[vertical]','RotationAngle="17694720"')
+        text_template = text_template.replace('[vertical]', 'RotationAngle="17694720"')
     else:
-        text_template = text_template.replace('[vertical]\n','')
+        text_template = text_template.replace('[vertical]\n', '')
     if right_align:
-        text_template = text_template.replace('"Center"\n','"Right"\n')
+        text_template = text_template.replace('"Center"\n', '"Right"\n')
 
     return text_template.replace('[X]', str(X)) \
         .replace('[Y]', str(Y)) \
@@ -328,13 +367,14 @@ def add_text(text, X, Y, Z, font_index, size, color_index, face_index,vertical=F
         .replace('[Face_index]', str(face_index)) \
         .replace('[Text]', text)
 
+
 # add an ancher point, also serve as a water mark
 def test(start_x, start_y, Z=0):
     # a water mark pointing right up
     x2 = start_x
-    x1=x2+1.2
+    x1 = x2 + 1.2
     y2 = start_y
-    y1=y2-1.2
+    y1 = y2 - 1.2
 
     # x2,x1 = x1,x2
     # y2,y1 = y1,y2
@@ -346,21 +386,21 @@ def test(start_x, start_y, Z=0):
  GraphicType="Orbital"
  OrbitalType="lobeFilled"
 />'''
-    return template.replace('[x1]',str(x1))\
-.replace('[x2]',str(x2))\
-.replace('[y1]',str(y1))\
-.replace('[y2]',str(y2))\
-.replace('[Z]',str(Z))
+    return template.replace('[x1]', str(x1)) \
+        .replace('[x2]', str(x2)) \
+        .replace('[y1]', str(y1)) \
+        .replace('[y2]', str(y2)) \
+        .replace('[Z]', str(Z))
 
 
 # add graphic line of states (bold), and dashed/non-dashed links
-def add_graphic_line(x1,x2,y1,y2,Z,color_index=3,dash=False,bold=False,width=0.6):
-    arrow_id = str(random.randint(6000000,7000000))
+def add_graphic_line(x1, x2, y1, y2, Z, color_index=3, dash=False, bold=False, width=0.6):
+    arrow_id = str(random.randint(6000000, 7000000))
 
     # these two elements must exist in order to be able to freeze it using Integral group
-    graphic_line_template='''<graphic
- id="'''+str(random.randint(7000000,8000000))+'''"
- SupersededBy="'''+arrow_id+'''"
+    graphic_line_template = '''<graphic
+ id="''' + str(random.randint(7000000, 8000000)) + '''"
+ SupersededBy="''' + arrow_id + '''"
  BoundingBox="481.66 244.50 306 244.50"
  Z="[Z]"
  [Line_type]
@@ -368,7 +408,7 @@ def add_graphic_line(x1,x2,y1,y2,Z,color_index=3,dash=False,bold=False,width=0.6
 />
 
 <arrow
- id="'''+arrow_id+'''"
+ id="''' + arrow_id + '''"
  BoundingBox="226 296.43 423 297.56"
  Z="[Z]"
  FillType="None"
@@ -383,21 +423,20 @@ def add_graphic_line(x1,x2,y1,y2,Z,color_index=3,dash=False,bold=False,width=0.6
  [Line_type]
 />'''
 
-    if bold==False and dash==False:
-        graphic_line_template = graphic_line_template.replace(' [Line_type]\n',"")
+    if bold == False and dash == False:
+        graphic_line_template = graphic_line_template.replace(' [Line_type]\n', "")
     elif bold:
         graphic_line_template = graphic_line_template.replace('[Line_type]', 'LineType="Bold"')
     elif dash:
         graphic_line_template = graphic_line_template.replace('[Line_type]', 'LineType="Dashed"')
 
-
-    return graphic_line_template.replace('[x2]',str(x2))\
-.replace('[x1]',str(x1))\
-.replace('[y1]',str(y1))\
-.replace('[y2]',str(y2))\
-.replace('[Z]',str(Z))\
-.replace('[Color_Index]',str(color_index))\
-.replace('[Width]',str(width))\
+    return graphic_line_template.replace('[x2]', str(x2)) \
+                                .replace('[x1]', str(x1)) \
+                                .replace('[y1]', str(y1)) \
+                                .replace('[y2]', str(y2)) \
+                                .replace('[Z]', str(Z)) \
+                                .replace('[Color_Index]', str(color_index)) \
+                                .replace('[Width]', str(width))
 
 fragment_template_end = '''</fragment>'''
 
@@ -537,7 +576,7 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         self.occupied_spaces = []  # list of previous collision boxes
 
         self.initiate()
-        self.printed_states=[]
+        self.printed_states = []
 
     def diagram_Update(self, diagram_states, x_span, y_span, state_line_span, color='k', num_with_tag=False):
         '''
@@ -638,7 +677,7 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         MpPyplot.ylabel(y_axis_text,
                         fontsize='xx-large',
                         weight='bold')
-        MpPyplot.xticks(np.arange(5),[])
+        MpPyplot.xticks(np.arange(5), [])
 
         MpPyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
 
@@ -654,7 +693,7 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         assume_figure_height = 20  # assume the figure span 20 lines
 
         renderer = MpPyplot.gca().get_figure().canvas.get_renderer()  # for BBox
-        fig = plt.gcf()
+        fig = MpPyplot.gcf()
         size = fig.get_size_inches() * fig.dpi
 
         # print(size)
@@ -667,12 +706,16 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
             self.ys_for_adjust_text += [line_object.y[0], line_object.y[1]]
 
 
+        # 把本程序自定义的符号翻译成matplotlib支持的颜色名称
+        line_matplotlib_color = line_object.color.replace('tag',"")
+        if line_matplotlib_color in color_matplotlib_translate:
+            line_matplotlib_color = color_matplotlib_translate[line_matplotlib_color]
 
         if 'tag' not in line_object.color.lower():  # independent tag 用color做了标记
             self.diagram_subplot.plot(line_object.x,
                                       line_object.y,
                                       line_object.style,
-                                      color=line_object.color,
+                                      color=line_matplotlib_color,
                                       lw=line_object.width)
 
         if 'tag' not in line_object.color.lower():  # independent tag 用color做了标记
@@ -686,7 +729,8 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
                                                                 fontsize=number_font_size,
                                                                 verticalalignment='bottom',
                                                                 horizontalalignment='center',
-                                                                color=line_object.color,weight='normal')
+                                                                color=line_matplotlib_color,
+                                                                weight='normal')
                 self.annotate_objects.append(energy_annotate)
                 # energy_annotate.draggable()
 
@@ -698,7 +742,7 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
                                                     horizontalalignment='center',
                                                     xytext=(0, -8), textcoords='offset points',
                                                     fontsize=tag_font_size,
-                                                    color=line_object.color.lower().replace("tag", ""),  # independent tag 用color做了标记
+                                                    color=line_matplotlib_color,  # independent tag 用color做了标记
                                                     weight='bold')
 
                 # tag.draggable()
@@ -715,7 +759,7 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         # self.drag_drop_textEdit = Drag_Drop_TextEdit()
         # self.data_tableWidget.hide()
         # self.horizontalLayout.setStretch(0, 1)
-        self.verticalLayout.insertWidget(1,self.energy_diagram, 1)
+        self.verticalLayout.insertWidget(1, self.energy_diagram, 1)
         # self.verticalLayout.insertWidget(4, self.drag_drop_textEdit, 2)
 
         self.open_config_file()
@@ -729,9 +773,9 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         connect_once(self.Y_upper_limit_spinBox, self.y_limits_change)
         connect_once(self.num_with_tag_checkBox, self.update_xlsx)
         connect_once(self.save_cdx_pushButton, self.save_cdxml)
-        connect_once(self.Y_label_lineEdit.textChanged,self.store_Y_label_to_file)
-        connect_once(self.Y_tick_auto_checkBox.clicked,self.toggle_auto_Y_tick)
-        connect_once(self.save_cdx_pushButton_2,self.save_cdx_pushButton.click)
+        connect_once(self.Y_label_lineEdit.textChanged, self.store_Y_label_to_file)
+        connect_once(self.Y_tick_auto_checkBox.clicked, self.toggle_auto_Y_tick)
+        connect_once(self.save_cdx_pushButton_2, self.save_cdx_pushButton.click)
 
         self.dash_solid_button_group = Qt.QButtonGroup()
         self.dash_solid_button_group.addButton(self.dash_line_radioButton)
@@ -757,13 +801,11 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         self.use_temp_file_checkBox.setChecked(self.load_config('use_temp_file_checkBox', True))
         self.with_MECP_checkBox.hide()
 
-        self.X_tick_checkBox.setChecked(self.load_config('X_tick_checkBox',True))
+        self.X_tick_checkBox.setChecked(self.load_config('X_tick_checkBox', True))
         self.Y_tick_checkBox.setChecked(self.load_config('Y_tick_checkBox', True))
 
-        self.resize(self.load_config('Draw_energy_diagram_window_width',1011),
-                     self.load_config('Draw_energy_diagram_window_height',580))
-
-
+        self.resize(self.load_config('Draw_energy_diagram_window_width', 1011),
+                    self.load_config('Draw_energy_diagram_window_height', 580))
 
         self.x_limits_changed = False
         self.y_limits_changed = False
@@ -784,9 +826,8 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         self.Y_label_precision_spinBox.setEnabled(not self.Y_tick_auto_checkBox.isChecked())
 
     def store_Y_label_to_file(self):
-        with open(os.path.join(filename_class(sys.argv[0]).path,'Energy_Diagram_Y_Axis_Text.txt'),'w') as Y_axis_text_file:
+        with open(os.path.join(filename_class(sys.argv[0]).path, 'Energy_Diagram_Y_Axis_Text.txt'), 'w') as Y_axis_text_file:
             Y_axis_text_file.write(self.Y_label_lineEdit.text())
-
 
     def x_limits_change(self):
         if self.x_upper_limit_spinBox.value() > self.x_lower_limit_spinBox.value():
@@ -795,14 +836,12 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
             self.x_limits_changed = False
         self.update_xlsx()
 
-
     def y_limits_change(self):
         if self.Y_upper_limit_spinBox.value() > self.Y_lower_limit_spinBox.value():
             self.y_limits_changed = True
         else:
             self.y_limits_changed = False
         self.update_xlsx()
-
 
     def choose_xlsx(self):
         # self.xlsx_dropped(r"C:\Users\LiYuanhe\Desktop\temp.xlsx")
@@ -853,21 +892,21 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         else:
             self.color_of_lines = []
         # print(self.routes)
-        self.x_span = [-1, max([len(route) for route in self.routes])-1]
+        self.x_span = [-1, max([len(route) for route in self.routes]) - 1]
         if not called_from_update:
             self.x_limits_changed = False
-            self.x_lower_limit_spinBox.setValue(self.x_span[0]+2)
+            self.x_lower_limit_spinBox.setValue(self.x_span[0] + 2)
             self.x_upper_limit_spinBox.setValue(self.x_span[1])
             # if not self.color_of_lines:
             #     self.x_span[1] += 1
         else:
             if self.x_limits_changed:
-                self.x_span = [self.x_lower_limit_spinBox.value()-2, self.x_upper_limit_spinBox.value()]
+                self.x_span = [self.x_lower_limit_spinBox.value() - 2, self.x_upper_limit_spinBox.value()]
 
-        self.x_upper_limit_spinBox.setMinimum(self.x_lower_limit_spinBox.value()+1)
+        self.x_upper_limit_spinBox.setMinimum(self.x_lower_limit_spinBox.value() + 1)
         self.x_lower_limit_spinBox.setMaximum(self.x_upper_limit_spinBox.value() - 1)
 
-        get_y_range = [state[1] for state in sum(self.routes,[])]
+        get_y_range = [state[1] for state in sum(self.routes, [])]
         get_y_range = [x for x in get_y_range if is_float(x)]
         min_energy = min(get_y_range)
         max_energy = max(get_y_range)
@@ -880,7 +919,6 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         else:
             if self.y_limits_changed:
                 self.y_span = [self.Y_lower_limit_spinBox.value(), self.Y_upper_limit_spinBox.value()]
-
 
         self.paths_for_cdx_drawing = []
         self.colors_for_cdx_drawing = []
@@ -912,8 +950,8 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         # 保存各种设置
         self.config['State Precision Digits'] = self.state_precision_spinBox.value()
         self.config['State Line Span'] = self.state_line_span_doubleSpinBox.value()
-        self.config['Auto_collision_avoidance']=self.Auto_collision_avoidance_checkBox.isChecked()
-        self.config['allow_overlap_states_checkBox']=self.allow_overlap_states_checkBox.isChecked()
+        self.config['Auto_collision_avoidance'] = self.Auto_collision_avoidance_checkBox.isChecked()
+        self.config['allow_overlap_states_checkBox'] = self.allow_overlap_states_checkBox.isChecked()
         self.config['Num with Tag'] = self.num_with_tag_checkBox.isChecked()
 
         self.config['Use Solid Link'] = self.solid_line_radioButton.isChecked()
@@ -926,10 +964,10 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         self.config['Y_label_precision_spinBox'] = self.Y_label_precision_spinBox.value()
         self.config['Y_label_lineEdit'] = self.Y_label_lineEdit.text()
 
-        self.config['Draw_energy_diagram_window_width']= self.width()
-        self.config['Draw_energy_diagram_window_height']=self.height()
+        self.config['Draw_energy_diagram_window_width'] = self.width()
+        self.config['Draw_energy_diagram_window_height'] = self.height()
 
-        self.config['use_temp_file_checkBox']=self.use_temp_file_checkBox.isChecked()
+        self.config['use_temp_file_checkBox'] = self.use_temp_file_checkBox.isChecked()
 
         self.save_config()
 
@@ -938,7 +976,7 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
 
         fonts_list = [default_fonts, default_fonts_end]
 
-        #获得Energy diagram 与ChemDraw 文档的坐标对应关系
+        # 获得Energy diagram 与ChemDraw 文档的坐标对应关系
 
         x_range = self.energy_diagram.diagram_subplot.get_xlim()  # the x coordinate range
         y_range = self.energy_diagram.diagram_subplot.get_ylim()  # the y coordinate range
@@ -951,50 +989,47 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
 
         text_line_height = 10  # how many ChemDraw pixels are one line of text took
 
-
-        #两个轴的Matplotlib-->ChemDraw转换函数
-        x_mapping = lambda x: width / (x_range[1] - x_range[0]) * x * factor+x_offset  # map function coordinate to pixel
-        y_mapping = lambda y: height / (y_range[1] - y_range[0]) * (y_range[1]-y) * factor+y_offset  # map function coordinate to pixel
-
+        # 两个轴的Matplotlib-->ChemDraw转换函数
+        x_mapping = lambda x: width / (x_range[1] - x_range[0]) * x * factor + x_offset  # map function coordinate to pixel
+        y_mapping = lambda y: height / (y_range[1] - y_range[0]) * (y_range[1] - y) * factor + y_offset  # map function coordinate to pixel
 
         # Z轴编号从多少开始，无所谓，足够大就行
         z_start = 50
 
-
         # 确定Excel第一行的Independent text该相当于放在哪个坐标
-        x_length = max([len(x) for x_count,x in enumerate(self.paths_for_cdx_drawing) if 'TAG' not in self.colors_for_cdx_drawing[x_count]])
+        x_length = max([len(x) for x_count, x in enumerate(self.paths_for_cdx_drawing) if 'TAG' not in self.colors_for_cdx_drawing[x_count]])
         maximum_ys = [-float('inf') for x in range(x_length)]
         minimum_ys = [float('inf') for x in range(x_length)]
-        for route_count,route_content in enumerate(self.paths_for_cdx_drawing):
+        for route_count, route_content in enumerate(self.paths_for_cdx_drawing):
             if 'TAG' not in self.colors_for_cdx_drawing[route_count]:
                 for column_count, item in enumerate(route_content):
-                    if item[1]==None:
+                    if item[1] == None:
                         continue
-                    maximum_ys[column_count] = max(maximum_ys[column_count],item[1])
+                    maximum_ys[column_count] = max(maximum_ys[column_count], item[1])
                     minimum_ys[column_count] = min(minimum_ys[column_count], item[1])
 
         # independent tag wants to be at "two lines" below the state line, to stay below the minimum tag
-        tags_y_position = [y_mapping(minimum_ys[i])+text_line_height*2+2 for i in range(x_length)]
+        tags_y_position = [y_mapping(minimum_ys[i]) + text_line_height * 2 + 2 for i in range(x_length)]
 
         state_line_span = self.state_line_span_doubleSpinBox.value()  # the length of each state line, 1 is full
         num_with_tag = self.num_with_tag_checkBox.isChecked()
 
         nodes = []  # a list of notes, for counting ID and counting Z
-        nodes_id_start = 2000 #足够大就可以了
+        nodes_id_start = 2000  # 足够大就可以了
         state_lines = []  # for Z counting
         link_lines = []  # for Z counting
         texts = []  # for Z counting
-        current_texts = [] # for text of current route
-        avoidance = [] # remember each of previous collision box (x,y_start,y_end) for Greedy collision avoidance
-        font_index = 4 #目前没法换其他的font
+        current_texts = []  # for text of current route
+        avoidance = []  # remember each of previous collision box (x,y_start,y_end) for Greedy collision avoidance
+        font_index = 4  # 目前没法换其他的font
         size_of_tag = 10
-        line_width_avoidance = 3 # how many ChemDraw pixels are needed to put a text on top a line
+        line_width_avoidance = 3  # how many ChemDraw pixels are needed to put a text on top a line
         size_of_number = 10
-        remember_drawn_states = [] # list of tuples (x_count, state_tuple[1]) to avoid draw one line exactly on top of another
+        remember_drawn_states = []  # list of tuples (x_count, state_tuple[1]) to avoid draw one line exactly on top of another
         face_of_tag = 'Bold'
         face_of_number = 'Normal'
 
-        #现在的Z轴该用多少
+        # 现在的Z轴该用多少
         def current_z():
             return z_start + len(nodes) + len(state_lines) + len(link_lines) + len(texts)
 
@@ -1007,76 +1042,74 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
             :return: a pixel value of variable current y
             '''
 
-            #需要多少空间才能塞得下
-            required_clearance = text_line_height-1
+            # 需要多少空间才能塞得下
+            required_clearance = text_line_height - 1
 
             # 按Y其实坐标排序当前所有的障碍
-            extract = sorted([(i[1],i[2]) for i in avoidance if i[0] == current_x], key=lambda x:x[0])
+            extract = sorted([(i[1], i[2]) for i in avoidance if i[0] == current_x], key=lambda x: x[0])
 
             # 如果障碍之间无法放下文本，则将他们合并起来变成一个大的障碍
-            for i in range(len(extract)-2,-1,-1):
-                if extract[i][1]>=extract[i+1][0]:
-                    extract[i] = (extract[i][0],extract[i+1][1])
-                    extract.pop(i+1)
+            for i in range(len(extract) - 2, -1, -1):
+                if extract[i][1] >= extract[i + 1][0]:
+                    extract[i] = (extract[i][0], extract[i + 1][1])
+                    extract.pop(i + 1)
 
-            #检查区域是否都不重叠
-            if not all([extract[i][1]<extract[i+1][0] for count in range(len(extract)-1)]):
+            # 检查区域是否都不重叠
+            if not all([extract[i][1] < extract[i + 1][0] for count in range(len(extract) - 1)]):
                 alert_UI("get_avoidance_text_position function error. Report Bug.")
 
-            #没障碍直接返回（似乎其实不可能发生？）
+            # 没障碍直接返回（似乎其实不可能发生？）
             if not extract:
                 return current_y
 
             # 从障碍范围变成允许范围
             allowed_ranges = []
-            for count,i in enumerate(extract):
-                if count==0:
-                    allowed_ranges.append((-float('inf'),i[0]))
+            for count, i in enumerate(extract):
+                if count == 0:
+                    allowed_ranges.append((-float('inf'), i[0]))
                 else:
-                    allowed_ranges.append((extract[count-1][1],i[0]))
+                    allowed_ranges.append((extract[count - 1][1], i[0]))
                 if i is extract[-1]:
-                    allowed_ranges.append((i[1],float('inf')))
+                    allowed_ranges.append((i[1], float('inf')))
 
-            allowed_ranges = [x for x in allowed_ranges if x[1]-x[0]>required_clearance]
+            allowed_ranges = [x for x in allowed_ranges if x[1] - x[0] > required_clearance]
 
-
-            #每个允许范围到标签想要位置的距离
+            # 每个允许范围到标签想要位置的距离
             distances = []
             for i in allowed_ranges:
-                #如果有允许范围直接包住了标签想要的位置，则直接返回它
-                if i[0]<=current_y and i[1] >= current_y:
-                    if current_y-i[0]>required_clearance:
+                # 如果有允许范围直接包住了标签想要的位置，则直接返回它
+                if i[0] <= current_y and i[1] >= current_y:
+                    if current_y - i[0] > required_clearance:
                         return current_y
                     else:
                         # 标签内无法直接放下，需要在范围内稍微移动一点
-                        return i[0]+required_clearance
+                        return i[0] + required_clearance
 
                 # 否则给出距离是多少
-                elif i[1]<=current_y:
-                    distances.append(current_y-i[1])
-                elif i[0]>=current_y:
-                    distances.append(i[0]-current_y)
+                elif i[1] <= current_y:
+                    distances.append(current_y - i[1])
+                elif i[0] >= current_y:
+                    distances.append(i[0] - current_y)
 
             # 插到距离最小的地方
             insert = distances.index(min(distances))
-            if allowed_ranges[insert][1]<=current_y:
+            if allowed_ranges[insert][1] <= current_y:
                 # print('via1')
                 return allowed_ranges[insert][1]
             else:
                 # print('via2')
-                return allowed_ranges[insert][0]+required_clearance
+                return allowed_ranges[insert][0] + required_clearance
 
         def add_state(use_bond, x_count, state_tuple, state_line_span, remember_drawn_states, avoidance,
                       nodes_id_start, nodes,
-                      fragment_list,text_to_write,
+                      fragment_list, text_to_write,
                       color, font_index=4, size_of_tag=10, size_of_number=10, face_of_tag='Bold', face_of_number='Normal', num_with_tag=False,
                       is_tag_line=False):
 
             # if state_tuple[1]==None:
-                # print(1)
+            # print(1)
 
             duplicate = False
-
 
             # independent tag line 不划线，只加tag
             if not is_tag_line:
@@ -1098,7 +1131,6 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                     nodes.append(node)
                     fragment_list.append(node)
 
-
                     # Check whether user allowed overlap, or the state is not drawn
                     if (x_count, state_tuple[1]) not in remember_drawn_states or self.allow_overlap_states_checkBox.isChecked():
                         state_line = add_state_Bond(add_color(color), nodes_id_start + len(nodes) - 2, Z=current_z())
@@ -1116,38 +1148,38 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                     y1 = y_mapping(state_tuple[1])
                     y2 = y1
                     if (x_count, state_tuple[1]) not in remember_drawn_states or self.allow_overlap_states_checkBox.isChecked():
-                        state_line = add_graphic_line(x1,x2,y1,y2,current_z(),
+                        state_line = add_graphic_line(x1, x2, y1, y2, current_z(),
                                                       add_color(color),
                                                       bold=True)
                         state_lines.append(state_line)
                         fragment_list.append(state_line)
                         remember_drawn_states.append((x_count, state_tuple[1]))
-                        avoidance.append((x_count, y1-2,y1+1))
+                        avoidance.append((x_count, y1 - 2, y1 + 1))
                     else:
                         duplicate = True
 
-            text_tuple = (state_tuple,avoidance,x_count,font_index,size_of_number,color,duplicate,is_tag_line,num_with_tag)
+            text_tuple = (state_tuple, avoidance, x_count, font_index, size_of_number, color, duplicate, is_tag_line, num_with_tag)
 
             text_to_write.append(text_tuple)
             # print(text_to_write)
 
             if not is_tag_line:
                 if not use_bond:
-                    return ((x1, x2, y1, y2),duplicate)
+                    return ((x1, x2, y1, y2), duplicate)
                 else:
-                    return  (bond_nodes,duplicate)
+                    return (bond_nodes, duplicate)
 
         # 所有的text得统一放到最后画，上面记录上所有这个函数需要的信息
-        def write_one_text(state_tuple,avoidance,x_count,font_index,size_of_number,color,duplicate,is_tag_line,num_with_tag):
+        def write_one_text(state_tuple, avoidance, x_count, font_index, size_of_number, color, duplicate, is_tag_line, num_with_tag):
             decimal = self.state_precision_spinBox.value()
             if num_with_tag:
-                text= (str(state_tuple[0])+'  ' if state_tuple[0] else "") + "{:.[decimal]f}".replace('[decimal]',str(int(decimal))).format(state_tuple[1])
+                text = (str(state_tuple[0]) + '  ' if state_tuple[0] else "") + "{:.[decimal]f}".replace('[decimal]', str(int(decimal))).format(state_tuple[1])
 
                 # 画在线上方
                 y_position = y_mapping(state_tuple[1]) - line_width_avoidance
 
                 if is_tag_line:
-                    text=state_tuple[0]
+                    text = state_tuple[0]
                     # 统一记录了independent tag需要呆的坐标（比最小的低一行）
                     y_position = tags_y_position[x_count]
                 if self.Auto_collision_avoidance_checkBox.isChecked():
@@ -1155,12 +1187,12 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                     # print(y_position)
                     # print(text)
                 text_1 = add_text(text,
-                                  x_mapping(x_count), y_position ,
+                                  x_mapping(x_count), y_position,
                                   font_index=font_index,
                                   size=size_of_number,
                                   color_index=add_color(color),
                                   face_index='Normal' if not is_tag_line else "Bold",
-                                  Z=current_z()+10000)
+                                  Z=current_z() + 10000)
                 if text and text.strip():
                     avoidance.append((x_count, y_position - text_line_height, y_position + 1))
                 text_2 = ""
@@ -1178,26 +1210,24 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                                   size=size_of_tag,
                                   color_index=add_color(color),
                                   face_index="Bold",
-                                  Z=current_z()+10000)
-                if isinstance(state_tuple[0],str) and state_tuple[0].strip():
+                                  Z=current_z() + 10000)
+                if isinstance(state_tuple[0], str) and state_tuple[0].strip():
                     avoidance.append((x_count, tag_y_position - text_line_height, tag_y_position + 1))
 
                 number_y_position = y_mapping(state_tuple[1]) - line_width_avoidance
                 if self.Auto_collision_avoidance_checkBox.isChecked():
                     number_y_position = get_avoidance_text_position(avoidance, x_count, number_y_position)
 
-
-                text_2 = add_text("{:.[decimal]f}".replace('[decimal]',str(int(decimal))).format(state_tuple[1]),
+                text_2 = add_text("{:.[decimal]f}".replace('[decimal]', str(int(decimal))).format(state_tuple[1]),
                                   x_mapping(x_count), number_y_position,
                                   font_index=font_index,
                                   size=size_of_number,
                                   color_index=add_color(color),
                                   face_index='Normal',
-                                  Z=current_z()+10000)
-
+                                  Z=current_z() + 10000)
 
                 if is_tag_line or duplicate:
-                    text_2=""
+                    text_2 = ""
                 else:
                     avoidance.append((x_count, number_y_position - text_line_height, number_y_position + 1))
 
@@ -1208,7 +1238,8 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                 texts.append(text_2)
                 current_texts.append(text_2)
 
-        def route(states, id_start,text_to_write,current_texts, nodes, color, font_index, size_of_tag, size_of_number, face_of_tag, face_of_number, num_with_tag):
+        def route(states, id_start, text_to_write, current_texts, nodes, color, font_index, size_of_tag, size_of_number, face_of_tag, face_of_number,
+                  num_with_tag):
             '''
 
             :param states: [('Sub', -60.), (None, 80.8), ('TS', 0), (None, None), ('IM1', 86.6), ('Prod', -46.2)]
@@ -1223,35 +1254,34 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
 
             fragment_list = []
 
-
             # 记录是否有用line记录的上一个态，用于决定是否加link
             last_state = None
-            last_duplicate=None
+            last_duplicate = None
             # 记录是否有用bond记录的上一个态
             has_node = False
             last_bond_nodes_duplicated = None
             if self.use_lines_radioButton.isChecked():
                 for count, state in enumerate(states):
 
-                    if state[1]==None:
+                    if state[1] == None:
                         continue
 
-                    add_state_ret = add_state(False,count, state, state_line_span,remember_drawn_states,avoidance,
-                              nodes_id_start, nodes,
-                              fragment_list,text_to_write,
-                              color, font_index=font_index, size_of_number=size_of_number, size_of_tag=size_of_tag, face_of_tag=face_of_tag,
-                              face_of_number=face_of_number, num_with_tag=num_with_tag, is_tag_line=is_tag_line)
+                    add_state_ret = add_state(False, count, state, state_line_span, remember_drawn_states, avoidance,
+                                              nodes_id_start, nodes,
+                                              fragment_list, text_to_write,
+                                              color, font_index=font_index, size_of_number=size_of_number, size_of_tag=size_of_tag, face_of_tag=face_of_tag,
+                                              face_of_number=face_of_number, num_with_tag=num_with_tag, is_tag_line=is_tag_line)
 
-                    if add_state_ret!=None:
+                    if add_state_ret != None:
                         current_state, current_duplicate = add_state_ret
 
                         # 判定是不是之前有一个态（注意不能用是否是第一个态来确定，因为某些曲线不是从x=0开始的
-                        if last_state != None and not is_tag_line and last_duplicate!=None and not all([last_duplicate,current_duplicate]):
+                        if last_state != None and not is_tag_line and last_duplicate != None and not all([last_duplicate, current_duplicate]):
                             x2, dump, y2, dump = current_state
                             dump, x1, dump, y1 = last_state
                             if self.dash_line_radioButton.isChecked():
-                                link = add_graphic_line(x1,x2,y1,y2,
-                                                        Z=current_z(),color_index=add_color(color),dash=True)
+                                link = add_graphic_line(x1, x2, y1, y2,
+                                                        Z=current_z(), color_index=add_color(color), dash=True)
                             else:
                                 link = add_graphic_line(x1, x2, y1, y2,
                                                         Z=current_z(), color_index=add_color(color))
@@ -1264,40 +1294,41 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
             else:
                 fragment_list = [fragment_template]
                 for count, state in enumerate(states):
-                    if state[1] ==None:
+                    if state[1] == None:
                         continue
 
-                    add_bond_state_ret = add_state(True,count, state, state_line_span,remember_drawn_states,avoidance,
-                              nodes_id_start, nodes,
-                              fragment_list,text_to_write,
-                              color, font_index=font_index, size_of_number=size_of_number, size_of_tag=size_of_tag, face_of_tag=face_of_tag,
-                              face_of_number=face_of_number, num_with_tag=num_with_tag, is_tag_line=is_tag_line)
+                    add_bond_state_ret = add_state(True, count, state, state_line_span, remember_drawn_states, avoidance,
+                                                   nodes_id_start, nodes,
+                                                   fragment_list, text_to_write,
+                                                   color, font_index=font_index, size_of_number=size_of_number, size_of_tag=size_of_tag,
+                                                   face_of_tag=face_of_tag,
+                                                   face_of_number=face_of_number, num_with_tag=num_with_tag, is_tag_line=is_tag_line)
 
-                    if add_bond_state_ret!=None:
+                    if add_bond_state_ret != None:
                         bond_nodes, bond_nodes_duplicated = add_bond_state_ret
 
                         if not is_tag_line:
                             if bond_nodes:
-                                node_used+=bond_nodes
+                                node_used += bond_nodes
 
-                        if has_node and not is_tag_line and last_bond_nodes_duplicated!=None and not all([last_bond_nodes_duplicated,bond_nodes_duplicated]):
+                        if has_node and not is_tag_line and last_bond_nodes_duplicated != None and not all([last_bond_nodes_duplicated, bond_nodes_duplicated]):
                             if self.dash_line_radioButton.isChecked():
                                 add_link_connection = add_dash_link_Bond
                             else:
                                 add_link_connection = add_solid_link_Bond
-                            link_start_node =nodes_id_start + len(nodes) - 3
+                            link_start_node = nodes_id_start + len(nodes) - 3
                             link = add_link_connection(add_color(color), link_start_node, current_z())
                             node_used.append(link_start_node)
-                            node_used.append(link_start_node+1)
+                            node_used.append(link_start_node + 1)
 
                             link_lines.append(link)
                             fragment_list.append(link)
 
                         has_node = True
 
-                        last_bond_nodes_duplicated=bond_nodes_duplicated
+                        last_bond_nodes_duplicated = bond_nodes_duplicated
 
-            def sort_key(x:str):
+            def sort_key(x: str):
                 # 整理一下，好与chemdraw标准文件比对（其实没用，无大碍）
                 if x.startswith('<b'):
                     return 2
@@ -1311,9 +1342,9 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
 
             fragment_list.sort(key=sort_key)
 
-            for i in range(len(fragment_list)-1,-1,-1):
+            for i in range(len(fragment_list) - 1, -1, -1):
                 # 删除没有用过的，没有连接某根键的node，否则chemdraw会用红的错误圈标出来重合的空节点
-                re_ret = re.findall('''^<n\n id=\\"(\d+?)\\"''',fragment_list[i])
+                re_ret = re.findall('''^<n\n id=\\"(\d+?)\\"''', fragment_list[i])
                 if re_ret:
                     id = int(re_ret[0])
                     if id not in node_used:
@@ -1324,7 +1355,7 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
             if any([x.strip() for x in fragment_list[1:]]) or (fragment_list and fragment_list[0].startswith("<graphic")):
                 if self.use_bonds_radioButton.isChecked():
                     fragment_list.append(fragment_template_end)
-                ret += [add_group(current_z())]+fragment_list+[group_template_end]
+                ret += [add_group(current_z())] + fragment_list + [group_template_end]
 
             return ret
 
@@ -1343,18 +1374,18 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                                num_with_tag=num_with_tag)
 
         maximum_x_count = max([x[2] for x in text_to_write])
-        for i in range(maximum_x_count+1):
-            #调整顺序，让贪心更合理 [1,2,3,4,5,6,7,8] --> [4,5,3,6,2,7,1,8]
-            texts_of_this_x = [x for x in text_to_write if x[2]==i and x[6]==False]
-            texts_of_this_x.sort(key = lambda x:x[0][1])# 按Y轴位置排序
+        for i in range(maximum_x_count + 1):
+            # 调整顺序，让贪心更合理 [1,2,3,4,5,6,7,8] --> [4,5,3,6,2,7,1,8]
+            texts_of_this_x = [x for x in text_to_write if x[2] == i and x[6] == False]
+            texts_of_this_x.sort(key=lambda x: x[0][1])  # 按Y轴位置排序
             # 从中位数开始往两边写,中位数只有一个的时候归前面
-            temp1 = list(reversed(texts_of_this_x[:math.ceil(len(texts_of_this_x)/2)]))
-            temp2 = texts_of_this_x[math.ceil(len(texts_of_this_x)/2):]
-            sequence_to_write = [None]*len(texts_of_this_x)
+            temp1 = list(reversed(texts_of_this_x[:math.ceil(len(texts_of_this_x) / 2)]))
+            temp2 = texts_of_this_x[math.ceil(len(texts_of_this_x) / 2):]
+            sequence_to_write = [None] * len(texts_of_this_x)
             sequence_to_write[::2] = temp1
             sequence_to_write[1::2] = temp2
             # 把tag放在最后
-            tag_line = [x for x in sequence_to_write if x[7]==True]
+            tag_line = [x for x in sequence_to_write if x[7] == True]
             if tag_line:
                 sequence_to_write.remove(tag_line[0])
                 sequence_to_write.append(tag_line[0])
@@ -1365,20 +1396,20 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         fragments += current_texts
 
         def automatic_Y_axis_label_distance(y_range):
-            distance = y_range[1]-y_range[0]
-            #截取至整10，整2或整5，取7个以上,14个以下
-            sep=10**(math.floor(math.log10(distance))-1)
-            count = int(distance/sep) # should between 10 and 100
-            if 10<=count<=15:
+            distance = y_range[1] - y_range[0]
+            # 截取至整10，整2或整5，取7个以上,14个以下
+            sep = 10 ** (math.floor(math.log10(distance)) - 1)
+            count = int(distance / sep)  # should between 10 and 100
+            if 10 <= count <= 15:
                 pass
-            elif 16<=count<=35:
-                sep*=2
-            elif 35<=count<=70:
-                sep*=5
-            elif 71<=count<=99:
-                sep*=10
+            elif 16 <= count <= 35:
+                sep *= 2
+            elif 35 <= count <= 70:
+                sep *= 5
+            elif 71 <= count <= 99:
+                sep *= 10
             else:
-                alert_UI('automatic_Y_axis_distance Function Error. Report bug.','automatic_Y_axis_distance Function Error.')
+                alert_UI('automatic_Y_axis_distance Function Error. Report bug.', 'automatic_Y_axis_distance Function Error.')
 
             return sep
 
@@ -1392,13 +1423,13 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
             # add this to the fragment
 
             ret = []
-            #四个角的位置
+            # 四个角的位置
             x_start_pixel = x_mapping(x_range[0])
             x_end_pixel = x_mapping(x_range[1])
             y_start_pixel = y_mapping(y_range[0])
             y_end_pixel = y_mapping(y_range[1])
 
-            #四条边
+            # 四条边
             ret.append(add_graphic_line(x_start_pixel, x_end_pixel, y_start_pixel, y_start_pixel, current_z()))
             ret.append(add_graphic_line(x_start_pixel, x_end_pixel, y_end_pixel, y_end_pixel, current_z()))
             ret.append(add_graphic_line(x_start_pixel, x_start_pixel, y_start_pixel, y_end_pixel, current_z()))
@@ -1408,30 +1439,29 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
 
             # X tick
             if self.X_tick_checkBox.isChecked():
-                for x_mark_position in range(int(math.floor(x_range[0]) + 1), int(math.floor(x_range[1])+1)):
+                for x_mark_position in range(int(math.floor(x_range[0]) + 1), int(math.floor(x_range[1]) + 1)):
                     ret.append(add_graphic_line(x_mapping(x_mark_position), x_mapping(x_mark_position),
                                                 y_mapping(y_range[0]), y_mapping(y_range[0]) - tick_length, current_z()))
 
             if self.Y_tick_auto_checkBox.isChecked() or \
-                    self.Y_tick_doubleSpinBox.value()==0 or \
-                    self.Y_number_doubleSpinBox.value()==0:
+                    self.Y_tick_doubleSpinBox.value() == 0 or \
+                    self.Y_number_doubleSpinBox.value() == 0:
 
-                #默认值，tick按函数取，label是tick的一半多，precision看末位差别
+                # 默认值，tick按函数取，label是tick的一半多，precision看末位差别
                 y_tick_distance = automatic_Y_axis_label_distance(y_range)
-                y_label_distance = y_tick_distance*2
-                y_label_precision = 0 if math.log10(y_tick_distance)>=0 else -math.floor((math.log10(y_tick_distance)))
+                y_label_distance = y_tick_distance * 2
+                y_label_precision = 0 if math.log10(y_tick_distance) >= 0 else -math.floor((math.log10(y_tick_distance)))
             else:
                 y_tick_distance = self.Y_tick_doubleSpinBox.value()
                 y_label_distance = self.Y_number_doubleSpinBox.value()
                 y_label_precision = self.Y_label_precision_spinBox.value()
 
-
             # 从0开始数，标整数
-            for y_mark_count in range(int(math.floor(y_range[0] / y_tick_distance) + 1), int(math.floor(y_range[1] / y_tick_distance)+1)):
+            for y_mark_count in range(int(math.floor(y_range[0] / y_tick_distance) + 1), int(math.floor(y_range[1] / y_tick_distance) + 1)):
                 y_mark_position = y_mark_count * y_tick_distance
-                #太接近轴就不标了
-                if abs(y_mark_position-y_range[0])/(y_range[1]-y_range[0])<0.02 or\
-                    abs(y_mark_position - y_range[1]) / (y_range[1] - y_range[0]) < 0.02:
+                # 太接近轴就不标了
+                if abs(y_mark_position - y_range[0]) / (y_range[1] - y_range[0]) < 0.02 or \
+                        abs(y_mark_position - y_range[1]) / (y_range[1] - y_range[0]) < 0.02:
                     continue
                 ret.append(add_graphic_line(x_mapping(x_range[0]), x_mapping(x_range[0]) + tick_length,
                                             y_mapping(y_mark_position), y_mapping(y_mark_position), current_z()))
@@ -1444,26 +1474,26 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                 ret.append(add_text("{:.[digit]f}".replace('[digit]', str(y_label_precision)) \
                                     .format(y_mark_position),
                                     x_mapping(x_range[0]) + y_label_offset,
-                                    y_mapping(y_mark_position)+size_of_number/2-1,
-                                    Z=current_z()+10000,
+                                    y_mapping(y_mark_position) + size_of_number / 2 - 1,
+                                    Z=current_z() + 10000,
                                     font_index=font_index, size=size_of_number, color_index=add_color(color_of_text),
                                     face_index=face_of_number, right_align=True))
             ret.append(group_template_end)
             ret.append(add_text(y_axis_annotate_text, x_mapping(x_range[0]) + y_axis_annotate_offset,
                                 y_mapping((y_range[0] + y_range[1]) / 2),
-                                Z=current_z()+10000,
+                                Z=current_z() + 10000,
                                 font_index=font_index, size=size_of_number, color_index=add_color(color_of_text),
                                 face_index=face_of_tag, vertical=True
                                 ))
-            return [add_group(current_z())]+ret
+            return [add_group(current_z())] + ret
 
         y_axis_text = self.Y_label_lineEdit.text()
 
-        fragments+=add_frame(x_range,y_range,y_axis_text)
+        fragments += add_frame(x_range, y_range, y_axis_text)
 
         output_list = [default_document] + colors_list + [default_colors_end] + \
-                      fonts_list + [add_page(3,3)] + fragments + [page_template_end] + [
-            default_document_end]
+                      fonts_list + [add_page(3, 3)] + fragments + [page_template_end] + [
+                          default_document_end]
 
         save_successful = False
         if self.use_temp_file_checkBox.isChecked():
@@ -1471,9 +1501,9 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         else:
             output_file = filename_class(self.xlsx_file_lineEdit.text()).replace_append_to('cdxml')
 
-        #如果已存在，提示替换
+        # 如果已存在，提示替换
         if os.path.isfile(output_file):
-            button = Qt.QMessageBox.warning(None,'File exist',"File already exist, confirm replacing:",Qt.QMessageBox.Ok|Qt.QMessageBox.Cancel)
+            button = Qt.QMessageBox.warning(None, 'File exist', "File already exist, confirm replacing:", Qt.QMessageBox.Ok | Qt.QMessageBox.Cancel)
             if button == Qt.QMessageBox.Cancel:
                 output_file = os.path.join(temp_folder, 'temp_' + str(int(time.time() * 100000)) + '.cdxml')
 
@@ -1483,9 +1513,11 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
                     for i in output_list:
                         cdxml_output.write(i)
                         cdxml_output.write('\n\n')
-                save_successful=True
+                save_successful = True
             except PermissionError:
-                alert_UI("Permission Error\n    File may in use. Close this file in ChemDraw.\n    Or you don't have permission to write to this directory, give the program administrator privilege.\nThen click OK.","Permission Error")
+                alert_UI(
+                    "Permission Error\n    File may in use. Close this file in ChemDraw.\n    Or you don't have permission to write to this directory, give the program administrator privilege.\nThen click OK.",
+                    "Permission Error")
 
         open_explorer_and_select(output_file)
 
@@ -1496,23 +1528,22 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         for row in worksheet.rows:
             row_list = []
             for cell in row:
-                if cell.value=="":
+                if cell.value == "":
                     row_list.append(None)
                 else:
                     row_list.append(cell.value)
             xlsx_list.append(row_list)
 
-
         # 第一行可以有独立的tag，也可以没有。如果第一行全部是数字，或第一行的颜色用“TAG”标注，认为是tag
-        has_independent_tag=False
-        #可以用tag标记
-        if isinstance(xlsx_list[0][0],str) and "tag" in xlsx_list[0][0].lower():
+        has_independent_tag = False
+        # 可以用tag标记
+        if isinstance(xlsx_list[0][0], str) and "tag" in xlsx_list[0][0].lower():
             has_independent_tag = True
-        #有任何一个非空str
-        if any([isinstance(x,str) for x in xlsx_list[0][1:]]):
+        # 有任何一个非空str
+        if any([isinstance(x, str) for x in xlsx_list[0][1:]]):
             has_independent_tag = True
-        #全是空的（用来兼容原来的文件）
-        if all([x==None for x in xlsx_list[0][1:]]):
+        # 全是空的（用来兼容原来的文件）
+        if all([x == None for x in xlsx_list[0][1:]]):
             has_independent_tag = True
 
         if has_independent_tag:
@@ -1521,9 +1552,8 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
         else:
             self.independent_tags = [None for dump in range(max([len(i) for i in xlsx_list]))]
 
-
-        if self.independent_tags[0]==None:
-            self.independent_tags[0]='k'
+        if self.independent_tags[0] == None:
+            self.independent_tags[0] = 'k'
 
         # split to data part and Tag part
         self.xlsx_data = []
@@ -1538,14 +1568,15 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, Qt.QWidget, Qt_Widget_Common_Functio
             self.xlsx_data.append([])
 
         for row in self.xlsx_data[0]:
-            if row[0]==None:
-                row[0]='k'
+            if row[0] == None:
+                row[0] = 'k'
 
         # rule out number of Tag is more than Data
         if len(self.xlsx_data[0]) < len(self.xlsx_data[1]):
-            alert_UI('You have '+str(len(self.xlsx_data[1]))+' tag lines and '+str(len(self.xlsx_data[0])) +' data lines in the Excel input file.\nThere are more tag lines than needed. Correct this mistake.',"Tag More Than Data Error.")
+            alert_UI('You have ' + str(len(self.xlsx_data[1])) + ' tag lines and ' + str(
+                len(self.xlsx_data[0])) + ' data lines in the Excel input file.\nThere are more tag lines than needed. Correct this mistake.',
+                     "Tag More Than Data Error.")
             exit()
-
 
         self.xlsx_data[1] = [[(str(y) if (y is not None) else y) for y in x] for x in self.xlsx_data[1]]
 
