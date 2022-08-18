@@ -5,7 +5,7 @@ from itertools import product
 import numpy as np
 
 if sys.version_info >= (3, 0):
-    xrange = range
+    xrange = range 
 
 def get_bboxes(texts, r, expand, ax=None):
     if ax is None:
