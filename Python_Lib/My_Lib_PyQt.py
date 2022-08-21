@@ -2,20 +2,22 @@
 __author__ = 'LiYuanhe'
 #
 import os
-from PyQt5.Qt import QApplication
-# if QApplication.desktop().screenGeometry().width()>2000:
-os.environ["QT_SCALE_FACTOR"] = "0.85"
 from PyQt5 import Qt
 from PyQt5 import uic
-
-QApplication.setAttribute(Qt.Qt.AA_EnableHighDpiScaling, True)
+from PyQt5.Qt import QApplication
+import platform
+if platform.system()=='Windows':
+    os.environ["QT_SCALE_FACTOR"] = "0.85"
+    QApplication.setAttribute(Qt.Qt.AA_EnableHighDpiScaling, True)
 
 import matplotlib
 
 matplotlib.use("Qt5Agg")
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as MpFigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as MpNavToolBar
-import matplotlib.pyplot as MpPyplot
+import matplotlib.pyplot as pyplot
+# legacy support
+MpPyplot = pyplot
 import matplotlib.patches as patches
 
 import sys

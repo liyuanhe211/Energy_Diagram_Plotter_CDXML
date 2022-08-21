@@ -25,7 +25,9 @@ import numpy as np
 number_font_size = 17
 tag_font_size = 17
 
-matplotlib.rcParams.update({'font.family': 'Times New Roman'})
+import platform
+if platform.system()=='Windows':
+    matplotlib.rcParams.update({'font.family': 'Times New Roman'})
 
 temp_folder = os.path.join(filename_class(sys.argv[0]).path, 'TEMP')
 if not os.path.isdir(temp_folder):
@@ -545,9 +547,9 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         self.setParent(parent)
 
         self.dpi = 24
-        self.fig = MpPyplot.figure(figsize=(2, 2), dpi=self.dpi, )
+        self.fig = pyplot.figure(figsize=(2, 2), dpi=self.dpi, )
 
-        self.diagram_subplot = MpPyplot.subplot(1, 1, 1)
+        self.diagram_subplot = pyplot.subplot(1, 1, 1)
         self.fig.subplots_adjust(wspace=0.12, left=0.04, right=0.98)
         self.canvas = MpFigureCanvas(self.fig)
         self.canvas.setParent(self)
@@ -646,10 +648,10 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
                 y_axis_text = "Solvated Free Energy (kJ/mol)"
                 text_file.write(y_axis_text)
 
-        MpPyplot.ylabel(y_axis_text,
+        pyplot.ylabel(y_axis_text,
                         fontsize='xx-large',
                         weight='normal')
-        MpPyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
+        pyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
 
         self.canvas.draw()
 
@@ -674,12 +676,12 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
                 y_axis_text = "Solvated Free Energy (kJ/mol)"
                 text_file.write(y_axis_text)
 
-        MpPyplot.ylabel(y_axis_text,
+        pyplot.ylabel(y_axis_text,
                         fontsize='xx-large',
                         weight='bold')
-        MpPyplot.xticks(np.arange(5), [])
+        pyplot.xticks(np.arange(5), [])
 
-        MpPyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
+        pyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
 
     def max_steps(self):
         return max([len(x) for x in self.paths])
@@ -692,8 +694,8 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         assume_figure_length = 60  # assume the figure span 60 characters
         assume_figure_height = 20  # assume the figure span 20 lines
 
-        renderer = MpPyplot.gca().get_figure().canvas.get_renderer()  # for BBox
-        fig = MpPyplot.gcf()
+        renderer = pyplot.gca().get_figure().canvas.get_renderer()  # for BBox
+        fig = pyplot.gcf()
         size = fig.get_size_inches() * fig.dpi
 
         # print(size)

@@ -61,8 +61,12 @@ def rreplace(string, old, new, count=None):
 
 def open_explorer_and_select(file_path):
     import subprocess
-    open_explorer_command = r'explorer /select,"' + str(file_path).replace('/', '\\') + '"'
-    subprocess.Popen(open_explorer_command)
+    import platform
+    if platform.system()=='Windows':
+        open_explorer_command = r'explorer /select,"' + str(file_path).replace('/', '\\') + '"'
+        subprocess.Popen(open_explorer_command)
+    else:
+        print("Not Windows system. Please check the file by yourself:",file_path)
 
 def merge_dicts(*dict_args):
     """
