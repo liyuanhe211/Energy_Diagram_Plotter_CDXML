@@ -30,15 +30,18 @@ Below is the input file format. By comparing left to right, it should be easy to
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png" width="100%" height="100%" align="center"></img></p>
 
-For color definition, you can use any color for each state with its RGB value `#XXXXXX`. The colors below it can also be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom).:
-
-<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160639914-d11c34dc-5c1d-486e-b6b4-f8216883adba.png" width="70%" height="70%" align="center"></img></p>
-
-In the next version, I'll support `B`,`O`,`G`,`R`,`P`,`BR`,`PI`,`GR`,`OL`,`C` (all uppercase) for the tab colors:
+For color definition, you can use any color for each state with its RGB value `#XXXXXX`. 
+Some colors have shortcuts, The "tabcolors" can be called by `B`,`O`,`G`,`R`,`P`,`BR`,`PI`,`GR`,`OL`,`C` (all uppercase):
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/175197188-bee314cd-73fb-4918-81ac-9fa89b47cc9f.png" width="30%" height="30%" align="center"></img></p>
 
-The overall GUI structure and the meaning of each option are described in the following figures (You can also hover on the options to see a tooltip):
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/185797574-d620194d-6558-423e-ba4f-a1d7c04b63b2.png" width="60%" height="60%" align="center"></img></p>
+
+The "pure colors" below can also be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom):
+
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160639914-d11c34dc-5c1d-486e-b6b4-f8216883adba.png" width="70%" height="70%" align="center"></img></p>
+
+The options in the GUI are explained in the following figures (You can also hover on the options to see a tooltip):
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160637389-257753fc-e0bc-4822-9d44-c86e0c8207a0.png" width="100%" height="100%" align="center"></img></p>
 
