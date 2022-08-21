@@ -12,7 +12,7 @@ For Windows, if you don't have Python environment, there is an executable versio
 Alternatively, if you have [Anaconda](https://www.anaconda.com/), or other Python environment with `PyQt`, `openpyxl` and `matplotlib`, call the main script by first `cd` / `dir` to the project folder and call:
 `python Draw_Energy_Diagram_XML.py`. (On windows, you can also just double click `Draw_Energy_Diagram_XML.bat`)
 
-（The GUI doesn't seems to render properly on Linux system such as CentOS 8. Before I have the time to fix it, it's considered Windows only.)
+For Linux, the script is tested on CentOS 8 with stock `Anaconda 3 2022.5`.
 
 ## Background
 In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the qualitative order could break down, which is very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
