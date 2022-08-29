@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 __author__ = 'LiYuanhe'
+
 #
 import os
 from PyQt5 import Qt
 from PyQt5 import uic
 from PyQt5.Qt import QApplication
 import platform
-if platform.system()=='Windows':
+
+if platform.system() == 'Windows':
     os.environ["QT_SCALE_FACTOR"] = "0.85"
     QApplication.setAttribute(Qt.Qt.AA_EnableHighDpiScaling, True)
 
@@ -15,10 +17,10 @@ import matplotlib
 matplotlib.use("Qt5Agg")
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as MpFigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as MpNavToolBar
-import matplotlib.pyplot as pyplot
-# legacy support
-MpPyplot = pyplot
+from matplotlib import pyplot
 import matplotlib.patches as patches
+from matplotlib.figure import Figure as MpFigure
+from matplotlib import pylab
 
 import sys
 import os
@@ -29,19 +31,16 @@ import re
 import time
 import random
 
-from .My_Lib_Stock import *
+import pathlib
+
+Python_Lib_path = str(pathlib.Path(__file__).parent.resolve())
+sys.path.append(Python_Lib_path)
+from My_Lib_Stock import *
 
 
 def get_open_directories():
-    import os
-    from PyQt5.Qt import QApplication
-
-    os.environ["QT_SCALE_FACTOR"] = "0.9"
-    from PyQt5 import Qt
-    QApplication.setAttribute(Qt.Qt.AA_EnableHighDpiScaling, True)
-
     if not Qt.QApplication.instance():
-        Application = Qt.QApplication(sys.argv)
+        Qt.QApplication(sys.argv)
 
     file_dialog = Qt.QFileDialog()
     file_dialog.setFileMode(Qt.QFileDialog.DirectoryOnly)
@@ -59,7 +58,6 @@ def get_open_directories():
         paths = file_dialog.selectedFiles()
 
     return paths
-
 
 
 class Qt_Widget_Common_Functions():
@@ -87,17 +85,17 @@ class Qt_Widget_Common_Functions():
         if not os.path.isfile(config_file):
             config_file_failure = True
         else:
-            with open(config_file, 'r') as self.config_File:
+            with open(config_file) as self.config_File:
                 try:
                     self.config = eval(self.config_File.read())
-                except:
+                except Exception:
                     config_file_failure = True
 
         if config_file_failure:
             with open(config_file, 'w') as self.config_File:
                 self.config_File.write('{}')
 
-        with open(config_file, 'r') as self.config_File:
+        with open(config_file) as self.config_File:
             self.config = eval(self.config_File.read())
 
     def load_config(self, key, absence_return=""):
@@ -144,40 +142,40 @@ class Drag_Drop_TextEdit(Qt.QTextEdit):
         super(self.__class__, self).dropEvent(dummyEvent)
 
 
-def disconnect_all(signal, slot):
+def default_signal_for_connection(signal):
     if isinstance(signal, Qt.QPushButton) or isinstance(signal, Qt.QToolButton) or isinstance(signal, Qt.QRadioButton) or isinstance(signal, Qt.QCheckBox):
         signal = signal.clicked
     elif isinstance(signal, Qt.QLineEdit):
         signal = signal.textChanged
     elif isinstance(signal, Qt.QDoubleSpinBox) or isinstance(signal, Qt.QSpinBox):
         signal = signal.valueChanged
+    return signal
+
+
+def disconnect_all(signal, slot):
+    signal = default_signal_for_connection(signal)
     marker = False
     while not marker:
         try:
             signal.disconnect(slot)
-        except:
+        except Exception:  # TODO: determine what's the specific exception?
             marker = True
 
+
 def connect_once(signal, slot):
-    if isinstance(signal, Qt.QPushButton) or isinstance(signal, Qt.QToolButton) or isinstance(signal, Qt.QRadioButton) or isinstance(signal, Qt.QCheckBox):
-        signal = signal.clicked
-    elif isinstance(signal, Qt.QLineEdit):
-        signal = signal.textChanged
-    elif isinstance(signal, Qt.QDoubleSpinBox) or isinstance(signal, Qt.QSpinBox):
-        signal = signal.valueChanged
+    signal = default_signal_for_connection(signal)
     disconnect_all(signal, slot)
     signal.connect(slot)
 
 
-
 def build_fileDialog_filter(allowed_appendix: list, tags=[]):
-    '''
+    """
 
     :param allowed_appendix: a list of list, each group shows together [[xlsx,log,out],[txt,com,gjf]]
-    :param note: list, tag for each group, default ""
+    :param tags: list, tag for each group, default ""
     :return: a compiled filter ready for Qt.getOpenFileNames or other similar functions
             e.g. "Input File (*.gjf *.inp *.com *.sdf *.xyz)\n Output File (*.out *.log *.xlsx *.txt)"
-    '''
+    """
 
     if not tags:
         tags = [""] * len(allowed_appendix)
@@ -198,17 +196,16 @@ def build_fileDialog_filter(allowed_appendix: list, tags=[]):
 
 def alert_UI(message="", title="", parent=None):
     # 旧版本的alert UI定义是alert_UI(parent=None，message="")
-    if not isinstance(message, str) and isinstance(title, str) and parent == None:
+    if not isinstance(message, str) and isinstance(title, str) and parent is None:
         parent, message, title = message, title, ""
     elif not isinstance(message, str) and isinstance(title, str) and isinstance(parent, str):
         parent, message, title = message, title, parent
     print(message)
     if not Qt.QApplication.instance():
-        Application = Qt.QApplication(sys.argv)
+        Qt.QApplication(sys.argv)
     if not title:
         title = message
     Qt.QMessageBox.critical(parent, title, message)
-
 
 
 def warning_UI(message="", parent=None):
@@ -217,7 +214,7 @@ def warning_UI(message="", parent=None):
         message, parent = parent, message
     print(message)
     if not Qt.QApplication.instance():
-        Application = Qt.QApplication(sys.argv)
+        Qt.QApplication(sys.argv)
     Qt.QMessageBox.warning(parent, message, message)
 
 
@@ -228,13 +225,13 @@ def information_UI(message="", parent=None):
         message, parent = parent, message
     print(message)
     if not Qt.QApplication.instance():
-        Application = Qt.QApplication(sys.argv)
+        Qt.QApplication(sys.argv)
     Qt.QMessageBox.information(parent, message, message)
 
 
 def wait_confirmation_UI(parent=None, message=""):
     if not Qt.QApplication.instance():
-        Application = Qt.QApplication(sys.argv)
+        Qt.QApplication(sys.argv)
     button = Qt.QMessageBox.warning(parent, message, message, Qt.QMessageBox.Ok | Qt.QMessageBox.Cancel)
     if button == Qt.QMessageBox.Ok:
         return True
@@ -243,8 +240,9 @@ def wait_confirmation_UI(parent=None, message=""):
 
 
 def get_open_file_UI(parent, start_path: str, allowed_appendix, title="No Title", tags=[], single=False):
-    '''
+    """
 
+    :param parent
     :param start_path:
     :param allowed_appendix: same as function (build_fileDialog_filter)
             but allow single str "txt" or single list ['txt','gjf'] as input, list of list is not necessary
@@ -252,24 +250,24 @@ def get_open_file_UI(parent, start_path: str, allowed_appendix, title="No Title"
     :param tags:
     :param single:
     :return: a list of files if not single, a single filepath if single
-    '''
+    """
 
     if not Qt.QApplication.instance():
-        Application = Qt.QApplication(sys.argv)
+        Qt.QApplication(sys.argv)
 
     if isinstance(allowed_appendix, str):  # single str
         allowed_appendix = [[allowed_appendix]]
     if [x for x in allowed_appendix if isinstance(x, str)]:  # single list not list of list
         allowed_appendix = [allowed_appendix]
 
-    filter = build_fileDialog_filter(allowed_appendix, tags)
+    filename_filter = build_fileDialog_filter(allowed_appendix, tags)
 
     if single:
-        ret = Qt.QFileDialog.getOpenFileName(parent, title, start_path, filter)
+        ret = Qt.QFileDialog.getOpenFileName(parent, title, start_path, filename_filter)
         if ret:  # 上面返回 ('E:/My_Program/Python_Lib/elements_dict.txt', '(*.txt)')
             ret = ret[0]
     else:
-        ret = Qt.QFileDialog.getOpenFileNames(parent, title, start_path, filter)
+        ret = Qt.QFileDialog.getOpenFileNames(parent, title, start_path, filename_filter)
         if ret:  # 上面返回 (['E:/My_Program/Python_Lib/elements_dict.txt'], '(*.txt)')
             ret = ret[0]
 
@@ -351,104 +349,10 @@ def pyqt_ui_compile(filename):
 
 def wait_messageBox(message, title="Please Wait..."):
     if not Qt.QApplication.instance():
-        Application = Qt.QApplication(sys.argv)
+        Qt.QApplication(sys.argv)
 
     message_box = Qt.QMessageBox()
-    # message_box.setAttribute(Qt.Qt.WA_DeleteOnClose)
     message_box.setWindowTitle(title)
     message_box.setText(message)
 
     return message_box
-
-
-#
-# def update_check(online_file_url, current_version, reminded_version=-1):
-#     '''
-#     A function for any PyQt program, that will check online webpage to remind the user to update
-#     The webpage should contain paragraph starting with each version number
-#     each line should be started by a page_version control, like <Ver15> <Ver12-15>
-#     to remind whether the update should be read by the script (Ver15 means upward compatible, this information can only be read by version 15 decipher or higher)
-#     例如：
-#         <VER1>20180415
-#         <VER1>支持由Office365产生的Excel文件
-#         <VER1>在界面中增加哪些选项可直接预览的提示
-#     :param online_file_url:
-#     :param current_version:
-#     :param reminded_version: 哪个版本之后不再提示
-#     :return: text of update
-#
-#     '''
-#
-#     import collections
-#
-#     info_version = 1
-#     ret = urlopen_inf_retry(online_file_url, prettify=False, retry_limit=1).splitlines()
-#     content = []
-#     for line in ret:
-#         re_ret = re.findall(r'<VER(\d+\-*\d*)>(.+)', line)
-#         if re_ret:
-#             line_version = re_ret[0][0].split('-')
-#             if len(line_version) == 1:
-#                 line_version = [int(line_version[0]), float('inf')]
-#             else:
-#                 line_version = [int(line_version[0]), int(line_version[1])]
-#             if line_version[0] <= info_version <= line_version[1]:
-#                 content.append(re_ret[0][1])
-#
-#     content = split_list(content, lambda x: re.findall(r'\[VER(\d+)\]', x), include_separator=True)
-#     content_dict = collections.OrderedDict()
-#     download_dict = {}
-#     for version in content:
-#         re_ret = re.findall(r'\[VER(\d+)\](.+)', version[0])
-#         if re_ret and is_int(re_ret[0][0]):
-#             content_dict[int(re_ret[0][0])] = version[1:]
-#             download_dict[int(re_ret[0][0])] = re_ret[0][1]
-#
-#     content_dict = collections.OrderedDict(sorted(content_dict.items(), reverse=True, key=lambda x: x[0]))
-#     ret = ""
-#     for key, value in content_dict.items():
-#         if key > int(current_version) and key > int(reminded_version):
-#             ret += '\n'.join(value) + '\n'
-#         elif key <= int(reminded_version):
-#             print('Version', reminded_version, 'Skipped.')
-#     if ret.strip():
-#         return (key, download_dict[key], ret.strip())
-#     else:
-#         return None
-#
-#
-# def alert_update(online_file_url, current_version, reminded_version_filename):
-#     if not os.path.isfile(reminded_version_filename):
-#         reminded_version = -1
-#     else:
-#         with open(reminded_version_filename) as reminded_version_file:
-#             reminded_version = int(reminded_version_file.read())
-#
-#     ret_value = update_check(online_file_url, current_version, reminded_version)
-#
-#     if ret_value:
-#         version, download_url, text = ret_value
-#
-#         if not Qt.QApplication.instance():
-#             Application = Qt.QApplication(sys.argv)
-#         ret = Qt.QMessageBox.critical(None, "New Version Available",
-#                                       "已有新版本，更新功能:\n---------------------------------\n" + text + '\n---------------------------------\n是否打开下载页面？（若点击No to All 将不再提示此版本）',
-#                                       Qt.QMessageBox.Ok | Qt.QMessageBox.Ignore | Qt.QMessageBox.NoToAll)
-#         update_UI()
-#         if ret == Qt.QMessageBox.Ok:
-#             open_tab(download_url)
-#         if ret == Qt.QMessageBox.NoToAll:
-#             with open(reminded_version_filename, 'w') as reminded_version_file:
-#                 reminded_version_file.write(str(version))
-#
-#
-# def alert_update_thread(online_file_url, current_version, reminded_version_filename):
-#     import threading
-#     if not os.path.isfile(reminded_version_filename):
-#         reminded_version = -1
-#     else:
-#         with open(reminded_version_filename) as reminded_version_file:
-#             reminded_version = int(reminded_version_file.read())
-#
-#     update_thread = threading.Thread(target=alert_update, args=[online_file_url, current_version, reminded_version_filename])
-#     update_thread.start()

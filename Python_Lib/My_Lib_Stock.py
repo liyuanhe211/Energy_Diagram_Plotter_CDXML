@@ -10,7 +10,6 @@ import re
 import time
 import random
 
-
 # ALL Numbers in SI if not mentioned
 R = 8.3144648
 k_B = 1.3806503E-23
@@ -35,10 +34,11 @@ amu__kg = 1.660539040E-27
 month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 
-def file_is_descendant(file,parent):
+def file_is_descendant(file, parent):
     from pathlib import Path
 
     return Path(parent) in Path(file).resolve().parents
+
 
 def nCr(n, r):
     f = math.factorial
@@ -62,11 +62,12 @@ def rreplace(string, old, new, count=None):
 def open_explorer_and_select(file_path):
     import subprocess
     import platform
-    if platform.system()=='Windows':
+    if platform.system() == 'Windows':
         open_explorer_command = r'explorer /select,"' + str(file_path).replace('/', '\\') + '"'
         subprocess.Popen(open_explorer_command)
     else:
-        print("Not Windows system. Please check the file by yourself:",file_path)
+        print("Not Windows system. Please check the file by yourself:", file_path)
+
 
 def merge_dicts(*dict_args):
     """
@@ -79,9 +80,30 @@ def merge_dicts(*dict_args):
     return result
 
 
-class MyException(Exception):
-    '''你定义的异常类。'''
+def locate_matching_parenthesis(input_str: str, char1="(", char2=")"):
+    """
+    Recognize the first pairs of top level parenthesis in the input_str
+    Args:
+        input_str:
+        char1:
+        char2:
 
+    Returns:
+        a tuple of two numbers, start and finish
+        if nothing is found, return None
+    """
+    start = input_str.find(char1)
+    status = 0
+    for count, i in enumerate(input_str[start:]):
+        if i == char1:
+            status += 1
+        if i == char2:
+            status -= 1
+        if not status:
+            return (start, count + start)
+
+
+class MyException(Exception):
     def __init__(self, explanation):
         Exception.__init__(self)
         print(explanation)
@@ -97,22 +119,19 @@ def list_and(input_list):
     all(input_list)
 
 
-
-
 def get_ipv6_public_addresses_on_windows():
-    '''
-
+    """
     :return: a list of ipv6 addresses
-    '''
-    #https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+    """
+    # https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
     ipv6_address_regexp = r"(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
 
     ret = []
     import subprocess
     a = subprocess.check_output('ipconfig').decode('gbk').lower()
     for i in a.splitlines():
-        if 'ipv6' in i.lower() and "temporary" not in i.lower() and "临时" not in i.lower() and "本地" not in i.lower() and "local" not in i.lower() :
-            re_ret = re.findall(ipv6_address_regexp,i)
+        if 'ipv6' in i.lower() and "temporary" not in i.lower() and "临时" not in i.lower() and "本地" not in i.lower() and "local" not in i.lower():
+            re_ret = re.findall(ipv6_address_regexp, i)
             if re_ret:
                 address = re_ret[0][0]
                 if not address.startswith('fe'):
@@ -120,12 +139,21 @@ def get_ipv6_public_addresses_on_windows():
     return ret
 
 
+def is_in_folder(subfolder_or_file, parent_folder):
+    import pathlib
+    if not isinstance(subfolder_or_file, pathlib.WindowsPath):
+        subfolder_or_file = pathlib.Path(subfolder_or_file)
+    if not isinstance(parent_folder, pathlib.WindowsPath):
+        parent_folder = pathlib.Path(parent_folder)
+    return parent_folder in subfolder_or_file.parents
+
+
 def get_ipv6_public_addresses_on_linux():
-    '''
+    """
 
     :return: a list of ipv6 addresses
-    '''
-    #https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+    """
+    # https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
     ipv6_address_regexp = r"(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
 
     ret = []
@@ -133,7 +161,7 @@ def get_ipv6_public_addresses_on_linux():
     a = subprocess.check_output('ifconfig').decode('gbk').lower()
     for i in a.splitlines():
         if 'inet6 addr' in i.lower():
-            re_ret = re.findall(ipv6_address_regexp,i)
+            re_ret = re.findall(ipv6_address_regexp, i)
             if re_ret:
                 address = re_ret[0][0]
                 if address.startswith('2'):
@@ -150,29 +178,28 @@ def addToClipBoard(text):
     import pyperclip
     pyperclip.copy(text)
 
-#
-# def rreplace(original_string, search, replace):
-#     return replace.join(original_string.rsplit(search, 1))
 
-
-def walk_all_files(parent=".",filter="*.*",return_pathlib_obj = False):
+def walk_all_files(parent=".", glob_filter="*.*", return_pathlib_obj=False):
     """
     os.walk() wrap, return list of str for the full path
+    :param parent:
+    :param glob_filter:
     :param return_pathlib_obj: Whether to return a Path object, if False, return str
     """
-    #print("Walking folder:",os.path.realpath(parent))
     import pathlib
     parent_folder = pathlib.Path(parent)
     if return_pathlib_obj:
-        files = [x.resolve() for x in parent_folder.rglob(filter)]
+        files = [x.resolve() for x in parent_folder.rglob(glob_filter)]
     else:
-        files = [str(x.resolve()) for x in parent_folder.rglob(filter)]
+        files = [str(x.resolve()) for x in parent_folder.rglob(glob_filter)]
     return files
 
 
-def list_current_folder(parent=".",filter="*",return_pathlib_obj = False):
+def list_current_folder(parent=".", filter="*", return_pathlib_obj=False):
     """
     return list of str for the full path
+    :param parent:
+    :param filter:
     :param return_pathlib_obj: Whether to return a Path object, if False, return str
     """
     import pathlib
@@ -184,19 +211,20 @@ def list_current_folder(parent=".",filter="*",return_pathlib_obj = False):
     # print(files)
     return files
 
+
 def file_is_busy(filepath):
-    '''
+    """
     Check whether a file is being used
     If it's not being used, or it doesn't exist, return False
     Else return True
-    If any other exceptions occor, raise exception
-    '''
+    If any other exceptions occur, raise exception
+    """
     import os
     if os.path.isfile(filepath):
         try:
             os.rename(filepath, filepath)
             return False
-        except OSError as e:
+        except OSError:
             return True
     else:
         return False
@@ -229,19 +257,15 @@ def replace_append(filepath, new_append):
     return filename_class(filepath).replace_append_to(new_append)
 
 
-def get_dict_value(dict, key):
-    return dict[key] if key in dict else ""
+def remove_key_from_dict(input_dict, key):
+    if key in input_dict:
+        input_dict.pop(key)
+    return input_dict
 
 
-def remove_key_from_dict(dict, key):
-    if key in dict:
-        dict.pop(key)
-    return dict
-
-
-def safe_read_dict(dict, key, default_value=""):
-    if key in dict:
-        return dict[key]
+def safe_get_dict_value(input_dict, key, default_value=""):
+    if key in input_dict:
+        return input_dict[key]
     else:
         return default_value
 
@@ -252,16 +276,16 @@ def secure_print(*object_to_print):
 
     try:
         print(*object_to_print)
-    except:
-        print("Print function error. Print of information omitted.")
+    except Exception as e:
+        print("Print function error. Print of information omitted:",e)
 
 
 def get_print_str(*object_to_print, sep=" "):
     ret = ""
-    for object in object_to_print:
+    for current_object in object_to_print:
         try:
-            ret += str(object) + sep
-        except:
+            ret += str(current_object) + sep
+        except Exception:
             print("get_print_str Error...")
 
     return ret
@@ -271,52 +295,33 @@ def read_last_n_lines_fast(file, n_lines):
     return read_last_n_char_fast(file, '\n', n_lines)
 
 
-# def read_last_n_char_fast(file, char, n):
-#     '''
-#     a fast method to read the last n appearence of a specific character, and return one multi-line decoded string
-#     :param file:
-#     :param n:
-#     :return:
-#     '''
-#     char = char.encode()
-#     import os
-#     current_line = 0
-#     with open(file, 'rb') as f:
-#         f.seek(-2, os.SEEK_END)
-#         while True:
-#             if f.read(1) == char:
-#                 current_line += 1
-#                 if current_line == n:
-#                     last_lines = f.read().decode()
-#                     break
-#             f.seek(-2, os.SEEK_CUR)
-#
-#     return last_lines
-
 def read_last_n_char_fast(file, char, n):
     """
     a fast method to read the last n appearance of a specific character, and return one multi-line decoded string
     if there is less than n matches, the whole file will be returned
     :param file:
+    :param char
     :param n:
     :return:
     """
     char = char.encode('utf-8')
     import mmap
-    with open(file,"r+b") as f:
+    with open(file, "r+b") as f:
         # memory-map the file, size 0 means whole file
         m = mmap.mmap(f.fileno(), 0)
-                              # prot argument is *nix only
+        # prot argument is *nix only
         current_cut = m.rfind(char)
-        count=1
-        while count<n:
-            current_cut = m.rfind(char,0,current_cut)
+        count = 1
+        while count < n:
+            current_cut = m.rfind(char, 0, current_cut)
             if current_cut == -1:
                 count = n
                 current_cut = 0
-            count+=1
+            count += 1
         m.seek(current_cut)
         return m.read().decode()
+
+
 #
 #
 # file = r"D:\Gaussian\LXQ_Rh_Carbene\Confsearch\190\temp\190_solvated__confsearch_P1__cpptraj__nosol_nobox_04_17__last__xtbopt_traj__Pieced___135.xtbopt_traj.xyz"
@@ -327,16 +332,17 @@ def split_list_by_item(input_list: list, separator, lower_case_match=False, incl
 
 
 def split_list(input_list: list, separator, lower_case_match=False, include_separator=False, include_separator_after=False, include_empty=False):
-    '''
+    """
 
     :param input_list:
     :param separator: a separator, either a str or function.
     If it's a function, it should take a str as input, and return
     :param lower_case_match:
     :param include_separator:
+    :param include_separator_after:
     :param include_empty:
     :return:
-    '''
+    """
     ret = []
     temp = []
 
@@ -371,7 +377,7 @@ def split_list(input_list: list, separator, lower_case_match=False, include_sepa
 
 
 def get_appropriate_ticks(ranges, num_tick_limit=(4, 6), accept_cloest_out_of_range=True):
-    '''
+    """
     a function to get the desired ticks, e.g. for 1.2342 - 1.58493, with a tick_limit of (4,8),
     the tick should be (1.25,1.30,1.35,1.40,1.45,1.50,1.55)
     :param ranges: a 2-tuple, upper limit and lower limit
@@ -379,7 +385,7 @@ def get_appropriate_ticks(ranges, num_tick_limit=(4, 6), accept_cloest_out_of_ra
     :param accept_cloest_out_of_range: if cloest, out-of-range answer is accepted if in-range answer is not possible
     :return: a (lower-limit, upper-limit, spacing) tuple
     if no appropriate choice is possible, and accept_cloest_out_of_range = False, return [ranges[1],ranges[0],ranges[1]-ranges[0]]
-    '''
+    """
     # the ticking should be either ending in 5 or 2 or 0
     if ranges[1] < ranges[0]:
         ranges = reversed(ranges)
@@ -416,13 +422,14 @@ def get_appropriate_ticks(ranges, num_tick_limit=(4, 6), accept_cloest_out_of_ra
 
 
 def get_input_with_while_cycle(break_condition=lambda x: not x.strip(), input_prompt="", strip_quote=True, backup_file=None):
-    '''
+    """
     get multiple line of input, terminate with a condition, return the accepted lines
     :param break_condition: give a function, when it is met, the while loop is terminated.
     :param input_prompt: will print this every line
+    :param strip_quote:
     :param backup_file: a file-like object (created by "open()") which will store the inputs for backup
     :return: list of accepted lines
-    '''
+    """
 
     ret = []
     while True:
@@ -439,7 +446,6 @@ def get_input_with_while_cycle(break_condition=lambda x: not x.strip(), input_pr
     return ret
 
 
-
 def PolygonArea(corners):
     n = len(corners)  # of corners
     area = 0.0
@@ -452,11 +458,11 @@ def PolygonArea(corners):
 
 
 def remove_special_chr_from_str(input_str):
-    '''
+    """
     A function for fuzzy search "3-propyl-N'-ethylcarbodiim"-->"propylnethylcarbodiim"
     :param input_str:
     :return:
-    '''
+    """
     import string
     ret = ''.join(ch for ch in input_str if ch not in string.punctuation + string.whitespace + string.digits).lower()
     if not ret:
@@ -467,12 +473,14 @@ def remove_special_chr_from_str(input_str):
 
 
 def get_unused_filename(input_filename, replace_hash=True, use_proper_filename=True):
-    '''
+    """
     verify whether the filename is already exist, if it is, a filename like filename_01.append; filename_02.append will be returned.
     maximum 99 files can be generated
     :param input_filename:
+    :param replace_hash
+    :param use_proper_filename
     :return: a filename
-    '''
+    """
 
     input_filename = os.path.realpath(input_filename)
 
@@ -503,34 +511,37 @@ def get_unused_filename(input_filename, replace_hash=True, use_proper_filename=T
         return ret
 
 
-def average(data,convert_to_arith_function = lambda x:x, convert_back_function = lambda x:x):
-    '''
+def average(data, convert_to_arith_function=lambda x: x, convert_back_function=lambda x: x):
+    """
 
     :param data:
     :param convert_to_arith_function: a function that convert the data to a number to be subjected to arithmetic average
     :param convert_back_function: a reverse function of convert_to_arith_function
     :return:
-    '''
+    """
 
     data_to_arith = [convert_to_arith_function(x) for x in data]
-    arith_average = sum(data_to_arith)/len(data_to_arith)
+    arith_average = sum(data_to_arith) / len(data_to_arith)
     return convert_back_function(arith_average)
 
-optimization_timer_u3yc24t04389y09sryc09384yn098 = 0 # this wired name is to avoid collision with other files
+
+optimization_timer_u3yc24t04389y09sryc09384yn098 = 0  # this wired name is to avoid collision with other files
+
+
 def optimization_timer(position_label=""):
-    '''
+    """
     A simple function to record the time to current operation, and print the eclapsed time till then
-    '''
+    """
 
     # return None # comment this out to activate this function
 
     global optimization_timer_u3yc24t04389y09sryc09384yn098
-    if optimization_timer_u3yc24t04389y09sryc09384yn098==0:
+    if optimization_timer_u3yc24t04389y09sryc09384yn098 == 0:
         optimization_timer_u3yc24t04389y09sryc09384yn098 = time.time()
     else:
         delta = time.time() - optimization_timer_u3yc24t04389y09sryc09384yn098
         optimization_timer_u3yc24t04389y09sryc09384yn098 = time.time()
-        print("————————————",position_label,int(delta*1000))
+        print("————————————", position_label, int(delta * 1000))
 
 
 def readable_timestamp(timestamp=0):
@@ -561,8 +572,8 @@ def remove_blank(input_list: list):
     return [x for x in input_list if x]
 
 
-def cas_wrapper(input: str, strict=False, correction=False):
-    '''
+def cas_wrapper(input_str: str, strict=False, correction=False):
+    """
     Match or not:
                     Partial     strict
     111-11-5           Yes        Yes     normal match
@@ -584,11 +595,11 @@ def cas_wrapper(input: str, strict=False, correction=False):
     111-119             No
     12345678-12-2       No
 
-    :param input:
+    :param input_str:
     :param strict: match complete or partial
     :param correction:允许纠正验证位错误
     :return: completed CAS number, if not find or the check digit not match the initial input, return '',
-    '''
+    """
 
     prefix = r"(^|[^\d-])"  # prevent 0111-11-1
     base = r"([1-9]\d{1,7}-\d{2})"  # matches 111-11
@@ -599,12 +610,12 @@ def cas_wrapper(input: str, strict=False, correction=False):
     re_complete = ''.join([prefix, "(", base, postfix, ")", closure_complete])
     re_partial = ''.join([prefix, base, '((', postfix, closure_complete, ')', closure_partial, ')'])
 
-    find_complete = re.findall(re_complete, input)  # match complete 128-38-2-->128-38
-    find_partial = re.findall(re_partial, input)  # match the former digits of 128-38-2-->128-38
+    find_complete = re.findall(re_complete, input_str)  # match complete 128-38-2-->128-38
+    find_partial = re.findall(re_partial, input_str)  # match the former digits of 128-38-2-->128-38
 
     if strict:
         if len(find_complete) > 1:  # 找到多个结果
-            print('\n\n\nMultiple CAS match.', input, '\n\n\n')
+            print('\n\n\nMultiple CAS match.', input_str, '\n\n\n')
 
         if not find_complete:
             return ""
@@ -614,7 +625,7 @@ def cas_wrapper(input: str, strict=False, correction=False):
 
     else:
         if len(find_partial) > 1:  # 找到多个结果
-            print('\n\n\nMultiple CAS match.', input, '\n\n\n')
+            print('\n\n\nMultiple CAS match.', input_str, '\n\n\n')
 
         if not find_partial:
             return ""
@@ -641,12 +652,12 @@ def cas_wrapper(input: str, strict=False, correction=False):
 
     if not find_complete:
         print('CAS Wrapper Doubt! Find:', repr(ret), '. Complete wrapper:', repr(find_complete), '. Original:',
-              repr(input))
+              repr(input_str))
         return ret
 
     if find_complete and ret != find_complete:
         print('CAS Wrapper Disagree! Find:', repr(ret), '. Complete wrapper:', repr(find_complete), '. Original:',
-              repr(input))
+              repr(input_str))
         if correction:  # 允许纠正错误的验证位
             return ret
         else:
@@ -669,7 +680,7 @@ def is_float(input_str):
     try:
         float(input_str)
         return True
-    except:
+    except ValueError:
         return False
 
 
@@ -677,8 +688,9 @@ def int_able(input_str):
     try:
         int(input_str)
         return True
-    except Exception as e:
+    except ValueError:
         return False
+
 
 def is_int(input_str):
     if not is_float(input_str):
@@ -693,13 +705,16 @@ def is_int(input_str):
 
 
 def proper_filename(input_filename, including_appendix=True, path_as_filename=False, replace_hash=True, replace_dot=True, replace_space=True):
-    '''
+    """
 
     :param input_filename:
     :param including_appendix:
     :param path_as_filename: 是否将路径转换为文件名(/home/gauuser/file.txt --> __home__gauuser__file.txt )
+    :param replace_hash:
+    :param replace_dot:
+    :param replace_space:
     :return:
-    '''
+    """
     if path_as_filename:
         path = ""
         filename_stem = filename_class(input_filename).only_remove_append
@@ -716,8 +731,8 @@ def proper_filename(input_filename, including_appendix=True, path_as_filename=Fa
         forbidden_chr = forbidden_chr.replace(' ', '')
     if not replace_dot:
         forbidden_chr = forbidden_chr.replace('.', '')
-    for chr in forbidden_chr:
-        filename_stem = filename_stem.replace(chr, '__')
+    for character in forbidden_chr:
+        filename_stem = filename_stem.replace(character, '__')
 
     if append:
         if including_appendix:
@@ -734,22 +749,23 @@ def proper_filename(input_filename, including_appendix=True, path_as_filename=Fa
 
 
 def same_length_2d_list(input_2D_list, fill=""):
-    '''
+    """
     read a list of list, and fill the sub_list to the same length
     :return: 
-    '''
+    """
     max_column_count = max([len(x) for x in input_2D_list])
-    ret = [x + [""] * (max_column_count - len(x)) for x in input_2D_list]
+    ret = [x + [fill] * (max_column_count - len(x)) for x in input_2D_list]
     return ret
 
 
-def find_within_braket(input_str, get_last_one=False):
-    '''
+def find_within_bracket(input_str, get_last_one=False):
+    """
     Get all text within braket
     :param input_str: "123123127941[12313[123]112313]adaf[123]
+    :param get_last_one
     :return: [12313[123]112313][123]
-    '''
-    in_braket = 0
+    """
+    in_bracket = 0
     ret = ""
 
     last_one_start = []  # 记录每一个最外括号起始位置
@@ -757,14 +773,14 @@ def find_within_braket(input_str, get_last_one=False):
 
     for count, char in enumerate(input_str):
         if char == '[':
-            if in_braket == 0:
+            if in_bracket == 0:
                 last_one_start.append(count)
-            in_braket += 1
+            in_bracket += 1
         if char == ']':
-            in_braket -= 1
-            if in_braket == 0:
+            in_bracket -= 1
+            if in_bracket == 0:
                 last_one_end = count
-        if char == ']' or in_braket > 0:
+        if char == ']' or in_bracket > 0:
             ret += char
 
     if get_last_one:
@@ -778,7 +794,7 @@ def find_within_braket(input_str, get_last_one=False):
     return ret
 
 
-def strip_sequence_from_str(input_string:str,to_strip):
+def strip_sequence_from_str(input_string: str, to_strip):
     """
     "abcabca","ab" --> “cabca"
     "abcabca","abc" --> “a"
@@ -788,7 +804,6 @@ def strip_sequence_from_str(input_string:str,to_strip):
         input_string = input_string[len(to_strip):]
 
     return input_string
-
 
 
 def phrase_range_selection(input_str, by_index=True):
@@ -808,7 +823,7 @@ def phrase_range_selection(input_str, by_index=True):
     for choice in input_list:
         if '-' in choice:
             choices.remove(choice)
-            if not re.findall('\d+\-\d+', choice):
+            if not re.findall(r'\d+-\d+', choice):
                 print("Invalid")
                 return None
 
@@ -822,17 +837,26 @@ def phrase_range_selection(input_str, by_index=True):
 
 
 def filename_from_url(url):
-    forbidden_chr = "<>:\"/\\|?*-"
+    forbidden_chrs = "<>:\"/\\|?*-"
     if 'http://' in url:
         ret = re.findall(r"http://(.+)", url)[0]
     else:
         ret = url
-    for chr in forbidden_chr:
-        ret = ret.replace(chr, '___')
+    for forbidden_chr in forbidden_chrs:
+        ret = ret.replace(forbidden_chr, '___')
     ret = 'Download/' + ret
     return ret
 
-elements_dict = {0:"X",89:'Ac',47:'Ag',13:'Al',95:'Am',18:'Ar',33:'As',85:'At',79:'Au',5:'B',56:'Ba',4:'Be',107:'Bh',83:'Bi',97:'Bk',35:'Br',6:'C',20:'Ca',48:'Cd',58:'Ce',98:'Cf',17:'Cl',96:'Cm',112:'Cn',27:'Co',24:'Cr',55:'Cs',29:'Cu',105:'Db',110:'Ds',66:'Dy',68:'Er',99:'Es',63:'Eu',9:'F',26:'Fe',114:'Fl',100:'Fm',87:'Fr',31:'Ga',64:'Gd',32:'Ge',1:'H',2:'He',72:'Hf',80:'Hg',67:'Ho',108:'Hs',53:'I',49:'In',77:'Ir',19:'K',36:'Kr',57:'La',3:'Li',103:'Lr',71:'Lu',116:'Lv',101:'Md',12:'Mg',25:'Mn',42:'Mo',109:'Mt',7:'N',11:'Na',41:'Nb',60:'Nd',10:'Ne',28:'Ni',102:'No',93:'Np',8:'O',76:'Os',15:'P',91:'Pa',82:'Pb',46:'Pd',61:'Pm',84:'Po',59:'Pr',78:'Pt',94:'Pu',88:'Ra',37:'Rb',75:'Re',104:'Rf',111:'Rg',45:'Rh',86:'Rn',44:'Ru',16:'S',51:'Sb',21:'Sc',34:'Se',106:'Sg',14:'Si',62:'Sm',50:'Sn',38:'Sr',73:'Ta',65:'Tb',43:'Tc',52:'Te',90:'Th',22:'Ti',81:'Tl',69:'Tm',92:'U',118:'Uuo',115:'Uup',117:'Uus',113:'Uut',23:'V',74:'W',54:'Xe',39:'Y',70:'Yb',30:'Zn',40:'Zr'}
+
+elements_dict = {0: "X", 89: 'Ac', 47: 'Ag', 13: 'Al', 95: 'Am', 18: 'Ar', 33: 'As', 85: 'At', 79: 'Au', 5: 'B', 56: 'Ba', 4: 'Be', 107: 'Bh', 83: 'Bi',
+                 97: 'Bk', 35: 'Br', 6: 'C', 20: 'Ca', 48: 'Cd', 58: 'Ce', 98: 'Cf', 17: 'Cl', 96: 'Cm', 112: 'Cn', 27: 'Co', 24: 'Cr', 55: 'Cs', 29: 'Cu',
+                 105: 'Db', 110: 'Ds', 66: 'Dy', 68: 'Er', 99: 'Es', 63: 'Eu', 9: 'F', 26: 'Fe', 114: 'Fl', 100: 'Fm', 87: 'Fr', 31: 'Ga', 64: 'Gd', 32: 'Ge',
+                 1: 'H', 2: 'He', 72: 'Hf', 80: 'Hg', 67: 'Ho', 108: 'Hs', 53: 'I', 49: 'In', 77: 'Ir', 19: 'K', 36: 'Kr', 57: 'La', 3: 'Li', 103: 'Lr',
+                 71: 'Lu', 116: 'Lv', 101: 'Md', 12: 'Mg', 25: 'Mn', 42: 'Mo', 109: 'Mt', 7: 'N', 11: 'Na', 41: 'Nb', 60: 'Nd', 10: 'Ne', 28: 'Ni', 102: 'No',
+                 93: 'Np', 8: 'O', 76: 'Os', 15: 'P', 91: 'Pa', 82: 'Pb', 46: 'Pd', 61: 'Pm', 84: 'Po', 59: 'Pr', 78: 'Pt', 94: 'Pu', 88: 'Ra', 37: 'Rb',
+                 75: 'Re', 104: 'Rf', 111: 'Rg', 45: 'Rh', 86: 'Rn', 44: 'Ru', 16: 'S', 51: 'Sb', 21: 'Sc', 34: 'Se', 106: 'Sg', 14: 'Si', 62: 'Sm', 50: 'Sn',
+                 38: 'Sr', 73: 'Ta', 65: 'Tb', 43: 'Tc', 52: 'Te', 90: 'Th', 22: 'Ti', 81: 'Tl', 69: 'Tm', 92: 'U', 118: 'Uuo', 115: 'Uup', 117: 'Uus',
+                 113: 'Uut', 23: 'V', 74: 'W', 54: 'Xe', 39: 'Y', 70: 'Yb', 30: 'Zn', 40: 'Zr'}
 
 num_to_element_dict = elements_dict
 temp1 = {value: key for key, value in elements_dict.items()}
@@ -893,4 +917,3 @@ def mytimeout(timeout):
         return wrapper
 
     return deco
-
