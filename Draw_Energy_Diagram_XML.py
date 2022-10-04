@@ -8,6 +8,17 @@ __author__ = 'LiYuanhe'
 
 from Python_Lib.My_Lib_PyQt import *
 
+import matplotlib
+
+matplotlib.use("Qt5Agg")
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as MpFigureCanvas
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as MpNavToolBar
+from matplotlib import pyplot
+import matplotlib.patches as patches
+from matplotlib.figure import Figure as MpFigure
+from matplotlib import pylab
+
+
 import sys
 import os
 import math
@@ -51,6 +62,22 @@ if __name__ == '__main__':
 
     Application = Qt.QApplication(sys.argv)
     Application.setWindowIcon(Qt.QIcon('UI/Draw_Energy_Diagram_Icon.png'))
+
+    # Sometimes, the scaling factor of PyQt is different from the Windows system scaling factor, reason unknown
+    # For example, on a 4K screen sets to 250% scaling on Windows, PyQt reads a default 300% scaling,
+    # causing everything to be too large
+    if platform.system() == 'Windows':
+        import ctypes
+        Windows_system_scaling_ratio = ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
+        PyQt_scaling_ratio = QApplication.primaryScreen().devicePixelRatio()
+        ratio_of_ratio = Windows_system_scaling_ratio/PyQt_scaling_ratio
+        if ratio_of_ratio>1.05 or ratio_of_ratio<0.95:
+            use_ratio = "{:.2f}".format(ratio_of_ratio)
+            print(f"Windows 10 High-DPI debug: Using GUI high-DPI ratio: {use_ratio}={Windows_system_scaling_ratio}/{PyQt_scaling_ratio}")
+            os.environ["QT_SCALE_FACTOR"] = use_ratio
+            del Application
+            Application = Qt.QApplication(sys.argv)
+
 
 # doc header
 default_document = '''<?xml version="1.0" encoding="UTF-8" ?>
@@ -546,7 +573,7 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         super(MpWidget_Energy_Diagram, self).__init__()
         self.setParent(parent)
 
-        self.dpi = 24
+        self.dpi = 20
         self.fig = pyplot.figure(figsize=(2, 2), dpi=self.dpi, )
 
         self.diagram_subplot = pyplot.subplot(1, 1, 1)
@@ -656,9 +683,9 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         self.canvas.draw()
 
     def initiate(self):
-        
+
         import numpy as np
-        
+
         self.diagram_subplot.clear()
 
         self.paths = []

@@ -16,3 +16,5 @@ __pycache__/
 /Config.ini
 Config.ini
 Examples/~$4 TabColors.xlsx
+/Cx_Freeze_Energy_Diagram_Plotter.py
+/build/

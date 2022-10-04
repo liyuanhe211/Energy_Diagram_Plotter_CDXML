@@ -8,19 +8,18 @@ from PyQt5 import uic
 from PyQt5.Qt import QApplication
 import platform
 
-if platform.system() == 'Windows':
-    os.environ["QT_SCALE_FACTOR"] = "0.85"
-    QApplication.setAttribute(Qt.Qt.AA_EnableHighDpiScaling, True)
-
-import matplotlib
-
-matplotlib.use("Qt5Agg")
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as MpFigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as MpNavToolBar
-from matplotlib import pyplot
-import matplotlib.patches as patches
-from matplotlib.figure import Figure as MpFigure
-from matplotlib import pylab
+QApplication.setAttribute(Qt.Qt.AA_EnableHighDpiScaling, True)
+QApplication.setAttribute(Qt.Qt.AA_UseHighDpiPixmaps)
+#
+# import matplotlib
+#
+# matplotlib.use("Qt5Agg")
+# from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as MpFigureCanvas
+# from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as MpNavToolBar
+# from matplotlib import pyplot
+# import matplotlib.patches as patches
+# from matplotlib.figure import Figure as MpFigure
+# from matplotlib import pylab
 
 import sys
 import os

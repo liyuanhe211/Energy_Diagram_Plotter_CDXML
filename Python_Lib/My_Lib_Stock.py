@@ -33,6 +33,101 @@ amu__kg = 1.660539040E-27
 
 month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
+def smart_format_float(num, precision=3, scientific_notation_limit = 5):
+    """
+    对precision = 3, scientific_notation_limit = 5
+    0.00001 -> 1.00 × 10^-5
+    0.0001 -> 0.000100
+    0.1 -> 0.100
+    1 -> 1.00
+    15 -> 15.0
+    155 -> 155
+    1234 -> 1234
+    12345 -> 12345
+    123456 -> 1.23 × 10^5
+
+    Args:
+        num:
+        precision:
+
+    Returns:
+
+    """
+    if num==0:
+        return "0."+"0"*(precision-1)
+
+    if num<0:
+        neg = True
+        num*=-1
+    else:
+        neg = False
+
+    # 123456 -> 1.23 × 10^5
+    if num >= 10**scientific_notation_limit:
+        expo = int(math.log(num,10))
+        return ("-" if neg else "")+("{:."+str(precision-1)+"e}").format(num).replace("e+0",' × 10^').replace("e+",' × 10^')
+
+    # return ("{:."+str(precision-1)+"f}").format(num/(10**expo)) + " × 10^" + str(expo)
+
+    # 155 -> 155
+    # 1234 -> 1234
+    # 12345 -> 12345
+    if num >= 10**(precision-1):
+        return ("-" if neg else "")+str(int(num))
+
+    # 0.0001 -> 0.000100
+    # 0.1 -> 0.100
+    # 1 -> 1.00
+    # 15 -> 15.0
+    if num >= 10**(-scientific_notation_limit+1):
+
+        floating_rep = "{:.20f}".format(num)
+        cutoff = 0
+        for count,i in enumerate(floating_rep):
+            if i not in ["0",'.']:
+                cutoff = count
+                break
+        if "." in floating_rep[:cutoff]:
+            cutoff -= 1
+        return ("-" if neg else "")+floating_rep[:cutoff+precision+1]
+
+    return ("-" if neg else "")+("{:."+str(precision-1)+"e}").format(num).replace("e-0",' × 10^-').replace("e-",' × 10^-')
+
+
+# print(smart_print_float(0.0000123456 ))
+# print(smart_print_float(0.00013456  ))
+# print(smart_print_float(0.13456     ))
+# print(smart_print_float(1.1234       ))
+# print(smart_print_float(15.1234      ))
+# print(smart_print_float(155.1234     ))
+# print(smart_print_float(1234.1234    ))
+# print(smart_print_float(12345.1234   ))
+# print(smart_print_float(123456.1234  ))
+#print(smart_format_float(14582622310.275015))
+
+def smart_print_time(time_sec):
+    sec = str(int(time_sec % 60))
+    min = str(int((time_sec / 60) % 60))
+    hour = str(int((time_sec / 3600) % 24))
+    day = str(int(time_sec / 86400))
+
+    if time_sec<=60:
+        return smart_format_float(time_sec)+' s'
+    if time_sec < 60 * 60:
+        return min + ' m ' + sec + " s"
+    if time_sec < 86400:
+        return hour + ' h ' + min + ' m'
+    return day + " d " + hour + ' h'
+
+# print(smart_print_time(0.01234))
+# print(smart_print_time(1.234))
+# print(smart_print_time(10.234))
+# print(smart_print_time(100.234))
+# print(smart_print_time(1023.234))
+# print(smart_print_time(10162.234))
+# print(smart_print_time(163120.234))
+# print(smart_print_time(1631206.234))
+
 
 def file_is_descendant(file, parent):
     from pathlib import Path
@@ -119,6 +214,15 @@ def list_and(input_list):
     all(input_list)
 
 
+def is_in_folder(subfolder_or_file, parent_folder):
+    import pathlib
+    if not isinstance(subfolder_or_file, pathlib.WindowsPath):
+        subfolder_or_file = pathlib.Path(subfolder_or_file)
+    if not isinstance(parent_folder, pathlib.WindowsPath):
+        parent_folder = pathlib.Path(parent_folder)
+    return parent_folder in subfolder_or_file.parents
+
+
 def get_ipv6_public_addresses_on_windows():
     """
     :return: a list of ipv6 addresses
@@ -129,23 +233,15 @@ def get_ipv6_public_addresses_on_windows():
     ret = []
     import subprocess
     a = subprocess.check_output('ipconfig').decode('gbk').lower()
+
     for i in a.splitlines():
-        if 'ipv6' in i.lower() and "temporary" not in i.lower() and "临时" not in i.lower() and "本地" not in i.lower() and "local" not in i.lower():
+        if 'ipv6' in i.lower() and "本地" not in i.lower() and "local" not in i.lower():
             re_ret = re.findall(ipv6_address_regexp, i)
             if re_ret:
                 address = re_ret[0][0]
                 if not address.startswith('fe'):
                     ret.append(address)
     return ret
-
-
-def is_in_folder(subfolder_or_file, parent_folder):
-    import pathlib
-    if not isinstance(subfolder_or_file, pathlib.WindowsPath):
-        subfolder_or_file = pathlib.Path(subfolder_or_file)
-    if not isinstance(parent_folder, pathlib.WindowsPath):
-        parent_folder = pathlib.Path(parent_folder)
-    return parent_folder in subfolder_or_file.parents
 
 
 def get_ipv6_public_addresses_on_linux():
@@ -277,7 +373,7 @@ def secure_print(*object_to_print):
     try:
         print(*object_to_print)
     except Exception as e:
-        print("Print function error. Print of information omitted:",e)
+        print("Print function error. Print of information omitted:", e)
 
 
 def get_print_str(*object_to_print, sep=" "):
@@ -321,11 +417,6 @@ def read_last_n_char_fast(file, char, n):
         m.seek(current_cut)
         return m.read().decode()
 
-
-#
-#
-# file = r"D:\Gaussian\LXQ_Rh_Carbene\Confsearch\190\temp\190_solvated__confsearch_P1__cpptraj__nosol_nobox_04_17__last__xtbopt_traj__Pieced___135.xtbopt_traj.xyz"
-# print(read_last_n_char_fast(file,"\n",100))
 
 def split_list_by_item(input_list: list, separator, lower_case_match=False, include_separator=False, include_empty=False):
     return split_list(input_list, separator, lower_case_match, include_separator, include_empty)
@@ -680,7 +771,7 @@ def is_float(input_str):
     try:
         float(input_str)
         return True
-    except ValueError:
+    except Exception:
         return False
 
 
@@ -688,7 +779,7 @@ def int_able(input_str):
     try:
         int(input_str)
         return True
-    except ValueError:
+    except Exception:
         return False
 
 
@@ -917,3 +1008,32 @@ def mytimeout(timeout):
         return wrapper
 
     return deco
+
+
+def open_config_file():
+
+    config_file = os.path.join(filename_class(sys.argv[0]).path, 'Config.ini')
+
+    config_file_failure = False
+    if not os.path.isfile(config_file):
+        config_file_failure = True
+    else:
+        with open(config_file) as config_File:
+            try:
+                config = eval(config_File.read())
+            except Exception:
+                config_file_failure = True
+
+    if config_file_failure:
+        with open(config_file, 'w') as config_File:
+            config_File.write('{}')
+
+    with open(config_file) as config_File:
+        config = eval(config_File.read())
+
+    return config
+
+def save_config(config):
+    config_file = os.path.join(filename_class(sys.argv[0]).path, 'Config.ini')
+    with open(config_file, 'w') as config_File:
+        config_File.write(repr(config))
