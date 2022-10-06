@@ -3,7 +3,7 @@
 
 A tool to create pixel-accurate energy diagrams as ChemDraw object. 
 
-A [Chinese version](http://bbs.keinsci.com/thread-9256-1-1.html) of this article is available.
+[中文版使用说明](http://bbs.keinsci.com/thread-9256-1-1.html)
 
 ## Execution
 
