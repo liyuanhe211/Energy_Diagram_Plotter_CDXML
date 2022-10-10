@@ -467,6 +467,23 @@ def split_list(input_list: list, separator, lower_case_match=False, include_sepa
     return ret
 
 
+def split_list_by_length(input_list, chunk_length, discard_tail=False):
+    """
+    [0,1,2,3,4,5,6] split by 2 -->
+    if discard_tail: [[0,1],[2,3],[4,5],[6]]
+    else: [[0,1],[2,3],[4,5]]
+
+    :param input_list:
+    :param chunk_length:
+    :param discard_tail:
+    :return:
+    """
+    ret = [input_list[i:i + chunk_length] for i in range(0, len(input_list), chunk_length)]
+    if discard_tail and len(input_list)%chunk_length!=0:
+        return ret[:-1]
+    return ret
+
+
 def get_appropriate_ticks(ranges, num_tick_limit=(4, 6), accept_cloest_out_of_range=True):
     """
     a function to get the desired ticks, e.g. for 1.2342 - 1.58493, with a tick_limit of (4,8),

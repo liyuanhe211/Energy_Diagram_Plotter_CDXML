@@ -44,40 +44,25 @@ temp_folder = os.path.join(filename_class(sys.argv[0]).path, 'TEMP')
 if not os.path.isdir(temp_folder):
     os.mkdir(temp_folder)
 
-# possible_ChemDraw_program_locations =\
-# [r"C:\Program Files (x86)\PerkinElmerInformatics\ChemOffice2017\ChemDraw\ChemDraw.exe",
-# r"C:\Program Files (x86)\PerkinElmerInformatics\ChemOffice2016\ChemDraw\ChemDraw.exe",
-# r"C:\Program Files (x86)\CambridgeSoft\ChemOffice2015\ChemDraw\ChemDraw.exe",
-# r"C:\Program Files (x86)\CambridgeSoft\ChemOffice2014\ChemDraw\ChemDraw.exe",
-# r"C:\Program Files (x86)\CambridgeSoft\ChemOffice2013\ChemDraw\ChemDraw.exe"]
 
+if not Qt.QApplication.instance():
+    Application = Qt.QApplication(sys.argv)
+
+    if platform.system() == 'Windows':
+        import ctypes
+        set_Windows_scaling_factor_env_var()
+
+        del Application
+        Application = Qt.QApplication(sys.argv)
+
+        APPID = 'LYH.DrawEnergyDiagram.3.4'
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APPID)
+        Application.setWindowIcon(Qt.QIcon('UI/Draw_Energy_Diagram_Icon.png'))
+        print('If there is a warning above starts with "libpng", ignore that.')
 
 if __name__ == '__main__':
     pyqt_ui_compile('Draw_Energy_Diagram_UI_XML.py')
     from UI.Draw_Energy_Diagram_UI_XML import Ui_Draw_Energy_Diagram_Form
-
-    if os.name == 'nt':
-        APPID = 'LYH.DrawEnergyDiagram.3.4'
-        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APPID)
-
-    Application = Qt.QApplication(sys.argv)
-    Application.setWindowIcon(Qt.QIcon('UI/Draw_Energy_Diagram_Icon.png'))
-
-    # Sometimes, the scaling factor of PyQt is different from the Windows system scaling factor, reason unknown
-    # For example, on a 4K screen sets to 250% scaling on Windows, PyQt reads a default 300% scaling,
-    # causing everything to be too large
-    if platform.system() == 'Windows':
-        import ctypes
-        Windows_system_scaling_ratio = ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
-        PyQt_scaling_ratio = QApplication.primaryScreen().devicePixelRatio()
-        ratio_of_ratio = Windows_system_scaling_ratio/PyQt_scaling_ratio
-        if ratio_of_ratio>1.05 or ratio_of_ratio<0.95:
-            use_ratio = "{:.2f}".format(ratio_of_ratio)
-            print(f"Windows 10 High-DPI debug: Using GUI high-DPI ratio: {use_ratio}={Windows_system_scaling_ratio}/{PyQt_scaling_ratio}")
-            os.environ["QT_SCALE_FACTOR"] = use_ratio
-            del Application
-            Application = Qt.QApplication(sys.argv)
-
 
 # doc header
 default_document = '''<?xml version="1.0" encoding="UTF-8" ?>

@@ -37,6 +37,43 @@ sys.path.append(Python_Lib_path)
 from My_Lib_Stock import *
 
 
+def set_Windows_scaling_factor_env_var():
+
+    # Sometimes, the scaling factor of PyQt is different from the Windows system scaling factor, reason unknown
+    # For example, on a 4K screen sets to 250% scaling on Windows, PyQt reads a default 300% scaling,
+    # causing everything to be too large, this function is to determine the ratio of the real DPI and the PyQt DPI
+
+    import platform
+    if platform.system() == 'Windows':
+        import ctypes
+
+        try:
+            import win32api
+            MDT_EFFECTIVE_DPI = 0
+            monitor = win32api.EnumDisplayMonitors()[0]
+            dpiX,dpiY = ctypes.c_uint(),ctypes.c_uint()
+            ctypes.windll.shcore.GetDpiForMonitor(monitor[0].handle,MDT_EFFECTIVE_DPI,ctypes.byref(dpiX),ctypes.byref(dpiY))
+            DPI_ratio_for_monitor = (dpiX.value+dpiY.value)/2/96
+        except Exception:
+            DPI_ratio_for_monitor = 0
+
+        DPI_ratio_for_device = ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
+        PyQt_scaling_ratio = QApplication.primaryScreen().devicePixelRatio()
+        print(f"Windows 10 High-DPI debug:",end=' ')
+        if DPI_ratio_for_monitor:
+            print("Using monitor DPI.")
+            ratio_of_ratio = DPI_ratio_for_monitor / PyQt_scaling_ratio
+        else:
+            print("Using device DPI.")
+            ratio_of_ratio = DPI_ratio_for_device / PyQt_scaling_ratio
+
+        if ratio_of_ratio>1.05 or ratio_of_ratio<0.95:
+            use_ratio = "{:.2f}".format(ratio_of_ratio)
+            print(f"{DPI_ratio_for_monitor=}, {DPI_ratio_for_device=}, {PyQt_scaling_ratio=}")
+            print(f"Using GUI high-DPI ratio: {use_ratio}")
+            print("----------------------------------------------------------------------------")
+            os.environ["QT_SCALE_FACTOR"] = use_ratio
+
 def get_open_directories():
     if not Qt.QApplication.instance():
         Qt.QApplication(sys.argv)
