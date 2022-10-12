@@ -60,19 +60,7 @@ if not Qt.QApplication.instance():
         Application.setWindowIcon(Qt.QIcon('UI/Draw_Energy_Diagram_Icon.png'))
         print('If there is a warning above starts with "libpng", ignore that.')
 
-
-matplotlib_DPI_setting = 60
-if platform.system() == 'Windows':
-    matplotlib_DPI_setting = 60/Windows_DPI_ratio
-if os.path.isfile("__matplotlib_DPI_Manual_Setting.txt"):
-    matplotlib_DPI_manual_setting = open("__matplotlib_DPI_Manual_Setting.txt").read()
-    if is_int(matplotlib_DPI_manual_setting):
-        matplotlib_DPI_setting = matplotlib_DPI_manual_setting
-matplotlib_DPI_setting = int(matplotlib_DPI_setting)
-
-
-
-print(f"\nMatplotlib DPI: {matplotlib_DPI_setting}. \nSet an appropriate integer in __matplotlib_DPI_Manual_Setting.txt if the preview size doesn't match the output.\n")
+matplotlib_DPI_setting = get_matplotlib_DPI_setting(Windows_DPI_ratio)
 
 if __name__ == '__main__':
     pyqt_ui_compile('Draw_Energy_Diagram_UI_XML.py')
