@@ -60,6 +60,7 @@ def set_Windows_scaling_factor_env_var():
         DPI_ratio_for_device = ctypes.windll.shcore.GetScaleFactorForDevice(0) / 100
         PyQt_scaling_ratio = QApplication.primaryScreen().devicePixelRatio()
         print(f"Windows 10 High-DPI debug:",end=' ')
+        Windows_DPI_ratio = DPI_ratio_for_monitor if DPI_ratio_for_monitor else DPI_ratio_for_device
         if DPI_ratio_for_monitor:
             print("Using monitor DPI.")
             ratio_of_ratio = DPI_ratio_for_monitor / PyQt_scaling_ratio
@@ -73,6 +74,11 @@ def set_Windows_scaling_factor_env_var():
             print(f"Using GUI high-DPI ratio: {use_ratio}")
             print("----------------------------------------------------------------------------")
             os.environ["QT_SCALE_FACTOR"] = use_ratio
+        else:
+            print("Ratio of ratio near 1. Not scaling.")
+
+        return Windows_DPI_ratio,PyQt_scaling_ratio
+
 
 def get_open_directories():
     if not Qt.QApplication.instance():

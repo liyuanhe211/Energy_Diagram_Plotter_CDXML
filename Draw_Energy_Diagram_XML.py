@@ -50,7 +50,7 @@ if not Qt.QApplication.instance():
 
     if platform.system() == 'Windows':
         import ctypes
-        set_Windows_scaling_factor_env_var()
+        Windows_DPI_ratio, PyQt_scaling_ratio = set_Windows_scaling_factor_env_var()
 
         del Application
         Application = Qt.QApplication(sys.argv)
@@ -59,6 +59,20 @@ if not Qt.QApplication.instance():
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APPID)
         Application.setWindowIcon(Qt.QIcon('UI/Draw_Energy_Diagram_Icon.png'))
         print('If there is a warning above starts with "libpng", ignore that.')
+
+
+matplotlib_DPI_setting = 60
+if platform.system() == 'Windows':
+    matplotlib_DPI_setting = 60/Windows_DPI_ratio
+if os.path.isfile("__matplotlib_DPI_Manual_Setting.txt"):
+    matplotlib_DPI_manual_setting = open("__matplotlib_DPI_Manual_Setting.txt").read()
+    if is_int(matplotlib_DPI_manual_setting):
+        matplotlib_DPI_setting = matplotlib_DPI_manual_setting
+matplotlib_DPI_setting = int(matplotlib_DPI_setting)
+
+
+
+print(f"\nMatplotlib DPI: {matplotlib_DPI_setting}. \nSet an appropriate integer in __matplotlib_DPI_Manual_Setting.txt if the preview size doesn't match the output.\n")
 
 if __name__ == '__main__':
     pyqt_ui_compile('Draw_Energy_Diagram_UI_XML.py')
@@ -558,7 +572,7 @@ class MpWidget_Energy_Diagram(Qt.QWidget):
         super(MpWidget_Energy_Diagram, self).__init__()
         self.setParent(parent)
 
-        self.dpi = 20
+        self.dpi = matplotlib_DPI_setting
         self.fig = pyplot.figure(figsize=(2, 2), dpi=self.dpi, )
 
         self.diagram_subplot = pyplot.subplot(1, 1, 1)
