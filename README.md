@@ -7,7 +7,7 @@ A tool to create pixel-accurate energy diagrams as ChemDraw object.
 
 ## Execution
 
-For Windows, if you don't have Python environment, there is an executable version (packed by cx_freeze on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Run `Draw_Energy_Diagram_XML.exe` in the folder.
+For Windows, if you don't have Python environment, there is an executable version (packed by cx_freeze on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Run `__Draw_Energy_Diagram_XML.exe` in the folder.
 
 Alternatively, if you have [Anaconda](https://www.anaconda.com/) (or other Python environment with `PyQt`, `openpyxl` and `matplotlib`), call the main script by first `cd` / `dir` to the project folder and call:
 `python Draw_Energy_Diagram_XML.py`. 
