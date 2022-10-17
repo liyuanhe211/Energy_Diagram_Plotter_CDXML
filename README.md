@@ -89,4 +89,6 @@ If there is a crash, please run the program through the "Draw_Energy_Diagram_XML
 
 ## Citation
 
-Citing this program is optional. If you choose to cite this, you can use the Zenodo DOI: `10.5281/zenodo.7187658`. E.g. Li, Y.-H. _Energy Diagram Plotter CDXML_ 3.5.1 (DOI: 10.5281/zenodo.7187658), 2022.
+Citing this program is optional. If you choose to cite this, you can use the Zenodo DOI: `10.5281/zenodo.7187658`. 
+
+E.g. Li, Y.-H. _Energy Diagram Plotter CDXML_ 3.5.1 (DOI: 10.5281/zenodo.7187658), **2022**.
