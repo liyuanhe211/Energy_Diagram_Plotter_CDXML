@@ -83,6 +83,10 @@ Other options not mentioned should be self-explanatory.
 
 If you encounter some unexpected behavior, please try to run the [examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) first and see whether it's a problem of your input or my program.
 
-After that, you can give feedback by upload your Excel input file, a screenshot of the operation interface before crashing and the last display in the CMD window. If the output file is generated, but there is a problem with the output file, please upload the output file as well. 
+After that, you can give feedback by upload your Excel input file, a screenshot of the GUI before crashing and the last display in the CMD window. If the output file is generated, but there is a problem with the output file, please upload the output file as well. 
 
 If there is a crash, please run the program through the "Draw_Energy_Diagram_XML.bat" file in the directory. This will keep the error message before the program exits. 
+
+## Citation
+
+Citing this program is optional. If you choose to cite this, you can use the Zenodo DOI: `10.5281/zenodo.7187658`. E.g. Li, Y.-H. _Energy Diagram Plotter CDXML_ 3.5.1 (DOI: 10.5281/zenodo.7187658), 2022.
