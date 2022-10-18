@@ -17,7 +17,7 @@ Alternatively, if you have [Anaconda](https://www.anaconda.com/) (or other Pytho
 For Linux, the script is tested on CentOS 8 with stock `Anaconda 3 2022.5`.
 
 ## Background
-In the literatures, I see lots of people use the ChemDraw+mouse+eye method to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the qualitative order could break down, which is very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
+In the literatures, I see lots of people use the "_ChemDraw+mouse+eye method_" to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the qualitative order could break down, which is very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
 
