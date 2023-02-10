@@ -28,12 +28,13 @@ include_folders = ["UI", "Examples"]
 include_files = ["__matplotlib_DPI_Manual_Setting.txt"]
 delete_files = []
 
-generated_folder_name = os.path.join('dist', filename_class(main_py_file).name_stem)
-os.mkdir(os.path.join(generated_folder_name))
+generated_folder_name = filename_class(main_py_file).name_stem
+if not os.path.exists(generated_folder_name):    
+    os.mkdir(generated_folder_name)
 
 PyInstaller.__main__.run([
     main_py_file,
-    "-i", icon, '-n', os.path.join(generated_folder_name, generated_exe_name), '-y', '-F', '--clean'
+    '-i', icon, '-n', generated_exe_name, '-y', '-F', '-w', '-p', '.\\Python_Lib', '--clean'
 ])
 
 
@@ -60,6 +61,7 @@ def copy_folder(src, dst):
 for file in include_files:
     print(f"Copying {file} to {generated_folder_name}")
     shutil.copy(file, generated_folder_name)
+shutil.copy(os.path.join('dist', generated_exe_name), generated_folder_name)
 
 for folder in include_folders:
     copy_folder(folder, generated_folder_name)

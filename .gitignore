@@ -19,3 +19,5 @@ Examples/~$4 TabColors.xlsx
 /Cx_Freeze_Energy_Diagram_Plotter.py
 /build/
 /dist/
+/Draw_Energy_Diagram_XML/*
+*.spec
