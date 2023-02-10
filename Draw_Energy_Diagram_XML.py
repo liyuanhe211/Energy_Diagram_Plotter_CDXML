@@ -23,15 +23,11 @@ import sys
 import os
 import math
 import copy
-import shutil
 import re
 import time
-import subprocess
 from openpyxl import load_workbook
 import random
-from datetime import datetime
 import ctypes
-import numpy as np
 
 number_font_size = 17
 tag_font_size = 17

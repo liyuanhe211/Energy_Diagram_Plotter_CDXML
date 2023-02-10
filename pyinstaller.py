@@ -1,16 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'LiYuanhe'
 
-import sys
 import os
-import math
-import copy
 import shutil
-import re
-import time
-import random
-import subprocess
-from collections import OrderedDict
 
 # import pathlib
 # parent_path = str(pathlib.Path(__file__).parent.resolve())
