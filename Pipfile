@@ -5,8 +5,8 @@ name = "pypi"
 
 [packages]
 pyinstaller = "*"
-matplotlib = "*"
 pyqt5 = "*"
+matplotlib = "==3.4.3"
 openpyxl = "*"
 
 [dev-packages]
