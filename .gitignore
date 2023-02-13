@@ -1,24 +1,12 @@
 # Created by .ignore support plugin (hsz.mobi)
-/Energy Diagram Plotter CDXML 3.4 (Packed Executable with Python Environment)/
-/作图.pptx
 /OldVersions/
-/Packed 3.3/
-/Patch_For_Win10/
-/5 Example From Article.cdxml
 /Draw_Energy_Diagram_XML_SupportMECP.py
-/Energy Diagram Plotter CDXML 3.4 (Packed Executable with Python Environment).7z
 .idea/
 __pycache__/
 *_Create_Symlink.bat
 /TEMP/
 /UI/Draw_Energy_Diagram_Icon.psd
-2022-03-29_21-17-12.png
-/Config.ini
 Config.ini
-Examples/~$4 TabColors.xlsx
-/Cx_Freeze_Energy_Diagram_Plotter.py
-/build/
-/dist/
 /Examples/Github说明作图.pptx
 /Pyinstaller_Packing/
 /.venv/
