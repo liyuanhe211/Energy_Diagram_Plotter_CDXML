@@ -1,24 +1,26 @@
 # ChemDraw Energy Diagram Plotter
 [![DOI](https://zenodo.org/badge/475440667.svg)](https://zenodo.org/badge/latestdoi/475440667)
 
-A tool to create pixel-accurate energy diagrams as ChemDraw object. 
+This is a tool that can create pixel-accurate energy diagrams as ChemDraw objects. After opening the generated ChemDraw file, you can add chemical structures, adjust tags, and do whatever else that ChemDraw can do.
 
 [中文版使用说明](http://bbs.keinsci.com/thread-9256-1-1.html)
 
-## Execution
+## How to Use
 
-For Windows, if you don't have Python environment, there is an executable version (packed by cx_freeze on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Run `__Draw_Energy_Diagram_XML.exe` in the folder. 
+If you're using Windows and you don't have a Python environment, you can find an executable version (packed by pyinstaller on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Once you've downloaded it, go to the folder and run `Energy Diagram Plotter CDXML X.X.X.exe`.
 
-Git-Hub下载被墙的话用[百度网盘链接](https://pan.baidu.com/s/1qgMc5EhdR3I2Xt8aYSb_bw?pwd=9zks).
+Alternatively, you can build the virtual environment with pipenv by using the provided pipfile. And using the python environment to run Draw_Energy_Diagram_XML.py.
 
-Alternatively, if you have [Anaconda](https://www.anaconda.com/) (or other Python environment with `PyQt`, `openpyxl` and `matplotlib`), call the main script by first `cd` / `dir` to the project folder and call:
-`python Draw_Energy_Diagram_XML.py`. 
-
-(On windows, you can also just double click `Draw_Energy_Diagram_XML.bat`)
-
-For Linux, the script is tested on CentOS 8 with stock `Anaconda 3 2022.5`.
+If you're using Linux, the script has been tested on CentOS 8 with stock Anaconda 3 2022.5.
 
 ## Background
+
+<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
+There are other tools available that can generate energy diagrams, such as DataGraph, mechaSVG, and Origin, but they usually generate an un-editable figure with very limited customization options. Additionally, you cannot drag the numbers and tags, which can be troublesome for complex energy diagrams.
+
+
+
+
 In the literatures, I see lots of people use the "_ChemDraw+mouse+eye method_" to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the qualitative order could break down, which is very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
