@@ -13,41 +13,30 @@ Alternatively, you can build the virtual environment with pipenv by using the pr
 
 If you're using Linux, the script has been tested on CentOS 8 with stock Anaconda 3 2022.5.
 
-## Background
+## Introduction
+To draw energy diagrams in the literature, lots of people do that by hand-drag the lines in ChemDraw and eyeball the position. But this can be extremely inaccurate and even lead to misleading results. As an example, the left figure in the image below was clearly drawn manually in ChemDraw, while the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess and even worse than just giving numbers as a table.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
+
 There are other tools available that can generate energy diagrams, such as DataGraph, mechaSVG, and Origin, but they usually generate an un-editable figure with very limited customization options. Additionally, you cannot drag the numbers and tags, which can be troublesome for complex energy diagrams.
 
-
-
-
-In the literatures, I see lots of people use the "_ChemDraw+mouse+eye method_" to draw energy diagrams. It is tedious and sometimes extremely inaccurate. Even the qualitative order could break down, which is very misleading. As an example, the left figure below is from a literature which is clearly drawn manually in ChemDraw, and the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess. Such diagrams are even worse than only giving numbers as a table.
-
-<p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
-
-Lots of tools can generate energy diagrams, like DataGraph, [mechaSVG](https://github.com/ricalmang/mechaSVG) or [origin](http://sobereva.com/320). They are OK for basic graphs, but they usually generate an un-editable figure with very limited customization options. Also, one cannot drag the numbers and tags, which is troublesome for complex energy diagrams.
-
-## This program
-Based on simple Excel input, the program here can automatically generate ChemDraw files with line charts. You can add chemical structure, adjust the tags, or whatever else that ChemDraw can do:
+This program allows you to genreate pixel-accurate energy diagrams as ChemDraw objects, Below is the input file format, and there are also [several several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) available in this repository:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png" width="70%" height="70%" align="center"></img></p>
 
-Below is the input file format. By comparing left to right, it should be easy to understand. I also give [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) in this repo:
-
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160621422-05274905-5b1e-43b7-8cde-1ae80577d795.png" width="100%" height="100%" align="center"></img></p>
 
-For color definition, you can use any color for each state with its RGB value `#XXXXXX`. 
-Some colors have shortcuts, The "tabcolors" can be called by `B`,`O`,`G`,`R`,`P`,`BR`,`PI`,`GR`,`OL`,`C` (all uppercase):
+You can use any color for each state with its RGB value #XXXXXX. Some colors have shortcuts, and the "tabcolors" can be called by **B**, **O**, **G**, **R**, **P**, **BR**, **PI**, **GR**, **OL**, **C** (all uppercase):
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/175197188-bee314cd-73fb-4918-81ac-9fa89b47cc9f.png" width="30%" height="30%" align="center"></img></p>
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/185797574-d620194d-6558-423e-ba4f-a1d7c04b63b2.png" width="60%" height="60%" align="center"></img></p>
 
-The "pure colors" below can also be used with `y`,`m`,`c`,`r`,`g`,`b` (top to bottom):
+There are also some predefined "pure colors" that can be used with the shorthand codes **y**, **m**, **c**, **r**, **g**, and **b** (top to bottom).
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160639914-d11c34dc-5c1d-486e-b6b4-f8216883adba.png" width="70%" height="70%" align="center"></img></p>
 
-The options in the GUI are explained in the following figures (You can also hover on the options to see a tooltip):
+The tool also provides several options to customize the energy diagram. The options in the GUI are explained in the following figures (You can also hover on the options to see a tooltip):
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160637389-257753fc-e0bc-4822-9d44-c86e0c8207a0.png" width="100%" height="100%" align="center"></img></p>
 
@@ -65,31 +54,29 @@ Here are some visuals for each option. Note that some of the following options a
 
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160630414-0c20936a-b9e7-41be-ad61-c7a1b3036394.png" width="70%" height="70%" align="center"></img></kbd></p>
 
+The last option, "Use Temporary File," allows you to choose whether the program creates a file in its own Temp folder (which you need to Save As to another place after viewing) or directly generates a CDX file in the directory where Excel is located.
 
-The last "Use temp file" option is to decide whether the program creates a file in its own Temp folder (the user needs to save it after viewing it), or directly generates a cdx file in the directory where Excel is located.
-
-Other options not mentioned should be self-explanatory.
+Other options that's not mentioned above should be self-explanatory.
 
 ## Known issues
+ * The program stores its temporary files in the program directory, so it requires read and write permissions to this directory. It's not recommended to install the program in a path with permission restrictions, such as Program Files. If you do so, please grant the program administrator permissions.
 
- * The temporary files of the program are stored in the program directory, so the program must have read and write permissions to this directory. It is not recommended to put the program in a path with permission restrictions such as Program Files, otherwise please give it administrator permissions.
+ * The preview interface is not entirely accurate. If you experience any unexpected behavior, export the ChemDraw file first to check if it's normal.
 
-* The preview interface is not completely correct. If there is unexpected behavior, export the ChemDraw file first to see if it is normal.
+ * Changes to the format (title, label, ticks, etc.) through the Matplotlib toolbar will not be carried over to the exported CDXML file (except for adjustments to the plot region). Please make those adjustments in ChemDraw.
 
-* Aside from plot region adjustment, none of the format changes (title, label, ticks, etc.) through the MatPlotLib toolbar will be carried to the exported cdxml file.
-
-* The "Avoid text overlap" function is currently a greedy algorithm, and may produce unreasonable results in particularly crowded situations. Just fine-tune it yourself (tip, hold down Shift and drag the text in ChemDraw to ensure it moves horizontal or vertical).
+ * The "Avoid Text Overlap" function uses a greedy algorithm and may produce unreasonable results in particularly crowded situations. You can fine-tune it yourself by holding down Shift and dragging the text in ChemDraw to ensure it moves horizontally or vertically.
 
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160629770-3f10e450-e240-4ac5-96f0-0e80434bd413.png" width="70%" height="70%" align="center"></img></kbd></p>
 
 
 ## For bug report
 
-If you encounter some unexpected behavior, please try to run the [examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) first and see whether it's a problem of your input or my program.
+If you encounter any unexpected behavior, please try running the [examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) first to determine whether the problem is with your input or the program.
 
-After that, you can give feedback by upload your Excel input file, a screenshot of the GUI before crashing and the last display in the CMD window. If the output file is generated, but there is a problem with the output file, please upload the output file as well. 
+If the issue is with the program, please provide feedback by uploading your Excel input file, a screenshot of the GUI before the crash, and the last display in the CMD window. If the output file is generated but there is a problem with it, please upload the output file as well.
 
-If there is a crash, please run the program through the "Draw_Energy_Diagram_XML.bat" file in the directory. This will keep the error message before the program exits. 
+If the program crashes, please run it using the "Draw_Energy_Diagram_XML.bat" file in the directory to keep the error message before the program exits.
 
 ## Citation
 
