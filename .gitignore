@@ -11,3 +11,4 @@ Config.ini
 /Pyinstaller_Packing/
 /.venv/
 *.spec
+/Pyinstaller_Extract_Test/

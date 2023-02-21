@@ -9,6 +9,9 @@ import shutil
 import re
 import time
 import random
+from collections import OrderedDict
+import traceback
+from typing import Optional, Union, Sequence
 
 # ALL Numbers in SI if not mentioned
 R = 8.3144648
@@ -25,6 +28,7 @@ Hartree__J = 4.359744575E-18
 Hartree__cm_1 = 219474.6363
 
 kcal__kJ = 4.184
+eV__kJ = 96.48533212
 atm__Pa = 101325
 
 bohr__m = 5.2917721092E-11
@@ -33,18 +37,45 @@ amu__kg = 1.660539040E-27
 
 month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-def smart_format_float(num, precision=3, scientific_notation_limit = 5):
+
+def smart_format_float(num, precision=3, scientific_notation_limit=5):
     """
     对precision = 3, scientific_notation_limit = 5
-    0.00001 -> 1.00 × 10^-5
-    0.0001 -> 0.000100
-    0.1 -> 0.100
-    1 -> 1.00
-    15 -> 15.0
-    155 -> 155
-    1234 -> 1234
-    12345 -> 12345
-    123456 -> 1.23 × 10^5
+        2.77E13 --> 2.77 × 10^13
+        2.778E13 --> 2.78 × 10^13
+        2.771E13 --> 2.77 × 10^13
+        2.777E-13 --> 2.78 × 10^-13
+        0.0000156789 --> 1.57 × 10^-5
+        0.00016789 --> 0.000168
+        0.13456 --> 0.135
+        1.6789 --> 1.68
+        15.6789 --> 15.7
+        155.6789 --> 156
+        1234.6789 --> 1235
+        12345.6789 --> 12346
+        123456.6789 --> 1.23 × 10^5
+        14582622310.678967 --> 1.46 × 10^10
+        0.000012345 --> 1.23 × 10^-5
+        0.00012345 --> 0.000123
+        0.12345 --> 0.123
+        1.2345 --> 1.23
+        15.2345 --> 15.2
+        155.2345 --> 155
+        1234.2345 --> 1234
+        12345.2345 --> 12345
+        123456.2345 --> 1.23 × 10^5
+        14582622310.678967 --> 1.46 × 10^10
+        2.7E13 --> 2.70 × 10^13
+        0.000015 --> 1.50 × 10^-5
+        0.00016 --> 0.000160
+        0.13 --> 0.130
+        1.6 --> 1.60
+        15 --> 15.0
+        155 --> 155
+        1234 --> 1234
+        12345 --> 12345
+        123456 --> 1.23 × 10^5
+        14582622310 --> 1.46 × 10^10
 
     Args:
         num:
@@ -53,57 +84,82 @@ def smart_format_float(num, precision=3, scientific_notation_limit = 5):
     Returns:
 
     """
-    if num==0:
-        return "0."+"0"*(precision-1)
+    if num == 0:
+        return "0." + "0" * (precision - 1)
 
-    if num<0:
+    if num < 0:
         neg = True
-        num*=-1
+        num *= -1
     else:
         neg = False
 
     # 123456 -> 1.23 × 10^5
-    if num >= 10**scientific_notation_limit:
-        expo = int(math.log(num,10))
-        return ("-" if neg else "")+("{:."+str(precision-1)+"e}").format(num).replace("e+0",' × 10^').replace("e+",' × 10^')
+    if num >= 10 ** scientific_notation_limit:
+        expo = int(math.log(num, 10))
+        return ("-" if neg else "") + ("{:." + str(precision - 1) + "e}").format(num).replace("e+0", ' × 10^').replace("e+", ' × 10^')
 
     # return ("{:."+str(precision-1)+"f}").format(num/(10**expo)) + " × 10^" + str(expo)
 
     # 155 -> 155
     # 1234 -> 1234
     # 12345 -> 12345
-    if num >= 10**(precision-1):
-        return ("-" if neg else "")+str(int(num))
+    if num >= 10 ** (precision - 1):
+        return ("-" if neg else "") + str(round(num))
 
     # 0.0001 -> 0.000100
     # 0.1 -> 0.100
     # 1 -> 1.00
     # 15 -> 15.0
-    if num >= 10**(-scientific_notation_limit+1):
+    if num >= 10 ** (-scientific_notation_limit + 1):
+        exponent = int(math.log10(abs(num)))
+        digits_left = precision - 1 - exponent
+        if abs(num) < 1:
+            digits_left += 1
+        rounded = round(num, digits_left)
+        return '{:.{}f}'.format(rounded, max(0, digits_left))
 
-        floating_rep = "{:.20f}".format(num)
-        cutoff = 0
-        for count,i in enumerate(floating_rep):
-            if i not in ["0",'.']:
-                cutoff = count
-                break
-        if "." in floating_rep[:cutoff]:
-            cutoff -= 1
-        return ("-" if neg else "")+floating_rep[:cutoff+precision+1]
-
-    return ("-" if neg else "")+("{:."+str(precision-1)+"e}").format(num).replace("e-0",' × 10^-').replace("e-",' × 10^-')
+    return ("-" if neg else "") + ("{:." + str(precision - 1) + "e}").format(num).replace("e-0", ' × 10^-').replace("e-", ' × 10^-')
 
 
-# print(smart_print_float(0.0000123456 ))
-# print(smart_print_float(0.00013456  ))
-# print(smart_print_float(0.13456     ))
-# print(smart_print_float(1.1234       ))
-# print(smart_print_float(15.1234      ))
-# print(smart_print_float(155.1234     ))
-# print(smart_print_float(1234.1234    ))
-# print(smart_print_float(12345.1234   ))
-# print(smart_print_float(123456.1234  ))
-#print(smart_format_float(14582622310.275015))
+# smart_format_float_tests = [(2.77E13, "2.77 × 10^13"),
+#                             (2.778E13, "2.78 × 10^13"),
+#                             (2.771E13, "2.77 × 10^13"),
+#                             (2.777E-13, "2.78 × 10^-13"),
+#                             (0.0000156789, "1.57 × 10^-5"),
+#                             (0.00016789, "0.000168"),
+#                             (0.13456, "0.135"),
+#                             (1.6789, "1.68"),
+#                             (15.6789, "15.7"),
+#                             (155.6789, "156"),
+#                             (1234.6789, "1235"),
+#                             (12345.6789, "12346"),
+#                             (123456.6789, "1.23 × 10^5"),
+#                             (14582622310.678967, "1.46 × 10^10"),
+#                             (0.000012345, "1.23 × 10^-5"),
+#                             (0.00012345, "0.000123"),
+#                             (0.12345, "0.123"),
+#                             (1.2345, "1.23"),
+#                             (15.2345, "15.2"),
+#                             (155.2345, "155"),
+#                             (1234.2345, "1234"),
+#                             (12345.2345, "12345"),
+#                             (123456.2345, "1.23 × 10^5"),
+#                             (14582622310.678967, "1.46 × 10^10"),
+#                             (2.7E13, "2.70 × 10^13"),
+#                             (0.000015, "1.50 × 10^-5"),
+#                             (0.00016, "0.000160"),
+#                             (0.13, "0.130"),
+#                             (1.6, "1.60"),
+#                             (15, "15.0"),
+#                             (155, "155"),
+#                             (1234, "1234"),
+#                             (12345, "12345"),
+#                             (123456, "1.23 × 10^5"),
+#                             (14582622310, "1.46 × 10^10")]
+#
+# for i in smart_format_float_tests:
+#     assert smart_format_float(i[0])==i[1],f"{i[0]},{smart_format_float(i[0])},{i[1]}"
+
 
 def smart_print_time(time_sec):
     sec = str(int(time_sec % 60))
@@ -111,13 +167,14 @@ def smart_print_time(time_sec):
     hour = str(int((time_sec / 3600) % 24))
     day = str(int(time_sec / 86400))
 
-    if time_sec<=60:
-        return smart_format_float(time_sec)+' s'
+    if time_sec <= 60:
+        return smart_format_float(time_sec) + ' s'
     if time_sec < 60 * 60:
         return min + ' m ' + sec + " s"
     if time_sec < 86400:
         return hour + ' h ' + min + ' m'
     return day + " d " + hour + ' h'
+
 
 # print(smart_print_time(0.01234))
 # print(smart_print_time(1.234))
@@ -479,7 +536,7 @@ def split_list_by_length(input_list, chunk_length, discard_tail=False):
     :return:
     """
     ret = [input_list[i:i + chunk_length] for i in range(0, len(input_list), chunk_length)]
-    if discard_tail and len(input_list)%chunk_length!=0:
+    if discard_tail and len(input_list) % chunk_length != 0:
         return ret[:-1]
     return ret
 
@@ -1028,7 +1085,6 @@ def mytimeout(timeout):
 
 
 def open_config_file():
-
     config_file = os.path.join(filename_class(sys.argv[0]).path, 'Config.ini')
 
     config_file_failure = False
@@ -1049,6 +1105,7 @@ def open_config_file():
         config = eval(config_File.read())
 
     return config
+
 
 def save_config(config):
     config_file = os.path.join(filename_class(sys.argv[0]).path, 'Config.ini')
