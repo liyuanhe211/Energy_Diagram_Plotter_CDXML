@@ -67,6 +67,8 @@ Other options that's not mentioned above should be self-explanatory.
 
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160629770-3f10e450-e240-4ac5-96f0-0e80434bd413.png" width="70%" height="70%" align="center"></img></kbd></p>
 
+ * I wrote this quite a few years ago, so the codes are a little messy. A clean up is due.
+
 
 ## For bug report
 
