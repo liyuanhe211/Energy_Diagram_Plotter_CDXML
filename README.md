@@ -5,13 +5,17 @@ This is a tool that can create pixel-accurate energy diagrams as ChemDraw object
 
 [中文版使用说明](http://bbs.keinsci.com/thread-9256-1-1.html)
 
-## How to Use
+## Launch
 
-If you're using Windows and you don't have a Python environment, you can find an executable version (packed by pyinstaller on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Once you've downloaded it, go to the folder and run `Energy Diagram Plotter CDXML X.X.X.exe`.
+If you're using Windows 10/11 and you don't have a Python environment, you can find an executable version (packed by pyinstaller on Windows 10) in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/tag/3.4.1). Once you've downloaded it, go to the folder and run `Energy Diagram Plotter CDXML X.X.X.exe`.
 
-Alternatively, you can build the virtual environment with pipenv by using the provided pipfile. And using the python environment to run Draw_Energy_Diagram_XML.py.
-
-If you're using Linux, the script has been tested on CentOS 8 with stock Anaconda 3 2022.5.
+Alternatively, if you have a python environment, you can build a virtual environment with pipenv by using the provided pipfile:
+```
+pip install pipenv
+mkdir .venv
+pipenv sync
+pipenv run python Draw_Energy_Diagram_XML.py
+```
 
 ## Introduction
 To draw energy diagrams in the literature, lots of people do that by hand-drag the lines in ChemDraw and eyeball the position. But this can be extremely inaccurate and even lead to misleading results. As an example, the left figure in the image below was clearly drawn manually in ChemDraw, while the right is the to-scale version (ignore the unit change from kcal/mol to kJ/mol). The original diagram is a mess and even worse than just giving numbers as a table. There are other tools available that can generate energy diagrams, such as DataGraph, mechaSVG, and Origin, but they usually generate an un-editable figure with very limited customization options. Additionally, you cannot drag the numbers and tags, which can be troublesome for complex energy diagrams.
