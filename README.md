@@ -61,7 +61,7 @@ The last option, "Use Temporary File," allows you to choose whether the program 
 Other options that's not mentioned above should be self-explanatory.
 
 ## Known issues
- * The program stores its temporary files in the program directory, so it requires read and write permissions to this directory. It's not recommended to install the program in a path with permission restrictions, such as Program Files. If you do so, please grant the program administrator permissions.
+ * The program stores its temporary files in the program directory, so it requires read/write permissions to this directory. It's not recommended to install the program in a path with permission restrictions, such as Program Files. If you do so, please grant the program administrator permissions.
 
  * The preview interface is not entirely accurate. If you experience any unexpected behavior, export the ChemDraw file first to check if it's normal.
 
@@ -71,16 +71,16 @@ Other options that's not mentioned above should be self-explanatory.
 
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160629770-3f10e450-e240-4ac5-96f0-0e80434bd413.png" width="70%" height="70%" align="center"></img></kbd></p>
 
- * I wrote this quite a few years ago, so the codes are a little messy. A clean up is due.
+ * I wrote this quite a few years ago, so the codes are a little messy. A cleanup is due.
 
 
 ## For bug report
 
 If you encounter any unexpected behavior, please try running the [examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) first to determine whether the problem is with your input or the program.
 
-If the issue is with the program, please provide feedback by uploading your Excel input file, a screenshot of the GUI before the crash, and the last display in the CMD window. If the output file is generated but there is a problem with it, please upload the output file as well.
+If the issue is with the program, please provide feedback by uploading your Excel input file, a screenshot of the GUI before the crash, and the last display in the CMD window. If the output file is generated, but there is a problem with it, please upload the output file as well.
 
-If the program crashes, please run it using the "Draw_Energy_Diagram_XML.bat" file in the directory to keep the error message before the program exits.
+To keep the error message before the program exits, please run it using the "Draw_Energy_Diagram_XML.bat" file in the directory.
 
 ## Citation
 
