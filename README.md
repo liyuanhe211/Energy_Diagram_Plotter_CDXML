@@ -22,7 +22,7 @@ To draw energy diagrams in the literature, lots of people do that by hand-drag t
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160632947-6754c8b0-a5f2-45d3-9577-d1a10f9f4ea8.png" width="100%" height="100%" align="center"></img></p>
 
-The program here allows you to genreate pixel-accurate energy diagrams as ChemDraw objects, Below is the input file format, and there are also [several several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) available in this repository:
+The program here allows you to generate pixel-accurate energy diagrams as ChemDraw objects, Below is the input file format, and there are also [several other examples](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/tree/main/Examples) available in this repository:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/18537705/160620003-5657e605-e95c-495b-aeae-b43006e78b6b.png" width="70%" height="70%" align="center"></img></p>
 
