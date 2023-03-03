@@ -3,7 +3,7 @@
 
 This is a tool that can create pixel-accurate energy diagrams as ChemDraw objects. After opening the generated ChemDraw file, you can add chemical structures, adjust tags, and do whatever else that ChemDraw can do.
 
-[中文版使用说明](http://bbs.keinsci.com/thread-9256-1-1.html)
+[中文版使用说明（旧版）](http://bbs.keinsci.com/thread-9256-1-1.html)
 
 ## Launch
 
