@@ -46,17 +46,21 @@ The tool also provides several options to customize the energy diagram. The opti
 
 Here are some visuals for each option. Note that some of the following options are only reflected in the ChemDraw file, not in the preview view:
 
+`Decimals` and `State span`:
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631167-2ffa2ade-e520-4bd6-86f2-c637a86716f4.png" width="70%" height="70%" align="center"></img></kbd></p>
 
+`Allow overlapping states` and `Avoid text overlap`:
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631129-c5988851-7960-4817-abbc-8190882fb4b4.png" width="70%" height="70%" align="center"></img></kbd></p>
 
+`Num & Tag in one line`:
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160631058-3d0f9959-e18f-48c2-b42d-a3cd2005f035.png" width="70%" height="70%" align="center"></img></kbd></p>
 
+Properties for `Links`:
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160630699-5f7ff0a1-a0d6-4e36-b200-fd9bbcc42601.png" width="70%" height="70%" align="center"></img></kbd></p>
 
-<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/160630414-0c20936a-b9e7-41be-ad61-c7a1b3036394.png" width="70%" height="70%" align="center"></img></kbd></p>
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/18537705/228861223-1ffa8115-357c-4d70-b28a-11b5986fb1b6.png" width="70%" height="70%" align="center"></img></kbd></p>
 
-The last option, "Use Temporary File," allows you to choose whether the program creates a file in its own Temp folder (which you need to Save As to another place after viewing) or directly generates a CDX file in the directory where Excel is located.
+The option "Use Temporary File" allows you to choose whether the program creates a file in its own Temp folder (which you need to Save As to another place after viewing) or directly generates a CDX file in the directory where Excel is located.
 
 Other options that's not mentioned above should be self-explanatory.
 
