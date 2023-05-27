@@ -16,6 +16,11 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="font">
+   <font>
+    <family>Consolas</family>
+   </font>
+  </property>
   <property name="acceptDrops">
    <bool>true</bool>
   </property>
@@ -39,6 +44,7 @@
            </property>
            <property name="font">
             <font>
+             <family>Consolas</family>
              <pointsize>10</pointsize>
             </font>
            </property>
@@ -57,6 +63,7 @@
            </property>
            <property name="font">
             <font>
+             <family>Consolas</family>
              <pointsize>10</pointsize>
             </font>
            </property>
@@ -75,6 +82,7 @@
            </property>
            <property name="font">
             <font>
+             <family>Consolas</family>
              <pointsize>10</pointsize>
             </font>
            </property>
@@ -93,6 +101,7 @@
            </property>
            <property name="font">
             <font>
+             <family>Consolas</family>
              <pointsize>10</pointsize>
             </font>
            </property>
@@ -133,6 +142,7 @@
          </property>
          <property name="font">
           <font>
+           <family>Consolas</family>
            <pointsize>9</pointsize>
           </font>
          </property>
@@ -151,6 +161,7 @@
          </property>
          <property name="font">
           <font>
+           <family>Consolas</family>
            <pointsize>9</pointsize>
           </font>
          </property>
@@ -190,6 +201,7 @@
          </property>
          <property name="font">
           <font>
+           <family>Consolas</family>
            <pointsize>9</pointsize>
           </font>
          </property>
@@ -210,8 +222,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>322</width>
-            <height>544</height>
+            <width>373</width>
+            <height>541</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
@@ -231,6 +243,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -258,6 +271,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -282,6 +296,7 @@
             <widget class="QRadioButton" name="solid_line_radioButton">
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -309,6 +324,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -333,6 +349,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -360,6 +377,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -381,6 +399,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
                <bold>true</bold>
               </font>
@@ -409,6 +428,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -424,6 +444,7 @@
             <widget class="QRadioButton" name="use_lines_radioButton">
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -463,6 +484,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -502,6 +524,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -553,6 +576,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -574,6 +598,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -647,6 +672,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -665,6 +691,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -680,6 +707,7 @@
             <widget class="QRadioButton" name="use_bonds_radioButton">
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -695,6 +723,7 @@
             <widget class="QRadioButton" name="dash_line_radioButton">
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -728,6 +757,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -758,6 +788,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -779,6 +810,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -803,6 +835,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
                <bold>true</bold>
               </font>
@@ -831,6 +864,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -867,6 +901,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -930,6 +965,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -969,6 +1005,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -996,6 +1033,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -1023,6 +1061,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -1059,6 +1098,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -1092,6 +1132,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
                <bold>true</bold>
               </font>
@@ -1120,6 +1161,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -1144,6 +1186,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -1168,6 +1211,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
                <bold>true</bold>
               </font>
@@ -1190,6 +1234,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -1214,6 +1259,7 @@
              </property>
              <property name="font">
               <font>
+               <family>Consolas</family>
                <pointsize>9</pointsize>
               </font>
              </property>
@@ -1251,6 +1297,7 @@
          </property>
          <property name="font">
           <font>
+           <family>Consolas</family>
            <pointsize>10</pointsize>
           </font>
          </property>
@@ -1288,6 +1335,7 @@
        </property>
        <property name="font">
         <font>
+         <family>Consolas</family>
          <pointsize>10</pointsize>
         </font>
        </property>

@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 __author__ = 'LiYuanhe'
 
-# Refresh之后没有图了？
-
 # 自动防止重叠（改成非贪心）
 # Num tag 在同一行时Tag的加粗
 # 支持MECP画点
 # 支持纵轴切掉一部分
 
+self.diagram_subplot.clear()
 from Python_Lib.My_Lib_PyQt6 import *
 from openpyxl import load_workbook
 import ctypes
 
 import matplotlib
+
 matplotlib.use("QtAgg")
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as MpFigureCanvas
 from matplotlib.backends.backend_qtagg import NavigationToolbar2QT as MpNavToolBar
@@ -174,8 +174,6 @@ colors_translate = {'b': 8,
 def add_color(r, g=None, b=None):
     """
     
-    :param colors_list: 
-    :param color_translate: 
     :param r: in 0~1 float
     :param g: 
     :param b: 
@@ -614,7 +612,27 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
         self.xs_for_adjust_text = []
         self.ys_for_adjust_text = []
 
-        self.initiate()
+
+        self.diagram_subplot.clear()
+
+        self.diagram_subplot.tick_params(axis='x', labelbottom='off')
+        self.diagram_subplot.tick_params(axis='y',
+                                         labelsize='xx-large')
+
+        if os.path.isfile("Energy_Diagram_Y_Axis_Text.txt"):
+            with open('Energy_Diagram_Y_Axis_Text.txt') as text_file:
+                y_axis_text = text_file.readline()
+        else:
+            with open('Energy_Diagram_Y_Axis_Text.txt', 'w') as text_file:
+                y_axis_text = "Solvated Free Energy (kJ/mol)"
+                text_file.write(y_axis_text)
+
+        pyplot.ylabel(y_axis_text,
+                      fontsize='xx-large',
+                      weight='bold')
+        pyplot.xticks(np.arange(5), [])
+
+        pyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
 
     def diagram_Update(self, diagram_states, x_span, y_span, state_line_span, color='k', num_with_tag=False):
         """
@@ -647,7 +665,6 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
                                                                         'Program Terminating...',
                                            QtWidgets.QMessageBox.Abort)
 
-        # print(x_span)
         self.diagram_subplot.set_xlim(*x_span)
         self.diagram_subplot.set_ylim(*y_span)
 
@@ -656,10 +673,12 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
         current_states = []
 
         for count, state in enumerate(diagram_states):
-            if state[1] is not None:  # 不能用 if not state[1]
+            if state[1] is not None:
+                print(state)
                 state_line = State_Line(state, count, color=color, span=state_line_span)
                 self.draw_line(state_line, num_with_tag=num_with_tag)
                 current_states.append(state_line)
+        print("------")
 
         self.paths.append(current_states)
 
@@ -686,31 +705,6 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
         pyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
 
         self.canvas.draw()
-
-    def initiate(self):
-
-        import numpy as np
-
-        self.diagram_subplot.clear()
-
-        self.diagram_subplot.tick_params(axis='x', labelbottom='off')
-        self.diagram_subplot.tick_params(axis='y',
-                                         labelsize='xx-large')
-
-        if os.path.isfile("Energy_Diagram_Y_Axis_Text.txt"):
-            with open('Energy_Diagram_Y_Axis_Text.txt') as text_file:
-                y_axis_text = text_file.readline()
-        else:
-            with open('Energy_Diagram_Y_Axis_Text.txt', 'w') as text_file:
-                y_axis_text = "Solvated Free Energy (kJ/mol)"
-                text_file.write(y_axis_text)
-
-        pyplot.ylabel(y_axis_text,
-                      fontsize='xx-large',
-                      weight='bold')
-        pyplot.xticks(np.arange(5), [])
-
-        pyplot.subplots_adjust(left=0.12, right=0.93, top=0.95)
 
     def max_steps(self):
         return max([len(x) for x in self.paths])
@@ -769,18 +763,14 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
                 self.annotate_objects.append(tag)
 
 
-class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_Functions):
+class Draw_Energy_Diagram_XML_GUI(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_Functions):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
 
         self.energy_diagram = MpWidget_Energy_Diagram()
         self.energy_diagram.setSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
-        # self.drag_drop_textEdit = Drag_Drop_TextEdit()
-        # self.data_tableWidget.hide()
-        # self.horizontalLayout.setStretch(0, 1)
         self.verticalLayout.insertWidget(1, self.energy_diagram, 1)
-        # self.verticalLayout.insertWidget(4, self.drag_drop_textEdit, 2)
 
         self.open_config_file()
 
@@ -877,7 +867,6 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_
 
     def update_xlsx(self):
         if self.xlsx_file_lineEdit.text():
-            self.energy_diagram.initiate()
             self.xlsx_dropped(self.xlsx_file_lineEdit.text(), called_from_update=True)
 
     def xlsx_dropped(self, xlsx_filename, called_from_update=False):
@@ -885,8 +874,12 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_
             read xlsx data. The first column can be the format setting, e.g. 'r'
         """
 
-        # 防止因为改变x, y limit 触发多次limit changed. 在函数末尾重新 connect
+        self.energy_diagram.setParent(None)
+        self.energy_diagram = MpWidget_Energy_Diagram()
+        self.energy_diagram.setSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        self.verticalLayout.insertWidget(1, self.energy_diagram, 1)
 
+        # 防止因为改变x, y limit 触发多次limit changed. 在函数末尾重新 connect
         disconnect_all(self.x_lower_limit_spinBox, self.x_limits_change)
         disconnect_all(self.x_upper_limit_spinBox, self.x_limits_change)
         disconnect_all(self.Y_lower_limit_spinBox, self.y_limits_change)
@@ -897,8 +890,6 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_
 
         if filename_class(xlsx_filename).append != 'xlsx':
             return None
-
-        self.energy_diagram.initiate()
 
         self.config['Energy Diagram Last Path'] = filename_class(xlsx_filename).path
         self.save_config()
@@ -929,25 +920,25 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_
         min_energy = min(get_y_range)
         max_energy = max(get_y_range)
         y_span = max_energy - min_energy
-        self.y_span = [min_energy - y_span * 0.3, max_energy + y_span * 0.5]
+        y_span = [min_energy - y_span * 0.3, max_energy + y_span * 0.5]
         if not called_from_update:
             self.y_limits_changed = False
-            self.Y_lower_limit_spinBox.setValue(self.y_span[0])
-            self.Y_upper_limit_spinBox.setValue(self.y_span[1])
+            self.Y_lower_limit_spinBox.setValue(y_span[0])
+            self.Y_upper_limit_spinBox.setValue(y_span[1])
         else:
             if self.y_limits_changed:
-                self.y_span = [self.Y_lower_limit_spinBox.value(), self.Y_upper_limit_spinBox.value()]
+                y_span = [self.Y_lower_limit_spinBox.value(), self.Y_upper_limit_spinBox.value()]
 
         for count, route in enumerate(self.routes):
             if color_of_lines:  # have format setting
-                self.energy_diagram.diagram_Update(route[1:], x_span=x_span, y_span=self.y_span, color=color_of_lines[count],
+                self.energy_diagram.diagram_Update(route[1:], x_span=x_span, y_span=y_span, color=color_of_lines[count],
                                                    num_with_tag=self.num_with_tag_checkBox.isChecked(),
                                                    state_line_span=self.state_line_span_doubleSpinBox.value())
                 self.paths_for_cdx_drawing.append(route[1:])
                 self.colors_for_cdx_drawing.append(color_of_lines[count])
 
             else:  # doesn't have format setting
-                self.energy_diagram.diagram_Update(route, x_span=x_span, y_span=self.y_span, num_with_tag=self.num_with_tag_checkBox.checked(),
+                self.energy_diagram.diagram_Update(route, x_span=x_span, y_span=y_span, num_with_tag=self.num_with_tag_checkBox.checked(),
                                                    state_line_span=self.state_line_span_doubleSpinBox.value())
                 self.paths_for_cdx_drawing.append(route)
                 self.colors_for_cdx_drawing.append('k')
@@ -1127,7 +1118,6 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_
             :param fragment_list:
             :param text_to_write:
             :param color:
-            :param font_index:
             :param num_with_tag:
             :param is_tag_line:
             :return:
@@ -1643,7 +1633,7 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_
 
 
 if __name__ == '__main__':
-    my_Qt_Program = myWidget()
+    gui = Draw_Energy_Diagram_XML_GUI()
 
-    my_Qt_Program.show()
+    gui.show()
     sys.exit(Application.exec())
