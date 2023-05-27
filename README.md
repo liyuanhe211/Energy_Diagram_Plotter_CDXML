@@ -64,12 +64,12 @@ Properties for `Links`:
 
 <p align="center"><kbd><img src="images/Settings6.png" width="70%" height="70%" align="center"></img></kbd></p>
 
-The last option, "Use Temporary File," allows you to choose whether the program creates a file in its own Temp folder (which you need to Save As to another place after viewing) or directly generates a CDX file in the directory where Excel is located.
+The option "Use Temporary File" allows you to choose whether the program creates a file in its own Temp folder (which you need to Save As to another place after viewing) or directly generates a CDX file in the directory where Excel is located.
 
 Other options that's not mentioned above should be self-explanatory.
 
 ## Known issues
- * The program stores its temporary files in the program directory, so it requires read and write permissions to this directory. It's not recommended to install the program in a path with permission restrictions, such as Program Files. If you do so, please grant the program administrator permissions.
+ * The program stores its temporary files in the program directory, so it requires read/write permissions to this directory. It's not recommended to install the program in a path with permission restrictions, such as Program Files. If you do so, please grant the program administrator permissions.
 
  * The preview interface is not entirely accurate. If you experience any unexpected behavior, export the ChemDraw file first to check if it's normal.
 
@@ -79,7 +79,7 @@ Other options that's not mentioned above should be self-explanatory.
 
 <p align="center"><kbd><img src="images/Issue1.png" width="70%" height="70%" align="center"></img></kbd></p>
 
- * I wrote this quite a few years ago, so the codes are a little messy. A clean up is due.
+ * I wrote this quite a few years ago, so the codes are a little messy. A cleanup is due.
 
 
 ## For bug report
