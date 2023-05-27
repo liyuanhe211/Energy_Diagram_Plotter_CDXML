@@ -6,7 +6,7 @@ __author__ = 'LiYuanhe'
 # 支持MECP画点
 # 支持纵轴切掉一部分
 
-self.diagram_subplot.clear()
+import numpy as np
 from Python_Lib.My_Lib_PyQt6 import *
 from openpyxl import load_workbook
 import ctypes
