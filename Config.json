@@ -1,5 +1,5 @@
 {
-    "State Precision Digits": 1,
+    "State Precision Digits": 2,
     "State Line Span": 0.6,
     "Auto_collision_avoidance": true,
     "allow_overlap_states_checkBox": false,
@@ -8,11 +8,11 @@
     "Use Lines": true,
     "Y_tick_auto_checkBox": true,
     "Y_label_precision_spinBox": 0,
-    "Y_label_lineEdit": "Solvated Free Energy (kJ/mol)",
+    "Y_label_lineEdit": "Solvated Gibbs free energy (kJ/mol)",
     "use_temp_file_checkBox": true,
     "X_tick_checkBox": true,
     "Y_tick_checkBox": true,
-    "Draw_energy_diagram_window_width": 1373,
+    "Draw_energy_diagram_window_width": 808,
     "Draw_energy_diagram_window_height": 629,
     "Energy Diagram Last Path": "E:/My_Program/Energy_Diagram_Plotter/Examples/"
 }

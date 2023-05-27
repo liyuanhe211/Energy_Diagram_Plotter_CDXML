@@ -12,3 +12,4 @@ Config.ini
 /.venv/
 *.spec
 /Pyinstaller_Extract_Test/
+~$*

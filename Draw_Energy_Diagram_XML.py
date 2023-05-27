@@ -624,7 +624,7 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
                 y_axis_text = text_file.readline()
         else:
             with open('Energy_Diagram_Y_Axis_Text.txt', 'w') as text_file:
-                y_axis_text = "Solvated Free Energy (kJ/mol)"
+                y_axis_text = "Solvated Gibbs free energy (kJ/mol)"
                 text_file.write(y_axis_text)
 
         pyplot.ylabel(y_axis_text,
@@ -696,7 +696,7 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
                 y_axis_text = text_file.readline()
         else:
             with open('Energy_Diagram_Y_Axis_Text.txt', 'w') as text_file:
-                y_axis_text = "Solvated Free Energy (kJ/mol)"
+                y_axis_text = "Solvated Gibbs free energy (kJ/mol)"
                 text_file.write(y_axis_text)
 
         pyplot.ylabel(y_axis_text,
@@ -873,6 +873,10 @@ class Draw_Energy_Diagram_XML_GUI(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget
         """
             read xlsx data. The first column can be the format setting, e.g. 'r'
         """
+
+        # re-initiate
+        self.paths_for_cdx_drawing = []
+        self.colors_for_cdx_drawing = []
 
         self.energy_diagram.setParent(None)
         self.energy_diagram = MpWidget_Energy_Diagram()

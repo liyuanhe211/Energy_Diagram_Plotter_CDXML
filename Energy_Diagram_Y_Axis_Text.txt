@@ -1,1 +1,1 @@
-Solvated Free Energy (kJ/mol)
+Solvated Gibbs free energy (kJ/mol)
