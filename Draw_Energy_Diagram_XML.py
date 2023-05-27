@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'LiYuanhe'
 
+# Refresh之后没有图了？
+
 # 自动防止重叠（改成非贪心）
 # Num tag 在同一行时Tag的加粗
 # 支持MECP画点
@@ -11,7 +13,6 @@ from openpyxl import load_workbook
 import ctypes
 
 import matplotlib
-
 matplotlib.use("QtAgg")
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as MpFigureCanvas
 from matplotlib.backends.backend_qtagg import NavigationToolbar2QT as MpNavToolBar
@@ -1541,7 +1542,7 @@ class myWidget(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget, Qt_Widget_Common_
 
         while not save_successful:
             try:
-                with open(output_file, 'w') as cdxml_output:
+                with open(output_file, 'w', encoding='utf-8') as cdxml_output:
                     for i in output_list:
                         cdxml_output.write(i)
                         cdxml_output.write('\n\n')

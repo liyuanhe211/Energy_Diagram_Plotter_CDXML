@@ -20,7 +20,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>Energy Diagram   By LYH</string>
+   <string>Energy Diagram Plotter</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -210,7 +210,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>331</width>
+            <width>322</width>
             <height>544</height>
            </rect>
           </property>
@@ -1292,7 +1292,7 @@
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;Energy Diagram&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt; @ &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;Gaussian Toolkit &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;By. Li Yuanhe &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;Energy Diagram Plotter &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;By. Li Yuanhe &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>

@@ -102,7 +102,7 @@ class Ui_Draw_Energy_Diagram_Form(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 331, 544))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 322, 544))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setContentsMargins(-1, -1, 9, -1)
@@ -520,7 +520,7 @@ class Ui_Draw_Energy_Diagram_Form(object):
 
     def retranslateUi(self, Draw_Energy_Diagram_Form):
         _translate = QtCore.QCoreApplication.translate
-        Draw_Energy_Diagram_Form.setWindowTitle(_translate("Draw_Energy_Diagram_Form", "Energy Diagram   By LYH"))
+        Draw_Energy_Diagram_Form.setWindowTitle(_translate("Draw_Energy_Diagram_Form", "Energy Diagram Plotter"))
         self.load_file_pushButton.setText(_translate("Draw_Energy_Diagram_Form", "Load"))
         self.update_file_pushButton.setText(_translate("Draw_Energy_Diagram_Form", "Refresh"))
         self.save_cdx_pushButton_2.setText(_translate("Draw_Energy_Diagram_Form", "Save .cdx"))
@@ -570,4 +570,4 @@ class Ui_Draw_Energy_Diagram_Form(object):
         self.allow_overlap_states_checkBox.setToolTip(_translate("Draw_Energy_Diagram_Form", "<html><head/><body><p><span style=\" font-size:11pt;\">If not selected, states having the same energy at the same position will be drawn only once.</span></p><p><span style=\" font-size:11pt;\">The effect only shows in the generated cdx file. Doesn\'t affect preview.</span></p></body></html>"))
         self.allow_overlap_states_checkBox.setText(_translate("Draw_Energy_Diagram_Form", "Allow overlapping states"))
         self.save_cdx_pushButton.setText(_translate("Draw_Energy_Diagram_Form", "Save .cdx"))
-        self.label_21.setText(_translate("Draw_Energy_Diagram_Form", "<html><head/><body><p><span style=\" font-size:8pt; font-weight:600; font-style:italic;\">Energy Diagram</span><span style=\" font-size:8pt; font-weight:600;\"> @ </span><span style=\" font-size:8pt; font-weight:600; font-style:italic;\">Gaussian Toolkit </span><span style=\" font-size:8pt; font-style:italic;\">By. Li Yuanhe </span></p></body></html>"))
+        self.label_21.setText(_translate("Draw_Energy_Diagram_Form", "<html><head/><body><p><span style=\" font-size:8pt; font-weight:600; font-style:italic;\">Energy Diagram Plotter </span><span style=\" font-size:8pt; font-style:italic;\">By. Li Yuanhe </span></p></body></html>"))
