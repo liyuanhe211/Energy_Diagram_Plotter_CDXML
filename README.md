@@ -31,7 +31,7 @@ Below is the input file format, and there are also [several other examples](http
 
 <p align="center"><img src="images/Input1.png" width="100%" height="100%" align="center"></img></p>
 
-You can use any color for each state with its RGB value #XXXXXX. Some colors have shortcuts, and the "tabcolors" can be called by **B**, **O**, **G**, **R**, **P**, **BR**, **PI**, **GR**, **OL**, **C** (all uppercase):
+The color for each reaction path is specified at the first column. You can specify any color with its RGB value "#XXXXXX". Some colors have shortcuts, and the "tabcolors" can be specified by **B**, **O**, **G**, **R**, **P**, **BR**, **PI**, **GR**, **OL**, **C** (all uppercase). See [this](Examples/4%20TabColors.xlsx) example input file:
 
 <p align="center"><img src="images/Input2-1.png" width="30%" height="30%" align="center"></img></p>
 
