@@ -663,7 +663,7 @@ class MpWidget_Energy_Diagram(QtWidgets.QWidget):
                                                                         'Only numbers was allowed in the data section.\n'
                                                                         'Remove formula by Ctrl+Alt+V if used.\n'
                                                                         'Program Terminating...',
-                                           QtWidgets.QMessageBox.Abort)
+                                           QMessageBox_Abort)
 
         self.diagram_subplot.set_xlim(*x_span)
         self.diagram_subplot.set_ylim(*y_span)
@@ -1530,8 +1530,8 @@ class Draw_Energy_Diagram_XML_GUI(Ui_Draw_Energy_Diagram_Form, QtWidgets.QWidget
         # 如果已存在，提示替换
         if os.path.isfile(output_file):
             button = QtWidgets.QMessageBox.warning(None, 'File exist', "File already exist, confirm replacing:",
-                                                   QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
-            if button == QtWidgets.QMessageBox.Cancel:
+                                                   QMessageBox_Ok | QMessageBox_Cancel)
+            if button == QMessageBox_Cancel:
                 output_file = os.path.join(temp_folder, 'temp_' + str(int(time.time() * 100000)) + '.cdxml')
 
         while not save_successful:
