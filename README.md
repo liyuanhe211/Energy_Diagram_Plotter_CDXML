@@ -7,7 +7,11 @@ This is a tool that can create pixel-accurate energy diagrams as ChemDraw object
 
 ## How to use
 
-For Windows users, download the executable version in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/latest). Decompress the 7-zip file. Run `Energy Diagram Plotter CDXML X.X.X.exe`.
+For Windows users:
+
+* Download the executable version in [the release](https://github.com/liyuanhe211/Energy_Diagram_Plotter_CDXML/releases/latest).
+* Decompress the 7-zip file.
+* Run `Energy Diagram Plotter CDXML X.X.X.exe`.
 
 Alternatively, if you have a python environment on Windows or Linux, you can build a virtual environment with pipenv by using the provided pipfile:
 ```
